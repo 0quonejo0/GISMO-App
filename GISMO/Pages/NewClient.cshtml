@@ -2,40 +2,49 @@
 @model GISMO.Pages.NewClientModel
 @{
 }
+
+<style>
+    .inputtexbox {
+        font-size: 70px;
+    }
+</style>
+
 <h2>Add New Client</h2>
 <br />
 <br />
-<table>
-    <tbody>
-        <tr>
-            <td><label>Client Name</label></td>
-            <td><p><input class="input-group-sm" size="70" /></p></td>
-        </tr>
-        <tr>
-            <td><label>Client Type</label></td>
-            <td><p><select name="ddtype" id="type">
-                        <option value=""></option>
-                        <option value="shipmgt">Ship Management</option>
-                        <option value="agency">Agency</option>
-                    </select>
-            </p></td>
-        </tr>
-        <tr>
-            <td><label>Corporate Address</label>&nbsp;&nbsp;</td>
-            <td><p><input class="input-group-sm" size="70" /></p></td>
-        </tr>
-        <tr>
-            <td><label>Office Contacts</label></td>
-            <td><p><input class="input-group-sm" size="70" /></p></td>
-        </tr>
-         <tr>
-            <td><label>Apps License</label></td>
-            <td><p><input class="input-group-sm" size="70" /></p></td>
-        </tr>
-    </tbody>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="@Model.ClientName" class="col-form-label">Client Name</label>
+        <input asp-for="@Model.ClientName" class="form-control" />
+        <span asp-validation-for="@Model.ClientName" class="text-danger"></span><br />
 
-</table>
+        <label asp-for="@Model.ClientType" class="col-form-label">Type of Client</label>
+        <select asp-for=@Model.ClientType class="form-control">
+            <option value=""></option>
+            <option value="shipmgt">Ship Management</option>
+            <option value="agency">Agency</option>
+        </select><br />
+        
+        <label asp-for="@Model.ClientAddress" class="col-form-label">Corporate Address</label>
+        <input asp-for="@Model.ClientAddress" class="form-control" />
+        <span asp-validation-for="@Model.ClientAddress" class="text-danger"></span><br />
 
-<br />
-<a class="btn btn-primary btn-sm" href="../NewClient">Add Client</a>
-<a class="btn btn-primary btn-sm" href="../NewClient">Available License</a>
+        <label asp-for="@Model.ClientContacts" class="col-form-label">Office Contacts</label>
+        <input asp-for="@Model.ClientContacts" class="form-control" />
+        <span asp-validation-for="@Model.ClientContacts" class="text-danger"></span><br />
+
+        <label asp-for="@Model.ClientAppLic" class="col-form-label">Assigned Application License</label>
+        <input asp-for="@Model.ClientAppLic" class="form-control" />
+
+    </div>
+    <br />
+    <input type="submit" class="btn btn-primary btn-sm" value="Save / Add New" />
+    <a class="btn btn-primary btn-sm" href="../NewClient">Available License</a>
+</form>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

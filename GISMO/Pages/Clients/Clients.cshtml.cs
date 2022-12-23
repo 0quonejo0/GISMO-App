@@ -19,6 +19,8 @@ namespace GISMO.Pages.Clients
             _context = context;
         }
 
+        [BindProperty]
+        public string SearchText { get; set; }
         public List<Client> Clients { get; set; }
         public List<Applicant> Applicants { get; set; }
                 
@@ -31,6 +33,14 @@ namespace GISMO.Pages.Clients
 
         public async Task OnPost()
         {
+        }
+
+        public async Task OnPostSearch()
+        {
+            string search = SearchText;
+            var clients = await _context.Clientele.Where(c => c.ClientName.Contains(search)).ToListAsync();
+
+
         }
     }
 }
