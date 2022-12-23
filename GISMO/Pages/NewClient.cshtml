@@ -1,0 +1,41 @@
+﻿@page
+@model GISMO.Pages.NewClientModel
+@{
+}
+<h2>Add New Client</h2>
+<br />
+<br />
+<table>
+    <tbody>
+        <tr>
+            <td><label>Client Name</label></td>
+            <td><p><input class="input-group-sm" size="70" /></p></td>
+        </tr>
+        <tr>
+            <td><label>Client Type</label></td>
+            <td><p><select name="ddtype" id="type">
+                        <option value=""></option>
+                        <option value="shipmgt">Ship Management</option>
+                        <option value="agency">Agency</option>
+                    </select>
+            </p></td>
+        </tr>
+        <tr>
+            <td><label>Corporate Address</label>&nbsp;&nbsp;</td>
+            <td><p><input class="input-group-sm" size="70" /></p></td>
+        </tr>
+        <tr>
+            <td><label>Office Contacts</label></td>
+            <td><p><input class="input-group-sm" size="70" /></p></td>
+        </tr>
+         <tr>
+            <td><label>Apps License</label></td>
+            <td><p><input class="input-group-sm" size="70" /></p></td>
+        </tr>
+    </tbody>
+
+</table>
+
+<br />
+<a class="btn btn-primary btn-sm" href="../NewClient">Add Client</a>
+<a class="btn btn-primary btn-sm" href="../NewClient">Available License</a>

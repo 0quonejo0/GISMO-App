@@ -1,0 +1,68 @@
+﻿@page
+@model GISMO.Pages.Clients.EditModel
+@{
+}
+<br />
+<label style="font-weight:bold">Client Management</label>
+<br />
+<br />
+<table>
+    <tbody>
+        <tr>
+            <td><label>Client Name</label></td>
+            <td><p><input type="text" size="70" value="@Model.Clients.ClientName"/></p></td>
+        </tr>
+        <tr>
+            <td><label>Client Type</label></td>
+            <td>
+                <p>
+                    <select name="ddtype" id="type">
+                        <option>@Model.Clients.Type</option>
+                        <option value="shipmgt">Ship Management</option>
+                        <option value="agency">Agency</option>
+                    </select>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Corporate Address</label>&nbsp;&nbsp;</td>
+            <td><p><input class="input-group-sm" size="70" value="@Model.Clients.Address" /></p></td>
+        </tr>
+        <tr>
+            <td><label>Office Contacts</label></td>
+            <td><p><input class="input-group-sm" size="70" value="@Model.Clients.Contacts"/></p></td>
+        </tr>
+        <tr>
+            <td><label>Apps License</label></td>
+            <td><p><input class="input-group-sm" size="70" value="@Model.Clients.AppLicense"/></p></td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<br />
+<a class="btn btn-primary btn-sm" href="#">Assign Vessel</a>
+<a class="btn btn-primary btn-sm" href="#">Show Vessels Pool</a>
+<br /><br />
+<table class="table">
+    <thead>
+        <tr>
+            @*<th style="background-color:whitesmoke" width="15">ID</th>*@
+            <th style="background-color:whitesmoke">Managed Vessels</th>
+            <th style="background-color:whitesmoke">Type</th>
+            <th style="background-color:whitesmoke">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var vessel in Model.ManageVsl)
+        {
+            <tr>
+                @*<td>@vessel.Id</td>*@
+                <td>@vessel.VesselName</td>
+                <td>@vessel.Type</td>
+                <td width="350">
+                    <a class="btn btn-primary btn-sm" href="#">Revoke</a>
+                    <a class="btn btn-primary btn-sm" href="#">Apps License</a>
+                </td>
+            </tr>
+        }
+</table>

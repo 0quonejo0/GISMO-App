@@ -1,0 +1,42 @@
+﻿@page
+@model GISMO.Pages.Clients.OnboardModel
+@{
+}
+<br />
+@*<h2>Onboard of @Request.Query["selVsl"]</h2>*@
+<h2>Onboard of @Model.Vessel.VesselName</h2>
+<br />
+<a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a class="btn-link" style="font-size:small" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<table class="table">
+    <thread>
+        <tr>
+            @*<th>ID</th>*@
+            <th style="background-color:whitesmoke">Lastname</th>
+            <th style="background-color:whitesmoke">Firstname</th>
+            <th style="background-color:whitesmoke">Rank</th>
+            <th style="background-color:whitesmoke">Mobile</th>
+            <th style="background-color:whitesmoke">Email</th>
+            <th style="background-color:whitesmoke">Action</th>
+        </tr>
+    </thread>
+    <tbody>
+        @foreach (var onboardlist in Model.Onboards)
+        {
+            <tr>
+                @*<td>@onboardlist.Id</td>*@
+                <td>@onboardlist.Lname</td>
+                <td>@onboardlist.Fname</td>
+                <td>@onboardlist.Rank</td>
+                <td>@onboardlist.Mobile</td>
+                <td>@onboardlist.Email</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Clients/Crew?id=@onboardlist.Id">Crew Details</a>
+                    <a class="btn btn-primary btn-sm" href="/Clients/Documents?id=@onboardlist.Id">Documents</a>
+                    <a class="btn btn-primary btn-sm" href="/Clients/Trainings?id=@onboardlist.Id">Trainings</a>
+                    <a class="btn btn-primary btn-sm" href="/Clients/Evaluations?id=@onboardlist.Id">Evaluations</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

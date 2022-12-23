@@ -1,0 +1,37 @@
+﻿@page
+@model GISMO.Pages.Clients.ClientDetailsModel
+@{
+    
+}
+
+<br />
+<h2>@Request.Query["selClient"]</h2>
+<label>Managed Vessels</label>
+<br />
+<table class="table">
+    <thread>
+        <tr>
+            <th style="background-color:whitesmoke">ID</th>
+            <th style="background-color:whitesmoke">Vessel Name</th>
+            <th style="background-color:whitesmoke">Type</th>
+            <th style="background-color:whitesmoke">Action</th>
+        </tr>
+    </thread>
+    <tbody>
+        @foreach (var client in Model.SelVessels)
+        {
+            <tr>
+                <td>@client.Id</td>
+                <td>
+                    <a asp-page="./ClientDetails" asp-route-id="@client.Id">@client.VesselName</a>
+                </td>
+                <td>@client.Type</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Clients/Onboard?id=@client.Id&selVsl=@client.VesselName">Show Onboard</a>
+                    <a class="btn btn-primary btn-sm" href="/Clients/Planner?id=@client.Id&selVsl=@client.VesselName">Planner</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

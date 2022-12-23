@@ -1,0 +1,50 @@
+﻿@page
+@model GISMO.Pages.Clients.ClientsModel
+
+@{
+    string imgext = ".jpg";
+}
+
+<br />
+<h2>List of Clients</h2>
+<br />
+<a class="btn btn-primary btn-sm" href="../NewClient">New Client</a>
+<a class="btn btn-primary btn-sm" href="../Applicants?seaservid=0">Proposed Applicants (@Model.Applicants.Count)</a>
+<br>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th style="background-color:whitesmoke">ID</th>
+            <th style="background-color:whitesmoke">Name</th>
+            <th style="background-color:whitesmoke">Type</th>
+            <th style="background-color:whitesmoke">Address</th>
+            <th style="background-color:whitesmoke">Contacts</th>
+            <th style="background-color:whitesmoke">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var client in Model.Clients)
+        {
+            <tr>
+                <td>@client.Id</td>
+                <td>
+                    @*<a asp-page="./ClientDetails" asp-route-id="@client.Id">@client.ClientName</a>*@
+                    <a class="btn-link" href="./ClientDetails?id=@client.Id&selClient=@client.ClientName">@client.ClientName</a>
+                </td>
+                <td>@client.Type</td>
+                <td>@client.Address</td>
+                <td>@client.Contacts</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Clients/Edit?id=@client.Id">Modify</a>
+                    <a class="btn btn-primary btn-sm" href="/Clients/Deactivate?id=@client.Id">Deactivate</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
+
+

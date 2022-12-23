@@ -1,0 +1,87 @@
+﻿@page
+@model GISMO.Pages.Clients.CrewDetailsModel
+@{
+}
+<style type="text/css">
+    .mainDiv{
+        border: 1px outset gray;
+        padding-left:25px;
+        padding-rigt:15px;
+        background-color: whitesmoke;
+        
+        padding-bottom:15px;
+    }    
+
+</style>
+
+<!--1ST INFO BOX -->
+<div class="mainDiv">
+    <table>
+        <thead>
+            <tr>
+                <br />
+                <td width="88%"><h1>@Model.Seafarer.Fname @Model.Seafarer.Lname</h1><br /><br />
+                    <label style="font-weight:bold">MOBILE:</label>
+                        <label>@Model.Seafarer.Mobile</label>&nbsp;&nbsp;
+                    <label style="font-weight:bold">EMAIL:</label>
+                        <label>EMAIL: @Model.Seafarer.Email</label>
+                </td>
+                <td><img src="~/lib/images/@Model.the2x2" style="padding-right:15px" alt="Pix" width="160" height="150"></td>
+                @*<td><img src="~/lib/images/@Model.theFile style="padding-right:15px" alt="@Model.theFile" width="160" height="150"></td>*@
+            </tr>
+        </thead>
+    </table>
+</div>
+<br />
+<!--2ND INFO BOX -->
+<div class="mainDiv">
+    <table>
+        <thead>
+            <tr>
+                <br />
+                <td style="width:5%">
+                    <label style="font-weight:bold">NATIONALITY:</label><label>@Model.Seafarer.Mobile</label>
+                </td>
+                <td style="width:5%">
+                    <label style="font-weight:bold">BIRTH DATE:</label><label>@Model.Seafarer.Mobile</label>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:5%">
+                    <label style="font-weight:bold">STATUS:</label><label>@Model.Seafarer.Mobile</label>
+                </td>
+                <td style="width:5%">
+                    <label style="font-weight:bold">BIRTH PLACE:</label><label>@Model.Seafarer.Mobile</label>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:1%">
+                    <label style="font-weight:bold">RANK/POSITION:</label><label>@Model.Seafarer.Mobile</label>
+                </td>
+                <td style="width:1%">
+                    <label style="font-weight:bold">AVAILABILITY:</label><label>@Model.Seafarer.Mobile</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label style="font-weight:bold">PERMANENT ADDRESS:</label><label>@Model.Seafarer.Mobile</label>
+                </td>
+            </tr>
+        </thead>
+    </table>
+</div>
+<!--3RD INFO BOX -->
+<div class="mainDiv">
+    <table>
+        <thead>
+            <tr>
+                <th>NAME OF DOCUMENT</th>
+                <th>NUMBER</th>
+                <th>ISSUANCE</th>
+                <th>ISSUED ON</th>
+                <th>EXPIRY</th>
+            </tr>
+        </thead>
+        
+    </table>
+</div>

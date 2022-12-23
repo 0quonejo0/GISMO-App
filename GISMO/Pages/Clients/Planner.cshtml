@@ -1,0 +1,55 @@
+﻿@page
+@model GISMO.Pages.Clients.PlannerModel
+@{
+}
+
+<style type="text/css">
+    table{
+        width: 100%;
+        font-size:smaller;
+    }
+    td, th{
+        text-align: left;
+    }
+    
+</style>
+
+<br />
+<h2>@Request.Query["selVsl"]</h2>
+<br />
+<label>Agency Crew Change Plan</label>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th style="background-color:#EBEBEB">ID</th>
+            <th style="background-color:#EBEBEB">ONBOARD</th>
+            <th style="background-color:#EBEBEB">POSITION</th>
+            <th style="background-color:#EBEBEB">C.CHANGE</th>
+            <th style="background-color:#EBEBEB">PROPOSED</th>
+            <th style="background-color:#EBEBEB">POSITION</th>
+            <th style="background-color:#EBEBEB">PORT</th>
+            <th style="background-color:#EBEBEB">AGENCY REMARKS</th>
+            <th style="background-color:#EBEBEB">ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var crewchange in Model.CrewChange)
+        {
+            <tr>
+                <td style="background-color:whitesmoke">@crewchange.Id</td>
+                <td style="background-color:whitesmoke" width="150">@crewchange.CrewOnboard</td>
+                <td style="background-color:whitesmoke">@crewchange.OldPosition</td>
+                <td style="background-color:lightblue" valign="middle">@crewchange.CChange.ToString("dd.MMM.yyyy")</td>
+                <td style="background-color:whitesmoke" width="150">@crewchange.CrewReplacer</td>
+                <td style="background-color:whitesmoke">@crewchange.NewPosition</td>
+                <td style="background-color:whitesmoke">@crewchange.Port</td>
+                <td style="background-color:antiquewhite">@crewchange.ReplacerStat</td>
+                <td style="background-color:antiquewhite" width="150">
+                    <a class="btn btn-primary btn-sm" href="/Clients/Planner">Send Remarks</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
