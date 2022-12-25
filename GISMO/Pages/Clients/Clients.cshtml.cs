@@ -23,12 +23,12 @@ namespace GISMO.Pages.Clients
         public string SearchText { get; set; }
         public List<Client> Clients { get; set; }
         public List<Applicant> Applicants { get; set; }
+        public List<Onboard> SearchCrew { get; set; }
                 
         public async Task OnGet()
         {
             Clients = await _context.Clientele.ToListAsync();
             Applicants = await _context.Applicants.Where(s => s.Status == "Pending").ToListAsync();
-
         }
 
         public async Task OnPost()

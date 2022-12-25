@@ -1,0 +1,162 @@
+﻿@page
+@model GISMO.Pages.SearchCrewModel
+@{
+}
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+    <div class="w3-container">
+        <h2 style="text-align:center">Advance Searching</h2>
+        <p style="text-align:center">Acquire vital information in realtime</p>
+    </div>
+
+    <div class="w3-bar w3-black">
+        <button class="w3-bar-item w3-button" onclick="openCity('Seafarer')">Seafarer</button>
+        <button class="w3-bar-item w3-button" onclick="openCity('Client')">Client</button>
+        <button class="w3-bar-item w3-button" onclick="openCity('Experience')">Vessel Experience</button>
+        <button class="w3-bar-item w3-button" onclick="openCity('Vessel')">Vessel</button>
+    </div>
+
+    <div id="Seafarer" class="w3-container w3-display-container city">
+        <span onclick="this.parentElement.style.display='none'"
+              class="w3-button w3-large w3-display-topright">&times;</span>
+        <h2>Seafarer</h2>
+        <p>Search by Lastname</p>
+        <form method="post">
+            <label>Last Name</label>
+            <input class="text-primary" asp-for="SearchText" />
+            <input type="submit" asp-page-handler="Search" value="Search"/>
+        </form>
+        <table class="table">
+            <thread>
+                <tr>
+                    <th>Name</th>
+                    <th>Rank</th>
+                    <th>Status</th>
+                </tr>
+            </thread>
+            <tbody>
+                @try
+                {
+                    @foreach (var item in Model.SearchCrew)
+                    {
+                        <tr>
+                            <td><a class="btn-link" href="/Clients/CrewDetails?id=@item.Id" target="_blank" rel="noreferrer">@item.Fname @item.Lname</a></td>
+                            <td>@item.Rank</td>
+                            <td>@item.Availability</td>
+                        </tr>
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            </tbody>
+        </table>
+        <br />
+    </div>
+
+    <div id="Client" class="w3-container w3-display-container city" style="display:none">
+        <span onclick="this.parentElement.style.display='none'"
+              class="w3-button w3-large w3-display-topright">&times;</span>
+        <h2>Client</h2>
+        <p>Search by Ship Management/Manning Agency</p>
+        <form method="post">
+            <label>Client Name</label>
+            <input class="text-primary" asp-for="SearchText" />
+            <input type="submit" asp-page-handler="Search" value="Search" />
+        </form>
+        <table class="table">
+            <thread>
+                <tr>
+                    <th>Client</th>
+                    <th>Type</th>
+                </tr>
+            </thread>
+            <tbody>
+                @try
+                {
+                    @foreach (var item in Model.SearchCrew)
+                    {
+                        <tr>
+                            <td>@item.Lname</td>
+                            <td>@item.Fname</td>
+                        </tr>
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div id="Experience" class="w3-container w3-display-container city" style="display:none">
+        <span onclick="this.parentElement.style.display='none'"
+              class="w3-button w3-large w3-display-topright">&times;</span>
+        <h2>Filter crew with specific vessel experience</h2>
+        <p>Ex: CONTAINER, BULK ETC.</p>
+        
+    </div>
+
+    <div id="Vessel" class="w3-container w3-display-container city" style="display:none">
+        <span onclick="this.parentElement.style.display='none'"
+              class="w3-button w3-large w3-display-topright">&times;</span>
+        <h2>Vessel with Crew onboard</h2>
+        <p>Search Vessel name</p>
+    </div>
+
+    <script>
+        function openCity(cityName) {
+            var i;
+            var x = document.getElementsByClassName("city");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            document.getElementById(cityName).style.display = "block";
+        }
+    </script>
+</body>
+</html>
+@*<form method="post">
+    <label>Last Name</label>
+    <input class="text-primary" asp-for="SearchText" />
+    <input type="submit" asp-page-handler="Search" value="Search"/>
+</form>*@
+
+@*<p>Search by Lastname</p>*@
+@*<form method="post">
+    <label>Last Name</label>
+    <input class="text-primary" asp-for="SearchText" />
+    <input type="submit" asp-page-handler="Search" value="Search" />
+</form>*@
+<br />
+@*@try
+{
+    <table class="table">
+        <thread>
+            <tr>
+                <th style="background-color:whitesmoke">Name</th>
+                <th style="background-color:whitesmoke">Rank</th>
+                <th style="background-color:whitesmoke">Status</th>
+            </tr>
+        </thread>
+        <tbody>
+            @foreach (var search in Model.SearchCrew)
+            {
+                <tr>
+                    <td>@search.Fname &nbsp; @search.Lname</td>
+                    <td><a class="btn-link" href="/Clients/CrewDetails?id=@search.Id" target="_blank" rel="noreferrer">@search.Fname @search.Lname</a></td>
+                    <td>@search.Rank</td>
+                    <td>@search.Availability</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p></p>
+}
+catch (Exception)
+{
+
+}*@
