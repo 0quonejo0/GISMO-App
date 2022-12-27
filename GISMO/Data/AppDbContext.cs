@@ -15,7 +15,7 @@ namespace GISMO.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            var connectionString = _configuration.GetConnectionString("CloudConnString");
+            var connectionString = _configuration.GetConnectionString("LocalConnString");
             options.UseSqlServer(connectionString);
             options.EnableSensitiveDataLogging(true);
         }

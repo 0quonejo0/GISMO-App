@@ -17,18 +17,23 @@
 <br />
 <h2>@Request.Query["selVsl"]</h2>
 <br />
-<label>Agency Crew Change Plan</label>
+<label>Agency Crew Change Plan</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a class="btn-link" style="font-size:small" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a class="btn-link" style="font-size:small" href="#">Upload Crew-Change</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 <br />
 <table class="table">
     <thead>
         <tr>
-            <th style="background-color:#EBEBEB">ID</th>
+            @*<th style="background-color:#EBEBEB">ID</th>*@
             <th style="background-color:#EBEBEB">ONBOARD</th>
             <th style="background-color:#EBEBEB">POSITION</th>
             <th style="background-color:#EBEBEB">C.CHANGE</th>
             <th style="background-color:#EBEBEB">PROPOSED</th>
             <th style="background-color:#EBEBEB">POSITION</th>
             <th style="background-color:#EBEBEB">PORT</th>
+            <th style="background-color:#EBEBEB">AGENCY</th>
             <th style="background-color:#EBEBEB">AGENCY REMARKS</th>
             <th style="background-color:#EBEBEB">ACTION</th>
         </tr>
@@ -37,13 +42,14 @@
         @foreach (var crewchange in Model.CrewChange)
         {
             <tr>
-                <td style="background-color:whitesmoke">@crewchange.Id</td>
+                @*<td style="background-color:whitesmoke">@crewchange.Id</td>*@
                 <td style="background-color:whitesmoke" width="150">@crewchange.CrewOnboard</td>
                 <td style="background-color:whitesmoke">@crewchange.OldPosition</td>
                 <td style="background-color:lightblue" valign="middle">@crewchange.CChange.ToString("dd.MMM.yyyy")</td>
                 <td style="background-color:whitesmoke" width="150">@crewchange.CrewReplacer</td>
                 <td style="background-color:whitesmoke">@crewchange.NewPosition</td>
                 <td style="background-color:whitesmoke">@crewchange.Port</td>
+                <td style="background-color:whitesmoke"></td>
                 <td style="background-color:antiquewhite">@crewchange.ReplacerStat</td>
                 <td style="background-color:antiquewhite" width="150">
                     <a class="btn btn-primary btn-sm" href="/Clients/Planner">Send Remarks</a>

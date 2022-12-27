@@ -38,8 +38,9 @@
                     <label style="font-weight:bold">EMAIL:</label>
                     <label>EMAIL: @Model.Seafarer.Email</label>
                 </td>
-                <td><img src="~/lib/images/@Model.the2x2" style="padding-right:15px" alt="Pix" width="160" height="150"></td>
-                @*<td><img src="~/lib/images/@Model.theFile style="padding-right:15px" alt="@Model.theFile" width="160" height="150"></td>*@
+                <td>
+                    <img src="~/lib/images/@(Model.Seafarer.Id).jpg" style="padding-right:15px" alt="Pix" width="160" height="150">
+                 </td>
             </tr>
         </thead>
     </table>

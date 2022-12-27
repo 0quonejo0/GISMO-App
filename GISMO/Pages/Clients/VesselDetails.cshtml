@@ -1,0 +1,167 @@
+﻿@page
+@model GISMO.Pages.Clients.VesselDetailsModel
+@{
+}
+<h2>@Request.Query["selVsl"]</h2>
+@*<h2>Onboard of @Model.Vessel.VesselName</h2>*@
+<style>
+    /* Style the tab */
+    .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+    }
+        /* Style the buttons that are used to open the tab content */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+            /* Change background color of buttons on hover */
+            .tab button:hover {
+                background-color: #ddd;
+            }
+
+            /* Create an active/current tablink class */
+            .tab button.active {
+                background-color: #ccc;
+            }
+
+    /* Style the tab content */
+    .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+    }
+</style>
+<br />
+<br />
+<!-- Tab links -->
+<div class="tab">
+    <button class="tablinks" onclick="openVslDet(event, 'Onboard')" id="defaultOpen">Crew Onboard</button>
+    <button class="tablinks" onclick="openVslDet(event, 'VslParti')">Vessel</button>
+    <button class="tablinks" onclick="openVslDet(event, 'VslParti')">Circulars</button>
+    <button class="tablinks" onclick="openVslDet(event, 'VslParti')">Reports</button>
+</div>
+
+<!-- Tab content -->
+<div id="Onboard" class="tabcontent">
+    <br />
+    <a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a class="btn-link" style="font-size:small" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <table class="table">
+        <thread>
+            <tr>
+                @*<th>ID</th>*@
+                <th style="background-color:whitesmoke">Surname</th>
+                <th style="background-color:whitesmoke">Firstname</th>
+                <th style="background-color:whitesmoke">Position</th>
+                <th style="background-color:whitesmoke">Nationality</th>
+                <th style="background-color:whitesmoke">Mobile</th>
+                <th style="background-color:whitesmoke">Email</th>
+                <th style ="background-color:whitesmoke">Image</th>
+                <th style="background-color:whitesmoke">Action</th>
+            </tr>
+        </thread>
+        <tbody>
+            @foreach (var onboardlist in Model.OnboardCrew)
+            {
+                <tr style="font-size:small">
+                    @*<td>@onboardlist.Id</td>*@
+                    <td style="vertical-align:middle">@onboardlist.Lname</td>
+                    <td style="vertical-align:middle">@onboardlist.Fname</td>
+                    <td style="vertical-align:middle">@onboardlist.Rank</td>
+                    <td style="vertical-align:middle">@onboardlist.Nationality</td>
+                    <td style="vertical-align:middle">@onboardlist.Mobile</td>
+                    <td style="vertical-align:middle">@onboardlist.Email</td>
+                    <td style="vertical-align:middle">
+                        <img src="~/lib/images/@(onboardlist.Id).jpg" style="" alt="Pix" width="55" height="50">
+                        @*@(onboardlist.Id).jpg*@
+                    </td>
+                    <td style="vertical-align:middle">
+                        <a class="btn btn-primary btn-sm" href="/Clients/CrewDetails?id=@onboardlist.Id" target="_blank" rel="noreferrer">Crew Details</a>
+                        @*<a class="btn btn-primary btn-sm" href="/Clients/Documents?id=@onboardlist.Id">Documents</a>
+                        <a class="btn btn-primary btn-sm" href="/Clients/Trainings?id=@onboardlist.Id">Trainings</a>
+                        <a class="btn btn-primary btn-sm" href="/Clients/Evaluations?id=@onboardlist.Id">Evaluations</a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+<div id="VslParti" class="tabcontent">
+    <table class="table">
+        <thread>
+            <tr>
+                <th>Vessel Particulars</th>
+            </tr>
+        </thread>
+        <tbody>
+            <tr>
+                <td>IMO Number:</td>
+            </tr>
+            <tr>
+                <td>Current Name:</td>
+            </tr>
+            <tr>
+                <td>Flag:</td>
+            </tr>
+            <tr>
+                <td>Ship Type (Bulk, Container, Tanker):</td>
+            </tr>
+            <tr>
+                <td>Year of built:</td>
+            </tr>
+            <tr>
+                <td>Engine:</td>
+            </tr>
+            <tr>
+                <td>GRT:</td>
+            </tr>
+            <tr>
+                <td>Builder company:</td>
+            </tr>
+            <tr>
+                <td>Owner name:</td>
+            </tr>
+            <tr>
+                <td>Trade route:</td>
+            </tr>
+            <tr>
+                <td>Managed by:</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    function openVslDet(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    document.getElementById("defaultOpen").click();
+</script>
