@@ -11,6 +11,10 @@ namespace GISMO.Data.Entities
         public string Type { get; set; }
         public string Flag { get; set; }
         public string Grt { get; set; }
-        //public Client Client { get; set; }
+        public string IMO { get; set; }
+        public string YearBuilt { get; set; }
+        public string Engine { get; set; }
+        public string Builder { get; set; }
+        public string Route { get; set; }
     }
 }

@@ -27,6 +27,7 @@ namespace GISMO.Data
         public DbSet<Onboard> Crews { get; set; }
         public DbSet<Planner> Planner { get; set; }
         public DbSet<SeaService> SeaServices { get; set; }
+        public DbSet<VslExperience> svExperience { get; set; }
     }
 
     // Bong: Additional DbContext for Agency API
