@@ -27,7 +27,22 @@ namespace GISMO
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>();
-            services.AddDbContext<LAppDcontext>();
+            //services.AddDbContext<LAppDcontext>();
+
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false;
+                options.SignIn.RequireConfirmedEmail = false;
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireNonAlphanumeric = false;
+            })
+                .AddRoles<IdentityRole>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders()
+                .AddEntityFrameworkStores<AppDbContext>();
 
             services.AddRazorPages();
         }
@@ -51,6 +66,7 @@ namespace GISMO
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

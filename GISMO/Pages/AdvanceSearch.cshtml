@@ -9,6 +9,7 @@
         border: 1px solid #ccc;
         border-top: none;
     }
+
     .bs-example {
         margin: 20px;
     }
@@ -26,8 +27,8 @@
         <br />
     </div>
 
-        <div class="m-3" >
-        <ul class="nav nav-tabs" id="myTab" >
+    <div class="m-3">
+        <ul class="nav nav-tabs" id="myTab">
             <li class="nav-item">
                 <a href="#sectionA" id="secA" onclick="createItem('secA')" class="nav-link active" data-toggle="tab">Seafarers</a>
             </li>
@@ -41,7 +42,7 @@
                 <a href="#sectionD" id="secD" onclick="createItem('secD')" class="nav-link" data-toggle="tab">Vessels</a>
             </li>
         </ul>
-        <div class="tab-content" >
+        <div class="tab-content">
             <div id="sectionA" class="tab-pane fade show active">
                 <br />
                 <h4>Seafarer</h4>
@@ -52,32 +53,40 @@
                     <input type="checkbox" id="global" name="globals" value="Global">
                     <label for="global"> Global Search</label>
                     <!-- Crew Table -->
-                    <table class="table">
-                        <thread>
-                            <br />
-                            <br />
-                            <tr>
-                                <th style="background-color:whitesmoke">Name</th>
-                                <th style="background-color:whitesmoke">Rank</th>
-                                <th style="background-color:whitesmoke">Status</th>
-                                <th style="background-color:whitesmoke">Manning Agency</th>
-                            </tr>
-                        </thread>
-                        <tbody>
-                            @if (Model.SearchCrew != null)
-                            {
-                                @foreach (var item in Model.SearchCrew)
-                                {
-                                    <tr style="font-size:small">
-                                        <td><a class="btn-link" href="/Clients/CrewDetails?id=@item.Id" target="_blank" rel="noreferrer">@item.Fname @item.Lname</a></td>
-                                        <td>@item.Rank</td>
-                                        <td>@item.Availability</td>
-                                        <td></td>
+                    @if (Model.SearchText != null)
+                    {
+                        @if (Model.SearchCrew.Count > 0)
+                        {
+                            <table class="table">
+                                <thread>
+                                    <br />
+                                    <br />
+                                    <tr>
+                                        <th style="background-color:whitesmoke">Name</th>
+                                        <th style="background-color:whitesmoke">Rank</th>
+                                        <th style="background-color:whitesmoke">Status</th>
+                                        <th style="background-color:whitesmoke">Manning Agency</th>
                                     </tr>
-                                }
-                            }
-                        </tbody>
-                    </table>
+                                </thread>
+                                <tbody>
+                                    @foreach (var item in Model.SearchCrew)
+                                    {
+                                        <tr style="font-size:small">
+                                            <td><a class="btn-link" href="/Clients/CrewDetails?id=@item.Id" target="_blank" rel="noreferrer">@item.Fname @item.Lname</a></td>
+                                            <td>@item.Rank</td>
+                                            <td>@item.Availability</td>
+                                            <td></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    }
+                    else
+                    {
+                        <span>Record not found.</span>
+                    }
+
                 </form>
             </div>
             <div id="sectionB" class="tab-pane fade">
@@ -92,31 +101,40 @@
                     <input type="checkbox" id="agency" name="agencies" value="Agency">
                     <label for="agency">Manning Agency</label>
                     <!-- Client Table -->
-                    <table class="table">
-                        <thread>
-                            <br />
-                            <br />
-                            <tr>
-                                <th style="background-color:whitesmoke">Name</th>
-                                <th style="background-color:whitesmoke">Type</th>
-                                <th style="background-color:whitesmoke">Address</th>
-                            </tr>
-                        </thread>
-                        <tbody>
-                            @if (Model.SearchClient != null)
-                            {
-                                @foreach (var clientresult in Model.SearchClient)
-                                {
-                                    <tr style="font-size:small">
-                                        @*<td>@clientresult.ClientName</td>*@
-                                        <td><a class="btn-link" href="./Clients/ClientDetails?id=@clientresult.Id&selClient=@clientresult.ClientName">@clientresult.ClientName</a></td>
-                                        <td>@clientresult.Type</td>
-                                        <td>@clientresult.Address</td>
+                    @if (Model.SearchClient != null)
+                    {
+                        @if (Model.SearchClient.Count > 0)
+                        {
+                            <table class="table">
+                                <thread>
+                                    <br />
+                                    <br />
+                                    <tr>
+                                        <th style="background-color:whitesmoke">Name</th>
+                                        <th style="background-color:whitesmoke">Type</th>
+                                        <th style="background-color:whitesmoke">Address</th>
                                     </tr>
-                                }
-                            }
-                        </tbody>
-                    </table>
+                                </thread>
+                                <tbody>
+
+                                    @foreach (var clientresult in Model.SearchClient)
+                                    {
+                                        <tr style="font-size:small">
+                                            @*<td>@clientresult.ClientName</td>*@
+                                            <td><a class="btn-link" href="./Clients/ClientDetails?id=@clientresult.Id&selClient=@clientresult.ClientName">@clientresult.ClientName</a></td>
+                                            <td>@clientresult.Type</td>
+                                            <td>@clientresult.Address</td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        }
+                    }
+                    else
+                    {
+                        <div>No records found.</div>
+                    }
                 </form>
             </div>
             <div id="sectionC" class="tab-pane fade">
@@ -124,34 +142,43 @@
                 <h4>Experience</h4>
                 <p>Filter Crew with specific vessel experience (Container, Bulk, Reefer)</p>
                 <form method="post">
+
                     <input class="text-primary" asp-for="SearchThisExperience" />
                     <input type="submit" asp-page-handler="Search" value="Search" />&nbsp;&nbsp;&nbsp;&nbsp;
                     @*<input type="checkbox" id="global" name="globals" value="Global">
                     <label for="global"> Global Search</label>*@
                     <!-- Crew Table -->
-                    <table class="table">
-                        <thread>
-                            <br />
-                            <br />
-                            <tr>
-                                <th style="background-color:whitesmoke">Name</th>
-                                <th style="background-color:whitesmoke">Type</th>
-                            </tr>
-                        </thread>
-                        <tbody>
-                            @if (Model.SearchExperience != null)
-                            {
-                                @foreach (var item in Model.SearchExperience)
-                                {
-                                    <tr style="font-size:small">
-                                        @*<td>@item.Fname @item.Lname</td>*@
-                                        <td><a class="btn-link" href="/Clients/CrewDetails?id=@item.Id" target="_blank" rel="noreferrer">@item.Fname @item.Lname</a></td>
-                                        <td>@item.Type</td>
+                    @if (Model.SearchExperience != null)
+                    {
+                        @if (Model.SearchExperience.Count > 0)
+                        {
+                            <table class="table">
+                                <thread>
+                                    <br />
+                                    <br />
+                                    <tr>
+                                        <th style="background-color:whitesmoke">Name</th>
+                                        <th style="background-color:whitesmoke">Experience</th>
                                     </tr>
-                                }
-                            }
-                        </tbody>
-                    </table>
+                                </thread>
+                                <tbody>
+                                    @foreach (var item in Model.SearchExperience)
+                                    {
+                                        <tr style="font-size:small">
+                                            @*<td>@item.Fname @item.Lname</td>*@
+                                            <td><a class="btn-link" href="/Clients/CrewDetails?id=@item.Id" target="_blank" rel="noreferrer">@item.Fname @item.Lname</a></td>
+                                            <td>@item.Type</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <span>No records found.</span>
+                        }
+                    }
+
                 </form>
             </div>
             <div id="sectionD" class="tab-pane fade show">
@@ -164,51 +191,49 @@
                     @*<input type="checkbox" id="global" name="globals" value="Global">
                     <label for="global"> Global Search</label>*@
                     <!-- Crew Table -->
-                    <table class="table">
-                        <thread>
-                            <br />
-                            <br />
-                            <tr>
-                                <th style="background-color:whitesmoke">Vessel</th>
-                                <th style="background-color:whitesmoke">Type</th>
-                                <th style="background-color:whitesmoke">IMO</th>
-                                <th style="background-color:whitesmoke">Flag</th>
-                                <th style="background-color:whitesmoke">Engine</th>
-                                <th style="background-color:whitesmoke">Built</th>
-                                <th style="background-color:whitesmoke">Route</th>
-                            </tr>
-                        </thread>
-                        <tbody>
-                            @if (Model.SearchAllVsl != null)
-                            {
-                                @foreach (var item in Model.SearchAllVsl)
-                                {
-                                    <tr style="font-size:small">
-                                        <td><a class="btn-link" href="/Clients/VesselDetails?id=@item.Id">@item.VesselName</a></td>
-                                        <td>@item.Type</td>
-                                        <td>@item.IMO</td>
-                                        <td>@item.Flag</td>
-                                        <td>@item.Engine</td>
-                                        <td>@item.YearBuilt</td>
-                                        <td>@item.Route</td>
+                    @if (Model.SearchAllVsl != null)
+                    {
+                        @if (Model.SearchAllVsl.Count > 0)
+                        {
+                            <table class="table">
+                                <thread>
+                                    <br />
+                                    <br />
+                                    <tr>
+                                        <th style="background-color:whitesmoke">Vessel</th>
+                                        <th style="background-color:whitesmoke">Type</th>
+                                        <th style="background-color:whitesmoke">IMO</th>
+                                        <th style="background-color:whitesmoke">Flag</th>
+                                        <th style="background-color:whitesmoke">Engine</th>
+                                        <th style="background-color:whitesmoke">Built</th>
+                                        <th style="background-color:whitesmoke">Route</th>
                                     </tr>
-                                }
-                            }
-                        </tbody>
-                    </table>
+                                </thread>
+                                <tbody>
+                                    @foreach (var item in Model.SearchAllVsl)
+                                    {
+                                        <tr style="font-size:small">
+                                            <td><a class="btn-link" href="/Clients/VesselDetails?id=@item.Id">@item.VesselName</a></td>
+                                            <td>@item.Type</td>
+                                            <td>@item.IMO</td>
+                                            <td>@item.Flag</td>
+                                            <td>@item.Engine</td>
+                                            <td>@item.YearBuilt</td>
+                                            <td>@item.Route</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    }
                 </form>
             </div>
         </div>
     </div>
     <p style="color:transparent" id="demo"></p>
+    @*TO DO: convert to input hidden*@
+    @*<input type="hidden" id="demo" />*@
     <script>
-        function createItem(seltab) {
-            localStorage.setItem("savedtab", seltab);
-        }
-        function readValue() {
-            document.getElementById("demo").innerHTML = localStorage.getItem("savedtab");
-            document.getElementById(document.getElementById("demo").innerHTML).click();
-        }
 
         $(document).ready(function () {
             $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
@@ -219,12 +244,23 @@
                 $('#mytab a[href="' + activetab + '"]').tab('show');
             }
         });
-        function clearText(){
+
+
+        function createItem(seltab) {
+            localStorage.setItem("savedtab", seltab);
+        }
+
+        function readValue() {
+            document.getElementById("demo").innerHTML = localStorage.getItem("savedtab");
+            document.getElementById(document.getElementById("demo").innerHTML).click();
+        }
+
+        function clearText() {
             document.getElementById(optTab).style.display = "block";
             $("input[type=text],textarea,input[type=email]").val('');
         }
-        
+
     </script>
-    </body>
+</body>
 </html>
-    
+

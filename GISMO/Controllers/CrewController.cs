@@ -19,13 +19,14 @@ namespace GISMO.Controller
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> Get(string clientid)
         {
-            //string jsonresult = "test";
-            var applicants = await _dbContext.Applicants.ToListAsync();
+            //var applicants = await _dbContext.Applicants.ToListAsync();
+            var crewlist = await _dbContext.Crews.ToListAsync();
 
-            return Ok(applicants.Count);
+            return Ok(crewlist);
         }
+        
 
 
 

@@ -4,33 +4,136 @@
 }
 <html>
 <head>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 1px;
+        }
+        p.ridge{
+            border-style:ridge;
+        }
+    </style>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-
+        google.charts.setOnLoadCallback(drawChartClient);
+        google.charts.setOnLoadCallback(drawChartClientBar);
+        google.charts.setOnLoadCallback(drawChartClientLine);
+        //General
+        function drawChart(){
             var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
-                ['Work', 11],
-                ['Eat', 2],
-                ['Commute', 2],
-                ['Watch TV', 2],
-                ['Sleep', 7]
-            ]);
+                ['Time', 'Data'],
+                @foreach (var data in Model.Analytics)
+                {
+                    <text>['Total Clients', @data.TotalClients],</text>
+                    <text>['Total Vessels', @data.TotalVessels],</text>
+                    <text>['Total Crew', @data.TotalCrew]</text>
+                }
+        ]);
+         var options = {
+            title: 'Genral Analytics',
+            pieHole: 0.4,
+         };
+         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+         chart.draw(data, options);
+        }
+        // Number of Vessels by Client
+        function drawChartClient(){
+            var data = google.visualization.arrayToDataTable([
+                ['Time', 'Data'],
+                @foreach (var data in Model.VesselByClient)
+                {
+                    <text>['@data.ClientName', @data.TotManagedVsl],</text>
+                }
+        ]);
+         var options = {
+            title: 'Client Managed Vessels',
+            is3D: true,
+         };
+         var chart = new google.visualization.PieChart(document.getElementById('piechartclientbyvessel'));
+         chart.draw(data, options);
+        }
+        //Number of Vessels by Client - in barchart
+        function drawChartClientBar(){
+            var data = google.visualization.arrayToDataTable([
+                ['Time', 'Data', {role: "style"}],
+                @foreach (var data in Model.VesselByClient)
+                {
+                    <text>['@data.ClientName', @data.TotManagedVsl, "#264D99"],</text>
+                }
+        ]);
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+            {   calc: "stringify",
+                sourceColumn: 1,
+                type: "string",
+                role: "annotation" },
+            2]);
 
-            var options = {
-                title: 'My Daily Activities'
-            };
-
-            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-            chart.draw(data, options);
+         var options = {
+            title: 'Client Managed Vessels',
+            width: 500,
+            height: 200,
+            bar: {groupWith: "95%"},
+            legend: {position: "none"},
+         };
+         var chart = new google.visualization.BarChart(document.getElementById('piechartclientbyvesselbar'));
+         chart.draw(data, options);
+        }
+        //Number of Vessels by Client - in linechart
+        function drawChartClientLine(){
+            var data = google.visualization.arrayToDataTable([
+                ['Time', 'Data'],
+                @foreach (var data in Model.VesselByClient)
+                {
+                    <text>['@data.ClientName', @data.TotManagedVsl],</text>
+                }
+        ]);
+        var view = new google.visualization.DataView(data);
+        
+        var options = {
+            title: 'Client Managed Vessels',
+            curveType: 'function',
+            legend: {position: "bottom"},
+         };
+         var chart = new google.visualization.LineChart(document.getElementById('piechartclientbyvesselline'));
+         chart.draw(data, options);
         }
     </script>
 </head>
 <body>
-    <div id="piechart" style="width: 900px; height: 500px;"></div>
+    <div class="grid-container">
+        <div class="grid-child ridge" id="piechart" style="width: 500px; height: 500px;"></div>
+        <div class="grid-child green" id="piechartclientbyvessel" style="width:900px; height: 500px;"></div>
+    </div>
+    <div class="grid-container">
+        <div class="grid-child green" id="piechartclientbyvesselbar" style="width:500px; height: 270px;"></div>
+        <div class="grid-child green" id="piechartclientbyvesselline" style="width:500px; height: 270px;"></div>
+    </div>
+    
 </body>
 </html>
+
+
+    
+        @*//function drawChart() {
+
+        //    var data = google.visualization.arrayToDataTable([
+        //        ['Task', 'Hours per Day'],
+        //        ['Work', 11],
+        //        ['Eat', 2],
+        //        ['Commute', 2],
+        //        ['Watch TV', 2],
+        //        ['Sleep', 7]
+        //    ]);
+
+        //    var options = {
+        //        title: 'My Daily Activities'
+        //    };
+
+        //    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        //    chart.draw(data, options);
+        //}*@

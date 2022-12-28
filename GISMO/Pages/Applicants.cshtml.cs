@@ -11,12 +11,11 @@ namespace GISMO.Pages
     public class ApplicantsModel : PageModel
     {
         private AppDbContext _context;
-        private LAppDcontext _lcontext;
         
-        public ApplicantsModel(AppDbContext context, LAppDcontext lcontext)
+        
+        public ApplicantsModel(AppDbContext context)
         {
             _context = context;
-            _lcontext = lcontext;
         }
 
         public List<Applicant> ForInterview { get; set; }
@@ -29,7 +28,7 @@ namespace GISMO.Pages
         public async Task OnGet(int id)
         {
             ForInterview = await _context.Applicants.ToListAsync();
-            Appraisals = await _lcontext.Appraisals.Where(x => x.CrewId == id).ToListAsync();
+            Appraisals = await _context.Appraisals.Where(x => x.CrewId == id).ToListAsync();
             SeaServices = await _context.SeaServices.Where(s => s.CrewId == id).ToListAsync();
         }
 

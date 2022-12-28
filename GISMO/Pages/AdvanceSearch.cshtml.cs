@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace GISMO.Pages
 {
@@ -29,6 +30,7 @@ namespace GISMO.Pages
         public List<Client> SearchClient { get; set; }
         public List<Vessels> SearchAllVsl { get; set; }
         public List<VslExperience> SearchExperience { get; set; }
+
         public async Task OnGet()
         {
 

@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using GISMO.Data.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace GISMO.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext
+
     {
         private IConfiguration _configuration;
 
@@ -15,7 +17,7 @@ namespace GISMO.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            var connectionString = _configuration.GetConnectionString("LocalConnString");
+            var connectionString = _configuration.GetConnectionString("DefaultConnection");
             options.UseSqlServer(connectionString);
             options.EnableSensitiveDataLogging(true);
         }
@@ -28,25 +30,10 @@ namespace GISMO.Data
         public DbSet<Planner> Planner { get; set; }
         public DbSet<SeaService> SeaServices { get; set; }
         public DbSet<VslExperience> svExperience { get; set; }
-    }
-
-    // Bong: Additional DbContext for Agency API
-    public class LAppDcontext : DbContext
-    {
-        private IConfiguration _configurationLocal;
-        public LAppDcontext(IConfiguration configuration)
-        {
-            _configurationLocal = configuration;
-        }
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            var connectionString = _configurationLocal.GetConnectionString("LocalConnString");
-            options.UseSqlServer(connectionString);
-            options.EnableSensitiveDataLogging(true);
-        }
-
-        // Local Dbase.Tables
         public DbSet<Appraisal> Appraisals { get; set; }
-        public DbSet<_LAgencyCrew> Crews { get; set; }
+        public DbSet<Analytics> OwnerGraph { get; set; }
+        public DbSet<AnaClientVessels> svAnaClientVessels { get; set; }
     }
+
+   
 }

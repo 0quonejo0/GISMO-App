@@ -1,0 +1,46 @@
+﻿@page
+@model GISMO.Pages.CrewTestModel
+@{
+}
+<table id="crewtable">
+    <thead>
+        <tr>
+            <th>Surname</th>
+            <th>Firstname</th>
+            <th>Rank</th>
+        </tr>
+    </thead>
+    <tbody id="crewtablebody">
+    </tbody>
+</table>
+
+<script>
+    GetCrew();
+
+    async function GetCrew() {
+
+        var result;
+        var apiUrl = window.location.origin + '/api/crew'
+        await fetch(apiUrl)
+            .then((response) => response.json())
+            .then((data) => {
+                rows = data;
+                let tablebody = document.getElementById('crewtablebody');
+                console.log(tablebody);
+                // Populate rows
+                for (let i = 0; i < rows.length; i++) {
+                    const rowElement = document.createElement("tr");
+                    const row = rows[i];
+                    const cellElement = document.createElement("td");
+                    cellElement.textContent += row.fname;
+                    cellElement.textContent += row.lname;
+                    cellElement.textContent += row.rank;
+                    
+                    rowElement.appendChild(cellElement);
+                    tablebody.appendChild(rowElement);
+                }
+            })
+    }
+    
+
+</script>
