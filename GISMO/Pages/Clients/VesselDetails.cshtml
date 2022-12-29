@@ -2,8 +2,6 @@
 @model GISMO.Pages.Clients.VesselDetailsModel
 @{
 }
-<h2>@Request.Query["selVsl"]</h2>
-@*<h2>Onboard of @Model.Vessel.VesselName</h2>*@
 <style>
     /* Style the tab */
     .tab {
@@ -39,33 +37,48 @@
         border-top: none;
     }
 </style>
+<html style="background-color: lightgray">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<div class="w3-container">
+    <h2>@Request.Query["selVsl"]</h2>
+    <p>Details & Information</p>
+</div>
 <br />
-<br />
+@*<h2>@Request.Query["selVsl"]</h2>*@
+@*<h2>Onboard of @Model.Vessel.VesselName</h2>*@
 <!-- Tab links -->
 <div class="tab">
     <button class="tablinks" onclick="openVslDet(event, 'Onboard')" id="defaultOpen">Crew Onboard</button>
-    <button class="tablinks" onclick="openVslDet(event, 'VslParti')">Vessel</button>
-    <button class="tablinks" onclick="openVslDet(event, 'VslParti')">Circulars</button>
-    <button class="tablinks" onclick="openVslDet(event, 'VslParti')">Reports</button>
+    <button class="tablinks" onclick="openVslDet(event, 'VslParti')">Particulars</button>
+    <button class="tablinks" onclick="openVslDet(event, 'VslCirculars')">Circulars</button>
+    <button class="tablinks" onclick="openVslDet(event, 'VslEvents')">Events</button>
+    <button class="tablinks" onclick="openVslDet(event, '')">Reports</button>
+    <button class="tablinks" onclick="openVslDet(event, '')">Martime History</button>
+    <button class="tablinks" onclick="openVslDet(event, '')">Technical Management</button>
+    <button class="tablinks" onclick="openVslDet(event, '')">Shipping Companies</button>
 </div>
 
-<!-- Tab content -->
+<!-- ONBOARD -->
 <div id="Onboard" class="tabcontent">
-    <br />
-    <a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a class="btn-link" style="font-size:small" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <table class="table">
+    <div style="text-align:end">
+        <a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="btn-link" style="font-size:small" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br /><br />
+    </div>
+    <table class="table" style="background-color:whitesmoke">
         <thread>
-            <tr>
+            <tr style="background-color:silver">
                 @*<th>ID</th>*@
-                <th style="background-color:whitesmoke">Surname</th>
-                <th style="background-color:whitesmoke">Firstname</th>
-                <th style="background-color:whitesmoke">Position</th>
-                <th style="background-color:whitesmoke">Nationality</th>
-                <th style="background-color:whitesmoke">Mobile</th>
-                <th style="background-color:whitesmoke">Email</th>
-                <th style ="background-color:whitesmoke">Image</th>
-                <th style="background-color:whitesmoke">Action</th>
+                <th>POSITION</th>
+                <th>SURNAME</th>
+                <th>FIRSTNAME</th>
+                <th>NATIONALITY</th>
+                <th>MOBILE</th>
+                <th>EMAIL</th>
+                <th>IMAGE</th>
+                <th>ACTION</th>
             </tr>
         </thread>
         <tbody>
@@ -73,15 +86,14 @@
             {
                 <tr style="font-size:small">
                     @*<td>@onboardlist.Id</td>*@
+                    <td style="vertical-align:middle">@onboardlist.Rank</td>
                     <td style="vertical-align:middle">@onboardlist.Lname</td>
                     <td style="vertical-align:middle">@onboardlist.Fname</td>
-                    <td style="vertical-align:middle">@onboardlist.Rank</td>
                     <td style="vertical-align:middle">@onboardlist.Nationality</td>
                     <td style="vertical-align:middle">@onboardlist.Mobile</td>
                     <td style="vertical-align:middle">@onboardlist.Email</td>
                     <td style="vertical-align:middle">
                         <img src="~/lib/images/@(onboardlist.Id).jpg" style="" alt="Pix" width="55" height="50">
-                        @*@(onboardlist.Id).jpg*@
                     </td>
                     <td style="vertical-align:middle">
                         <a class="btn btn-primary btn-sm" href="/Clients/CrewDetails?id=@onboardlist.Id" target="_blank" rel="noreferrer">Crew Details</a>
@@ -95,12 +107,12 @@
     </table>
 
 </div>
-
+<!-- VESSEL PARTICULARS -->
 <div id="VslParti" class="tabcontent">
     <table class="table">
         <thread>
             <tr>
-                <th>Vessel Particulars</th>
+                <th>Details & Definitions</th>
             </tr>
         </thread>
         <tbody>
@@ -140,7 +152,64 @@
         </tbody>
     </table>
 </div>
+<!-- CIRCULARS -->
+<div id="VslCirculars" class="tabcontent">
+<table class="table">
+    <thread>
+        <tr style="align-content:center">
+            @*<th>ID</th>*@
+            <th class="text-center">Document</th>
+            <th class="text-center">Issued</th>
+        </tr>
+    </thread>
+    <tbody>
+        @foreach (var vslcirculars in Model.Circulars)
+        {
+                <tr style="font-size:medium">
+                <td align="center" style="vertical-align:middle">@vslcirculars.MemoNo<br>
+                    <a style="align-content:center" class="btn-link" href="#">@vslcirculars.MemoName</a>
+                </td>
+                <td align="center" style="width:250px">@vslcirculars.YearIssued</td>
+            </tr>
+        }
+    </tbody>
+</table>
 
+</div>
+<!-- EVENTS -->
+<div id="VslEvents" class="tabcontent">
+    <div style="text-align:end">
+        <br />
+        <a class="btn-link" style="font-size:small" href="#">Add Event</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="btn-link" style="font-size:small" href="#">Edit Event</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+    <br />
+    <table class="table">
+        <thread>
+            <tr>
+                <th style="background-color:silver">DATE</th>
+                <th style="background-color:silver">REPORT</th>
+                <th style="background-color:silver">EVENT</th>
+                <th style="background-color:silver">IMAGE</th>
+            </tr>
+        </thread>
+        <tbody>
+            @foreach (var vslevent in Model.EventsOB)
+            {
+                <tr style="font-size:medium">
+                    <td style="font-size:small">@vslevent.ReportDate.ToString("dd.MMM.yyyy")</td>
+                    <td style="font-size:medium">@vslevent.Report</td>
+                    <td style="font-size:small">@vslevent.EventOB</td>
+                    <td>
+                        <img src="~/lib/images/@vslevent.Image" style="" alt="Pix" width="200" height="100">
+                    </td>
+                    @*<img src="~/lib/images/@(onboardlist.Id).jpg" style="" alt="Pix" width="55" height="50">*@
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
 
 <script>
     function openVslDet(evt, cityName) {

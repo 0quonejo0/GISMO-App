@@ -33,6 +33,9 @@ namespace GISMO.Data
         public DbSet<Appraisal> Appraisals { get; set; }
         public DbSet<Analytics> OwnerGraph { get; set; }
         public DbSet<AnaClientVessels> svAnaClientVessels { get; set; }
+        public DbSet<Circular> Circulars { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<AnaClientEmbarked> svAnaClientEmbarked { get; set; }
     }
 
    

@@ -11,18 +11,23 @@
     td, th{
         text-align: left;
     }
-    
 </style>
-
-<br />
-<h2>@Request.Query["selVsl"]</h2>
-<br />
-<label>Agency Crew Change Plan</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a class="btn-link" style="font-size:small" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a class="btn-link" style="font-size:small" href="#">Upload Crew-Change</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-<br />
+<html style="background-color: lightgray">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<div class="w3-container">
+    <h2>@Request.Query["selVsl"]</h2>
+    <p>View Agency Crew Change Planning</p>
+</div>
+@*<h2>@Request.Query["selVsl"]</h2>*@
+<p>
+    <div style="text-align:end">
+        <a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="btn-link" style="font-size:small" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="btn-link" style="font-size:small" href="#">Upload Crew-Change</a>
+    </div>
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -52,7 +57,7 @@
                 <td style="background-color:whitesmoke"></td>
                 <td style="background-color:antiquewhite">@crewchange.ReplacerStat</td>
                 <td style="background-color:antiquewhite" width="150">
-                    <a class="btn btn-primary btn-sm" href="/Clients/Planner">Send Remarks</a>
+                    <a class="btn btn-primary btn-sm" href="#">Send Remarks</a>
                 </td>
             </tr>
         }

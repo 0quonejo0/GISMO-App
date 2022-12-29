@@ -156,9 +156,11 @@
                                 <thread>
                                     <br />
                                     <br />
-                                    <tr>
-                                        <th style="background-color:whitesmoke">Name</th>
-                                        <th style="background-color:whitesmoke">Experience</th>
+                                    <tr style="background-color:whitesmoke">
+                                        <th>Name</th>
+                                        <th>Experience</th>
+                                        @*<th>Position</th>
+                                        <th>Status</th>*@
                                     </tr>
                                 </thread>
                                 <tbody>
@@ -213,7 +215,7 @@
                                     @foreach (var item in Model.SearchAllVsl)
                                     {
                                         <tr style="font-size:small">
-                                            <td><a class="btn-link" href="/Clients/VesselDetails?id=@item.Id">@item.VesselName</a></td>
+                                            <td><a class="btn-link" href="/Clients/VesselDetails?id=@item.Id&selVsl=@item.VesselName">@item.VesselName</a></td>
                                             <td>@item.Type</td>
                                             <td>@item.IMO</td>
                                             <td>@item.Flag</td>

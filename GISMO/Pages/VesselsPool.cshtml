@@ -1,28 +1,14 @@
 ﻿@page
-@model GISMO.Pages.NewClientModel
+@model GISMO.Pages.VesselsPoolModel
 @{
 }
 
-<style>
-    .inputtexbox {
-        font-size: 70px;
-    }
-</style>
-<html style="background-color: lightgray">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<div class="w3-container">
-    <h2>Add New Client</h2>
-    <p>Required to fill all information</p>
-</div>
-<br />
 <form method="post">
-    <div class="form-group">
-        <label asp-for="@Model.ClientName" class="col-form-label">Client Name</label>
+    @*<div class="form-group">
+        <label asp-for="@Model.Vess" class="col-form-label">Client Name</label>
         <input asp-for="@Model.ClientName" class="form-control" />
         <span asp-validation-for="@Model.ClientName" class="text-danger"></span><br />
-        
+
         <label asp-for="@Model.ClientType" class="col-form-label">Type of Client</label>
         <select asp-for="@Model.ClientType" class="form-control">
             <option value=""></option>
@@ -33,7 +19,7 @@
         <label asp-for="@Model.ClientAddress" class="col-form-label">Corporate Address</label>
         <input asp-for="@Model.ClientAddress" class="form-control" />
         <span asp-validation-for="@Model.ClientAddress" class="text-danger"></span><br />
-    
+
         <label asp-for="@Model.ClientContacts" class="col-form-label">Office Contacts</label>
         <input asp-for="@Model.ClientContacts" class="form-control" />
         <span asp-validation-for="@Model.ClientContacts" class="text-danger"></span><br />
@@ -45,12 +31,5 @@
     </div>
     <br />
     <input type="submit" class="btn btn-primary btn-sm" value="Save / Add New" />
-    <a class="btn btn-primary btn-sm" href="../NewClient">Available License</a>
+    <a class="btn btn-primary btn-sm" href="../NewClient">Available License</a>*@
 </form>
-
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}

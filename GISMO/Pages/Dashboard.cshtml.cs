@@ -19,10 +19,12 @@ namespace GISMO.Pages
 
         public List<Analytics> Analytics { get; set; }
         public List<AnaClientVessels> VesselByClient { get; set; }
+        public List<AnaClientEmbarked> ClientByEmbarked { get; set; }
         public async Task OnGet()
         {
             Analytics = await _context.OwnerGraph.ToListAsync();
             VesselByClient = await _context.svAnaClientVessels.ToListAsync();
+            ClientByEmbarked = await _context.svAnaClientEmbarked.ToListAsync();
         }
     }
 }

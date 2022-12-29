@@ -2,9 +2,14 @@
 @model GISMO.Pages.Clients.EditModel
 @{
 }
-<br />
-<label style="font-weight:bold">Client Management</label>
-<br />
+<html style="background-color: lightgray">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<div class="w3-container">
+    <h2>Client Management</h2>
+    <p>Access, details & information modification</p>
+</div>
 <br />
 <table>
     <tbody>
@@ -38,21 +43,28 @@
         </tr>
     </tbody>
 </table>
+<div style="text-align:center" >
+    <a class="btn btn-primary btn-sm" href="#">Reset Changes</a>
+    <a class="btn btn-primary btn-sm" href="#">Save Changes</a>
+</div>
 <br />
-<a class="btn btn-primary btn-sm" href="#">Save Changes</a>
 <hr />
-<br />
-<br />
-<a class="btn btn-primary btn-sm" href="#">Assign Vessel</a>
-<a class="btn btn-primary btn-sm" href="#">Show Vessels Pool</a>
-<br /><br />
+<p>
+    <div>
+        <a class="btn btn-primary btn-sm" href="#">Assign Vessel</a>
+        <a class="btn btn-primary btn-sm" href="#">Show Vessels Pool</a>
+        <a class="btn btn-primary btn-sm" href="#">Software License</a>
+    </div>
+</p>
 <table class="table">
     <thead>
-        <tr>
+        <tr style="background-color:whitesmoke">
             @*<th style="background-color:whitesmoke" width="15">ID</th>*@
-            <th style="background-color:whitesmoke">Managed Vessels</th>
-            <th style="background-color:whitesmoke">Type</th>
-            <th style="background-color:whitesmoke">Action</th>
+            <th>Managed Vessels</th>
+            <th>Type</th>
+            <th>Flag</th>
+            <th>Route</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -62,9 +74,11 @@
                 @*<td>@vessel.Id</td>*@
                 <td>@vessel.VesselName</td>
                 <td>@vessel.Type</td>
-                <td width="350">
+                <td>@vessel.Flag</td>
+                <td>@vessel.Route</td>
+                <td>
                     <a class="btn btn-primary btn-sm" href="#">Revoke</a>
-                    <a class="btn btn-primary btn-sm" href="#">Apps License</a>
+                    @*<a class="btn btn-primary btn-sm" href="#">Apps License</a>*@
                 </td>
             </tr>
         }

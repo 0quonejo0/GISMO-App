@@ -3,10 +3,15 @@
 @{
     
 }
-
-<br />
-<h2>@Request.Query["selClient"]</h2>
-<label>Managed Vessels</label>
+<html style="background-color: lightgray">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<div class="w3-container">
+    <h2>@Request.Query["selClient"]</h2>
+    <p>List of Managed Vessel</p>
+</div>
+@*<h2>@Request.Query["selClient"]</h2>*@
 <br />
 <table class="table">
     <thread>

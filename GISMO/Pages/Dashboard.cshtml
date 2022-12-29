@@ -33,7 +33,7 @@
                 }
         ]);
          var options = {
-            title: 'Genral Analytics',
+            title: 'Global Analytics',
             pieHole: 0.4,
          };
          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -55,32 +55,36 @@
          var chart = new google.visualization.PieChart(document.getElementById('piechartclientbyvessel'));
          chart.draw(data, options);
         }
-        //Number of Vessels by Client - in barchart
+        //Total Deployed Crew by Client - in barchart
+        
         function drawChartClientBar(){
             var data = google.visualization.arrayToDataTable([
                 ['Time', 'Data', {role: "style"}],
-                @foreach (var data in Model.VesselByClient)
+                @foreach (var data in Model.ClientByEmbarked)
                 {
-                    <text>['@data.ClientName', @data.TotManagedVsl, "#264D99"],</text>
+                    //<text>['@data.ClientName', @data.TotEmbarked, "#264D99"],</text>
+                    <text>['@data.ClientName', @data.TotEmbarked, @data.TotEmbarked],</text>
                 }
         ]);
+
         var view = new google.visualization.DataView(data);
         view.setColumns([0, 1,
             {   calc: "stringify",
-                sourceColumn: 1,
+                sourceColumn: 2,
                 type: "string",
                 role: "annotation" },
             2]);
 
          var options = {
-            title: 'Client Managed Vessels',
+            title: 'Total Client Embarkation',
             width: 500,
             height: 200,
             bar: {groupWith: "95%"},
             legend: {position: "none"},
          };
-         var chart = new google.visualization.BarChart(document.getElementById('piechartclientbyvesselbar'));
-         chart.draw(data, options);
+
+         var chart = new google.visualization.ColumnChart(document.getElementById('piechartclientbyvesselbar'));
+         chart.draw(view, options);
         }
         //Number of Vessels by Client - in linechart
         function drawChartClientLine(){
@@ -94,7 +98,7 @@
         var view = new google.visualization.DataView(data);
         
         var options = {
-            title: 'Client Managed Vessels',
+            title: 'YTD Client Embarkation',
             curveType: 'function',
             legend: {position: "bottom"},
          };
