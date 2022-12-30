@@ -1,0 +1,48 @@
+﻿@page
+@model GISMO.Pages.VesselPoolModel
+@{
+}
+<script type="text/javascript">
+    
+</script>
+<style>
+   
+</style>
+
+<body>
+<div>
+        <table class="table">
+        <thread>
+        <tr>
+            <th>Vessel Name</th>
+            <th>Managed By</th>
+            <th>IMO</th>
+            <th>Type</th>
+            <th>Flag</th>
+            <th>GRT</th>
+            <th>Route</th>
+            <th>Year Built</th>
+            <th>Engine</th>
+            <th>Builder</th>
+        </tr>
+    </thread>
+    <tbody>
+        @foreach (var vpool in Model.VesselPool)
+        {
+            <tr>
+                <td>@vpool.VesselName</td>
+                <td>@vpool.ClientId</td>
+                <td>@vpool.IMO</td>
+                <td>@vpool.Type</td>
+                <td>@vpool.Flag</td>
+                <td>@vpool.Grt</td>
+                <td>@vpool.Route</td>
+                <td>@vpool.YearBuilt</td>
+                <td>@vpool.Engine</td>
+                <td>@vpool.Builder</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+</body>

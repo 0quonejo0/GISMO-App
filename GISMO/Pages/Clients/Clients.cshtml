@@ -12,14 +12,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<div class="w3-container">
-    <h2>List of Clients</h2>
-    <p>Details and Information</p>
+<div>
+    <h2 class="display-6" style="font-weight:100">List of Clients</h2>
+    <p>Who manage the vessels</p>
 </div>
 @*<h2>List of Clients</h2>*@
 <br />
-<a class="btn btn-primary btn-sm" href="../NewClient">New Client</a>
-<a class="btn btn-primary btn-sm" href="../Applicants?seaservid=0">Proposed Applicants (@Model.Applicants.Count)</a>
+<a class="btn btn-dark btn-sm" href="../NewClient">New Client</a>
+<a class="btn btn-dark btn-sm" href="../Applicants?seaservid=0">Proposed Applicants (@Model.Applicants.Count)</a>
 <br>
 <br />
 <table class="table">
@@ -46,8 +46,8 @@
                 <td>@client.Address</td>
                 <td>@client.Contacts</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="/Clients/Edit?id=@client.Id">Modify</a>
-                    <a class="btn btn-primary btn-sm" href="#">Deactivate</a>
+                    <a class="btn btn-info btn-sm" href="/Clients/Edit?id=@client.Id">Modify</a>
+                    <a class="btn btn-info btn-sm" href="#">Deactivate</a>
                 </td>
             </tr>
         }

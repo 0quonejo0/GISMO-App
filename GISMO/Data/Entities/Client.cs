@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Net.Mail;
 
 namespace GISMO.Data.Entities
 {
