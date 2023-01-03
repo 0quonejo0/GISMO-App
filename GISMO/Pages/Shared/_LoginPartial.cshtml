@@ -3,9 +3,34 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
+
+<link rel="stylesheet" href="background_styles.css" />
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+    .div1 {
+        background-color: lightcoral;
+        width: 30%;
+        float: left;
+        margin: 0;
+        padding: 0;
+        max-width: none;
+    }
+
+    .div2 {
+        background-color: gold;
+        width: 70%;
+        float: right;
+        margin: 0;
+    }
+
+</style>
+
+<br /><br />
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
+
     <li class="nav-item">
         <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
     </li>

@@ -1,0 +1,12 @@
+﻿@page
+@model GISMO.Pages.ImageViewerModel
+@{
+}
+@*@Request.Query["imagefile"]*@
+
+<body style="background-color:black">
+    <img src="~/lib/Images/@Request.Query["imagefile"]" />
+</body>
+
+
+

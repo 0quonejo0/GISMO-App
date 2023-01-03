@@ -23,12 +23,10 @@
             .tab button:hover {
                 background-color: #ddd;
             }
-
             /* Create an active/current tablink class */
             .tab button.active {
                 background-color: #ccc;
             }
-
     /* Style the tab content */
     .tabcontent {
         display: none;
@@ -36,18 +34,17 @@
         border: 1px solid #ccc;
         border-top: none;
     }
+    table {
+        border: 1px solid silver;
+        border-collapse: collapse;
+    }
 </style>
 <html style="background-color: lightgray">
-@*<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">*@
 <div>
     <h2 class="display-6" style="font-weight:100">@Request.Query["selVsl"]</h2>
     <p>Details & Information</p>
 </div>
 <br />
-@*<h2>@Request.Query["selVsl"]</h2>*@
-@*<h2>Onboard of @Model.Vessel.VesselName</h2>*@
 <!-- Tab links -->
 <div class="tab" style="width:1200px">
     <button class="tablinks" onclick="openVslDet(event, 'Onboard')" id="defaultOpen"><img src="~/lib/Images/vslwheel.png">&nbsp;Crew Onboard</button>
@@ -69,8 +66,7 @@
     </p>
     <table class="table" style="background-color:whitesmoke">
         <thread>
-            <tr style="background-color:silver">
-                @*<th>ID</th>*@
+            <tr style="background-color:antiquewhite">
                 <th>POSITION</th>
                 <th>NAME</th>
                 <th>NATIONALITY</th>
@@ -83,10 +79,7 @@
             @foreach (var onboardlist in Model.OnboardCrew)
             {
                 <tr style="font-size:small">
-                    @*<td>@onboardlist.Id</td>*@
                     <td width="50" style="vertical-align:middle">@onboardlist.Rank</td>
-                    @*<td style="vertical-align:middle">@onboardlist.Lname</td>
-                <td style="vertical-align:middle">@onboardlist.Fname</td>*@
                     <td style="vertical-align:middle">
                         <a class="btn-link" href="/Clients/CrewDetails?id=@onboardlist.Id" target="_blank" rel="noreferrer">@onboardlist.Fname @onboardlist.Lname</a>
                     </td>
@@ -100,111 +93,161 @@
             }
         </tbody>
     </table>
-
 </div>
 <!-- VESSEL PARTICULARS -->
 <div id="VslParti" class="tabcontent" style="width:1200px">
-    <table class="table">
+    <p>
+        <div style="text-align:end">
+            <a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn-link" style="font-size:small" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    </p>
+    <table border="1" class="table" style="background-color:whitesmoke">
         <thread>
-            <tr>
-                <th>Details & Definitions</th>
-            </tr>
+            
         </thread>
         <tbody>
-            <tr>
-                <td>IMO Number:</td>
-            </tr>
-            <tr>
-                <td>Current Name:</td>
-            </tr>
-            <tr>
-                <td>Flag:</td>
-            </tr>
-            <tr>
-                <td>Ship Type (Bulk, Container, Tanker):</td>
-            </tr>
-            <tr>
-                <td>Year of built:</td>
-            </tr>
-            <tr>
-                <td>Engine:</td>
-            </tr>
-            <tr>
-                <td>GRT:</td>
-            </tr>
-            <tr>
-                <td>Builder company:</td>
-            </tr>
-            <tr>
-                <td>Owner name:</td>
-            </tr>
-            <tr>
-                <td>Trade route:</td>
-            </tr>
-            <tr>
-                <td>Managed by:</td>
-            </tr>
+            @foreach (var vpool in Model.VesselPool)
+            {
+                <tr style="background-color:antiquewhite">
+                    <th style="width:250px">CURRENT NAME:
+                        <td style="background-color:whitesmoke">@vpool.VesselName</td>
+                    </th>
+                </tr>
+                <tr style="background-color:antiquewhite">
+                    <th>IMO NUMBER:
+                        <td style="background-color:white">@vpool.IMO</td>
+                    </th>
+                </tr>
+                <tr style="background-color:antiquewhite">
+                    <th>SHIP TYPE:
+                        <td style="background-color:whitesmoke">@vpool.Type</td>
+                    </th>
+                </tr>
+                <tr style="background-color:antiquewhite">
+                    <th>FLAG:
+                    <td style="background-color:white">@vpool.Flag</td>
+                    </th>
+                </tr>
+                <tr style="background-color:antiquewhite">
+                    <th>YEAR OF BUILT:
+                    <td style="background-color:whitesmoke">@vpool.YearBuilt</td>
+                    </th>
+                </tr>
+                <tr style="background-color:antiquewhite">
+                    <th>GRT:
+                        <td style="background-color:white">@vpool.Grt</td>
+                    </th>
+                </tr>
+                <tr style="background-color:antiquewhite">
+                    <th>ENGINE:
+                    <td style="background-color:whitesmoke">@vpool.Engine</td>
+                    </th>
+                </tr>
+                <tr style="background-color:antiquewhite">
+                    <th>BUILDER COMPANY:
+                    <td style="background-color:white">@vpool.Builder</td>
+                    </th>
+                </tr>
+                <tr style="background-color:antiquewhite">
+                    <th>TRADE ROUTE:
+                    <td style="background-color:whitesmoke">@vpool.Route</td>
+                    </th>
+                </tr>
+                <tr style="background-color:antiquewhite">
+                    <th>MANAGED BY:
+                    <td style="background-color:white">@vpool.ClientId</td>
+                    </th>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
 <!-- CIRCULARS -->
 <div id="VslCirculars" class="tabcontent" style="width:1200px">
-<table class="table">
-    <thread>
-        <tr style="align-content:center">
-            @*<th>ID</th>*@
-            <th class="text-center">Document Guidelines</th>
-            <th class="text-center">Issued</th>
-        </tr>
-    </thread>
-    <tbody>
-        @foreach (var vslcirculars in Model.Circulars)
-        {
-                <tr style="font-size:medium">
-                <td align="center" style="vertical-align:middle">@vslcirculars.MemoNo<br>
-                    <a style="align-content:center" class="btn-link" href="#">@vslcirculars.MemoName</a>
-                </td>
-                    <td align="center" width="250px" style="vertical-align:middle">@vslcirculars.YearIssued</td>
+    <p>
+        <div style="text-align:end">
+            <a class="btn-link" style="font-size:small" href="#">Add Circular</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn-link" style="font-size:small" href="#">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    </p>
+    <table border="1" class="table" style="background-color:whitesmoke">
+        <thread>
+            <tr style="align-content:center">
+                <th style="background-color:antiquewhite" class="text-center">DOCUMENT GUIDELINES</th>
+                <th style="background-color:antiquewhite" class="text-center">ISSUED</th>
             </tr>
-        }
-    </tbody>
-</table>
-
+        </thread>
+        <tbody>
+            @foreach (var vslcirculars in Model.Circulars)
+            {
+                    <tr style="font-size:medium">
+                    <td align="center" style="vertical-align:middle">@vslcirculars.MemoNo<br>
+                        <a style="align-content:center" class="btn-link" href="#">@vslcirculars.MemoName</a>
+                    </td>
+                        <td align="center" width="250px" style="vertical-align:middle">@vslcirculars.YearIssued</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 <!-- EVENTS -->
 <div id="VslEvents" class="tabcontent" style="width:1200px">
-    <p><div style="text-align:end">
-        <a class="btn-link" style="font-size:small" href="#">Add Event</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class="btn-link" style="font-size:small" href="#">Edit Event</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <p>
+        <div style="text-align:end">
+            <a class="btn-link" style="font-size:small" href="#">Add Event</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn-link" style="font-size:small" href="#">Edit Event</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
     </p>
-    <table class="table">
+    <table class="table" style="background-color:whitesmoke">
         <thread>
-            <tr>
-                <th style="background-color:silver">DATE</th>
-                <th style="background-color:silver">REPORT</th>
-                <th style="background-color:silver">EVENT</th>
-                <th align="center" style="background-color:silver">SNAPSHOT</th>
+            <tr style="background-color:antiquewhite">
+                <th>DATE</th>
+                <th>REPORT</th>
+                <th>EVENT</th>
+                <th>SNAPSHOT</th>
+                <th>THUMB</th>
             </tr>
         </thread>
         <tbody>
             @foreach (var vslevent in Model.EventsOB)
             {
                 <tr style="font-size:medium">
-                    <td style="font-size:small">@vslevent.ReportDate.ToString("dd.MMM.yyyy")</td>
-                    <td style="font-size:medium">@vslevent.Report</td>
-                    <td style="font-size:small">@vslevent.EventOB</td>
+                    <td>@vslevent.ReportDate.ToString("dd.MMM.yyyy")</td>
+                    <td width="500px">@vslevent.Report</td>
+                    <td >@vslevent.EventOB</td>
                     <td>
-                        <img src="~/lib/images/@vslevent.Image" style="" alt="Pix" width="200" height="100">
+                        <div id="rightImage">
+                            <a href="../ImageViewer?imagefile=@vslevent.Image" target="_blank"><img src="~/lib/images/@vslevent.Image" alt="image" width="200" height="90" /></a>
+                        </div>
                     </td>
-                    @*<img src="~/lib/images/@(onboardlist.Id).jpg" style="" alt="Pix" width="55" height="50">*@
+                    <td>
+                        <img src="~/lib/Images/@vslevent.Thumbnails" style="" alt="Thumbnails" width="200" height="90">
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
-
 </div>
+
 <script>
+    // Get the img object using its Id
+    img = document.getElementById("eventimage");
+    // Function to increase image size
+    function enlargeImg() {
+        // Set image size to 1.5 times original
+        img.style.transform = "scale(1.5)";
+        // Animation effect
+        img.style.transition = "transform 0.25s ease";
+    }
+    // Function to reset image size
+    function resetImg() {
+        // Set image size to original
+        img.style.transform = "scale(1)";
+        img.style.transition = "transform 0.25s ease";
+    }
+
+
     function openVslDet(evt, cityName) {
         // Declare all variables
         var i, tabcontent, tablinks;

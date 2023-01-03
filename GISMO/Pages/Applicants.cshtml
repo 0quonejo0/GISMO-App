@@ -43,9 +43,9 @@
 </style>
 
 <html style="background-color: lightgray">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+@*<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">*@
 <div>
 <h2 class="display-6" style="font-weight:100">Applicants</h2>
     <p>Review information prior employment</p>
@@ -55,19 +55,18 @@
 <table class="table">
     <thead>
         <tr>
-            <th style="background-color:#EBEBEB">ID</th>
-            <th style="background-color:#EBEBEB">Seafarer</th>
-            <th style="background-color:#EBEBEB">Rank</th>
-            <th style="background-color:#EBEBEB">Proposed By</th>
-            <th style="background-color:#EBEBEB">For Vessel</th>
-            <th style="background-color:#EBEBEB">For Agency uploading</th>
+            <th style="background-color:#EBEBEB">SEAFARER</th>
+            <th style="background-color:#EBEBEB">RANK</th>
+            <th style="background-color:#EBEBEB">PROPOSED BY</th>
+            <th style="background-color:#EBEBEB">FOR VESSEL</th>
+            <th style="background-color:#EBEBEB">FOR AGENCY UPLOADING</th>
+            <th style="background-color:#EBEBEB">CONDUCTED INTERVIEW</th>
         </tr>
     </thead>
     <tbody style="border-bottom:solid">
         @foreach (var seafarer in Model.ForInterview)
         {
-            <tr>
-                <td>@seafarer.CrewId</td>
+            <tr style="font-size:medium">
                 <td>
                     <a class="btn-link" href="./Applicants?id=@seafarer.CrewId&thiscrew=@seafarer.FullName">@seafarer.FullName</a>
                     @*<a asp-page="Applicants" asp-route-id="@seafarer.Id&thiscrew=@seafarer.FullName">@seafarer.FullName</a>*@
@@ -77,7 +76,9 @@
                 <td>@seafarer.ToVessel</td>
                 <td>
                     <a class="btn-link" href="../Clients/CrewDetails?id=@seafarer.CrewId" target="_blank" rel="noreferrer">@seafarer.UploadedDocs</a>
-                    @*<a asp-page="Applicants" asp-route-id="@seafarer.Id">@seafarer.UploadedDocs</a>*@
+                </td>
+                <td>
+                    <a class="btn-link" href="#">Interview</a>
                 </td>
             </tr>
         }

@@ -12,5 +12,6 @@ namespace GISMO.Data.Entities
         public string EventOB { get; set; }
         public string Image { get; set; }
         public int VesselId { get; set; }
+        public string Thumbnails { get; set; }
     }
 }

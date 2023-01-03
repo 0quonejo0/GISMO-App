@@ -6,43 +6,133 @@
     
 </script>
 <style>
-   
+   .flexbox-container{
+       display: flex;
+       justify-content: space-around;
+   }
+   .flexbox-item{
+       width: 200px;
+       margin: 10px;
+       border: 3px solid #333;
+       background-color: silver
+   }
+   .flexbox-item-1{
+       min-height:100px;
+   }
+
+    .flexbox-item-2 {
+        min-height: 200px;
+    }
+
+    .flexbox-item-3 {
+        min-height: 300px;
+    }
+    .divleft{
+        width: 28%;
+        float:left;
+        max-height:600px;
+        background-color:whitesmoke;
+        overflow:hidden;
+        overflow-y:scroll;
+    }
+    .divright{
+        width:72%;
+        float:right;
+    }
+    
 </style>
+<link rel="stylesheet" href="background_styles.css" />
+<link rel="stylesheet" href="styles.css" />
+<html>
+<div>
+    <h2 class="display-6" style="font-weight:100">Vessel Management</h2>
+    <p>Details & Information</p>
+</div>
+<p>
+    <div>
+        <a class="btn btn-dark btn-sm" href="#">Add New Vessel</a>
+        <a class="btn btn-dark btn-sm" href="#">Edit Vessel</a>
+    </div>
+</p>
+<div class="divleft">
+    <form method="post">
+    <table class="table">
+        <thread>
+            <tr>
+                <th><input type="text" asp-for="SearchThisVessel" />
+                    <input type="submit" asp-page-handler="Search" value="Search" /></th>
+                    <span asp-validation-for="@Model.SearchThisVessel" class="text-danger"></span>
+                <br />
+            </tr>
+        </thread>
+        <tbody>
+            @if (Model.SearchThisVessel != null)
+            {
+                @foreach (var vpool in Model.SearchAllVsl)
+                    {
+                        <tr>
+                            <td>
+                                <a class="btn-link" style="font-size:medium" href="./VesselPool?id=@vpool.Id">@vpool.VesselName</a>
+                            </td>
+                        </tr>
+                    }
+            }else{
+                @foreach (var vpool in Model.VesselPool)
+                {
+                    <tr>
+                        @*<td>@vpool.VesselName</td>*@
+                            <td><a class="btn-link" style="font-size:medium" href="./VesselPool?id=@vpool.Id">@vpool.VesselName</a></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    </form>
+</div>
+<div class="divright">
+   <table class="table">
+       <thread>
+            <tr style="background-color:silver">
+                <th>IMO</th>
+                <th>TYPE</th>
+                <th>FLAG</th>
+                <th>GRT</th>
+                <th>ROUTE</th>
+                <th>YEAR BUILT</th>
+                <th>ENGINE</th>
+                <th>BUILDER</th>
+           </tr>
+       </thread>
+       <tbody>
+           <tr>
+               @if (Model.Vessels != null)
+                {
+                    <td>@Model.Vessels.IMO</td>
+                    <td>@Model.Vessels.Type</td>
+                    <td>@Model.Vessels.Flag</td>
+                    <td>@Model.Vessels.Grt</td>
+                    <td>@Model.Vessels.Route</td>
+                    <td>@Model.Vessels.YearBuilt</td>
+                    <td>@Model.Vessels.Engine</td>
+                    <td>@Model.Vessels.Builder</td>
+                }
+           </tr>
+       </tbody>
+   </table>
+   <hr />
+    @if (Model.Vessels != null)
+    {
+        <img src="~/lib/images/@(Model.Vessels.Pix)" style="" alt="_NoImage" width="800" height="405">
+    }
+</div>
 
 <body>
-<div>
-        <table class="table">
-        <thread>
-        <tr>
-            <th>Vessel Name</th>
-            <th>Managed By</th>
-            <th>IMO</th>
-            <th>Type</th>
-            <th>Flag</th>
-            <th>GRT</th>
-            <th>Route</th>
-            <th>Year Built</th>
-            <th>Engine</th>
-            <th>Builder</th>
-        </tr>
-    </thread>
-    <tbody>
-        @foreach (var vpool in Model.VesselPool)
-        {
-            <tr>
-                <td>@vpool.VesselName</td>
-                <td>@vpool.ClientId</td>
-                <td>@vpool.IMO</td>
-                <td>@vpool.Type</td>
-                <td>@vpool.Flag</td>
-                <td>@vpool.Grt</td>
-                <td>@vpool.Route</td>
-                <td>@vpool.YearBuilt</td>
-                <td>@vpool.Engine</td>
-                <td>@vpool.Builder</td>
-            </tr>
-        }
-    </tbody>
-</table>
-</div>
+
 </body>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+</html>

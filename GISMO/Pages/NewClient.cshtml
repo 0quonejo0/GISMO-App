@@ -9,9 +9,9 @@
     }
 </style>
 <html style="background-color: lightgray">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+@*<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">*@
 <div>
     <h2 class="display-6" style="font-weight:100">Add New Client</h2>
     <p>Required to fill all information</p>
@@ -43,9 +43,9 @@
         <input asp-for="@Model.ClientAppLic" class="form-control" />
         <span asp-validation-for="@Model.ClientAppLic" class="text-danger"></span><br />
     </div>
-    <br />
-    <input type="submit" class="btn btn-primary btn-sm" value="Save / Add New" />
-    <a class="btn btn-primary btn-sm" href="../NewClient">Available License</a>
+    <input type="submit" class="btn btn-dark btn-sm" value="Save / Add New" />
+    <a class="btn btn-dark btn-sm" href="../NewClient">Available License</a>
+    <a class="btn btn-dark btn-sm" href="../Clients/Clients">Cancel</a>
 </form>
 
 

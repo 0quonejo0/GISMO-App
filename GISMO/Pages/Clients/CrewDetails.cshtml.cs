@@ -12,8 +12,6 @@ namespace GISMO.Pages.Clients
     public class CrewDetailsModel : PageModel
     {
         public AppDbContext _context;
-        //public string imgExt = ".jpg";
-        //public string the2x2 = "";
         
         public CrewDetailsModel(AppDbContext context)
         {
@@ -24,7 +22,6 @@ namespace GISMO.Pages.Clients
         public async Task OnGet(int id)
         {
             Seafarer = await _context.Crews.FindAsync(id);
-            //the2x2 = Seafarer.Id + imgExt;
             SServices = await _context.SeaServices.Where(s => s.CrewId == id).ToListAsync();
         }
     }

@@ -16,5 +16,6 @@ namespace GISMO.Data.Entities
         public string Engine { get; set; }
         public string Builder { get; set; }
         public string Route { get; set; }
+        public string Pix { get; set; }
     }
 }
