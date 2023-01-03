@@ -30,7 +30,7 @@
     .divleft{
         width: 28%;
         float:left;
-        max-height:600px;
+        max-height:570px;
         background-color:whitesmoke;
         overflow:hidden;
         overflow-y:scroll;
@@ -93,6 +93,7 @@
    <table class="table">
        <thread>
             <tr style="background-color:silver">
+                <th>NAME</th>
                 <th>IMO</th>
                 <th>TYPE</th>
                 <th>FLAG</th>
@@ -107,6 +108,7 @@
            <tr>
                @if (Model.Vessels != null)
                 {
+                    <td>@Model.Vessels.VesselName</td>
                     <td>@Model.Vessels.IMO</td>
                     <td>@Model.Vessels.Type</td>
                     <td>@Model.Vessels.Flag</td>
@@ -122,7 +124,7 @@
    <hr />
     @if (Model.Vessels != null)
     {
-        <img src="~/lib/images/@(Model.Vessels.Pix)" style="" alt="_NoImage" width="800" height="405">
+        <img src="~/lib/images/@(Model.Vessels.Pix)" style="" alt="_NoImage" width="843" height="438">
     }
 </div>
 
