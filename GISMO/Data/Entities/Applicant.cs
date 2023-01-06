@@ -13,5 +13,6 @@ namespace GISMO.Data.Entities
         public string ToVessel { get; set; }
         public string UploadedDocs { get; set; }
         public string Status { get; set; }
+        public string OwnerRemarks { get; set; }
     }
 }

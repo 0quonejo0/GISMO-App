@@ -78,7 +78,7 @@
                     <a class="btn-link" href="../Clients/CrewDetails?id=@seafarer.CrewId" target="_blank" rel="noreferrer">@seafarer.UploadedDocs</a>
                 </td>
                 <td>
-                    <a class="btn-link" href="#">Interview</a>
+                        <a class="btn-link" href="./Interview?id=@seafarer.CrewId">@seafarer.OwnerRemarks</a>
                 </td>
             </tr>
         }
@@ -88,7 +88,7 @@
 
 <div>
     <label style="font-weight:bold">@Request.Query["thiscrew"]</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-    @*<a class="btn-link" style="font-size:small" href="#">Performance Report</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*@
+    <label style="font-size:medium">Latest Performance</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a class="btn-link" style="font-size:small" href="#">Print</a>
     @*<a class="btn-link" onclick="@(thisOption); alert('@thisOption')" style="font-size:small" href="./Applicants?id=@Request.Query["id"]&thiscrew=@Request.Query["thiscrew"]">Sea Services</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*@
@@ -121,6 +121,7 @@
 
 </div>
 @*<a class="btn-link" style="font-size:small" href="#">Sea Services</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*@
+<label style="font-size:medium">Sea Services</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a class="btn-link" style="font-size:small" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <div class="auto">
