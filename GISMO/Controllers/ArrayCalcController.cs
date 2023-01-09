@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GISMO.Controllers
 {
@@ -23,11 +25,24 @@ namespace GISMO.Controllers
             return Ok(results);
         }
 
+
         [HttpGet("deletepart")]
         public IActionResult Delete()
         {
             string result = string.Empty;
-            return Ok(result);
+            string delpos = string.Empty;
+            result = HttpContext.Request.Query["productids"];
+            delpos = HttpContext.Request.Query["position"];
+            string[] productArray = result.Split(',');
+
+            bool gateWay(string pos)
+            {
+                return pos != delpos;
+            }
+
+            productArray = Array.FindAll(productArray, gateWay).ToArray();
+
+            return Ok(productArray);
         }
     }
 }
