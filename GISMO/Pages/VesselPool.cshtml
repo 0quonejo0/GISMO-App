@@ -2,9 +2,7 @@
 @model GISMO.Pages.VesselPoolModel
 @{
 }
-<script type="text/javascript">
-    
-</script>
+
 <style>
    .flexbox-container{
        display: flex;
@@ -50,6 +48,12 @@
 <link rel="stylesheet" href="background_styles.css" />
 <link rel="stylesheet" href="styles.css" />
 <html>
+
+@*<a id="testbtn" class="btn btn-primary">Test</a>
+<div id="divtest" class="container d-none">
+    New content...
+</div>*@
+
 <form method="post">
 <div>
     <h2 class="display-6" style="font-weight:100">Vessel Management</h2>
@@ -97,7 +101,7 @@
                 {
                     <tr>
                         @*<td>@vpool.VesselName</td>*@
-                            <td><a class="btn-link" style="font-size:medium" href="./VesselPool?id=@vpool.Id">@vpool.VesselName</a></td>
+                            <td><a id="btnVsl" class="btn-link" style="font-size:medium" href="./VesselPool?id=@vpool.Id">@vpool.VesselName</a></td>
                     </tr>
                 }
             }
@@ -138,14 +142,39 @@
        </tbody>
    </table>
    <hr />
-    @if (Model.Vessels != null)
-    {
-        <img src="~/lib/images/@(Model.Vessels.Pix)" style="" alt="_NoImage" width="843" height="438">
-    }
+   <div id="vslimg">
+        @if (Model.Vessels != null)
+        {
+            <img src="~/lib/images/@(Model.Vessels.Pix)" style="" alt="_NoImage" width="843" height="438">
+        }
+        else
+        {
+               
+        }
+   </div>
+    
 </div>
 
 <body>
+    <script>
+        const button = document.getElementById('testbtn');
+        document.getElementById("testbtn").addEventListener("click", function () {
+            const theDiv = document.getElementById("divtest");
+            if(theDiv.classList.contains('d-none')){
+                theDiv.classList.remove('d-none');
+                button.textContent = 'Show';
+            }else{
+                theDiv.classList.add('d-none');
+                button.textContent = 'Hide';
+            }
+        });
 
+
+
+        function myFunction(){
+            alert('Hello');
+        }
+    </script>
 </body>
 
 @section Scripts {
