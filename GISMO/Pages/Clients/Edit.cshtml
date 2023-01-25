@@ -1,41 +1,29 @@
 ﻿@page
 @model GISMO.Pages.Clients.EditModel
 @{
+    Layout = null;
 }
-<style>
-    .divTop {
-        top: 19px;
-        position: relative;
-        background-color: #F0F0F0;
-        width: auto;
-        transform: translateX(2%);
-        padding: 30px;
-        border-radius: 10px;
-        border: 10px;
-        height: 100%;
-    }
-    .divAction{
-        width:700px;
-        text-align: right;
-    }
-</style>
+
+<link rel="stylesheet" href="~/css/stylemenu.css" />
+<script src="~/js/site.js"></script>
+
 <div class="divTop">
     <div>
-        <h2 class="display-6" style="font-weight:100">Client Management</h2>
-        <p>Access, details & information modification</p>
+        <h2>Client Management</h2>
+        <label>Maintenance</label>
     </div>
     <br />
-    <table>
+    <table class="table">
         <tbody>
             <tr>
                 <td><label>Client Name</label></td>
-                <td><p><input type="text" size="70" value="@Model.Clients.ClientName" /></p></td>
+                <td><p><input style="padding-right:10px" class="editinput" type="text" value="@Model.Clients.ClientName" /></p></td>
             </tr>
             <tr>
                 <td><label>Client Type</label></td>
                 <td>
                     <p>
-                        <select name="ddtype" id="type">
+                        <select class="editinput" name="ddtype" id="type">
                             <option>@Model.Clients.Type</option>
                             <option value="Ship Management">Ship Management</option>
                             <option value="Manning Agency">Manning Agency</option>
@@ -45,35 +33,29 @@
             </tr>
             <tr>
                 <td><label>Corporate Address</label>&nbsp;&nbsp;</td>
-                <td><p><input class="input-group-sm" size="70" value="@Model.Clients.Address" /></p></td>
+                <td><p><input class="editinput" type="text" value="@Model.Clients.Address" /></p></td>
             </tr>
             <tr>
                 <td><label>Office Contacts</label></td>
-                <td><p><input class="input-group-sm" size="70" value="@Model.Clients.Contacts" /></p></td>
+                <td><p><input class="editinput" type="text" value="@Model.Clients.Contacts" /></p></td>
             </tr>
             <tr>
                 <td><label>Apps License</label></td>
-                <td><p><input class="input-group-sm" size="70" value="@Model.Clients.AppLicense" /></p></td>
+                <td><p><input class="editinput" type="text" value="@Model.Clients.AppLicense" /></p></td>
             </tr>
         </tbody>
     </table>
     <div class="divAction">
-        <a class="btn btn-info btn-sm" href="#">Reset Changes</a>
-        <a class="btn btn-info btn-sm" href="#">Save Changes</a>
+        <button>Assign Vessel</button>
+        <button>GISMO License</button>
+        <button>Reset Changes</button>
+        <button>Save Changes</button>
     </div>
     <br />
     <hr />
-    <p>
-        <div>
-            <a class="btn btn-dark btn-sm" href="#">Assign Vessel</a>
-            <a class="btn btn-dark btn-sm" href="#">Show Vessels Pool</a>
-            <a class="btn btn-dark btn-sm" href="#">Software License</a>
-        </div>
-    </p>
     <table class="table">
         <thead>
             <tr style="background-color:whitesmoke">
-                @*<th style="background-color:whitesmoke" width="15">ID</th>*@
                 <th>Managed Vessels</th>
                 <th>Type</th>
                 <th>Flag</th>

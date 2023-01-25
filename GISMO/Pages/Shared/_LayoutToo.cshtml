@@ -9,11 +9,14 @@
     <link rel="stylesheet" href="~/css/stylemenu.css" />
     <script src="~/js/site.js"></script>
 </head>
+<div class="divTitle">
+    <label style="font-size:28px" class="fontBebasRegular">GISMO - Global Information for Ship Management Operators</label>
+</div>
 <div class="maindiv">
     <div class="navigation">
         <ul>
             <li class="list active">
-                <a href="#">
+                <a href="#" onclick='loadHtml("template", "./Dashboard")'>
                     <span class="icon">
                         <ion-icon name="bar-chart-outline"></ion-icon>
                     </span>
@@ -21,7 +24,7 @@
                 </a>
             </li>
             <li class="list">
-                <a href="#">
+                <a href="#" onclick='loadHtml("template", "./Clients/Clients")'>
                     <span class="icon">
                         <ion-icon name="person-circle-outline"></ion-icon>
                     </span>
@@ -53,7 +56,7 @@
                 </a>
             </li>
             <li class="list">
-                <a href="#" onclick='loadHtml("template", "./Clients/Clients")'>
+                <a href="#">
                     <span class="icon">
                         <ion-icon name="navigate-circle-outline"></ion-icon>
                     </span>
@@ -66,9 +69,9 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule srcS="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </div>
-<div class="divTitle">
+@*<div class="divTitle">
     <label class="fontBebasRegular">GISMO - Global Information for Ship Management Operators</label>
-</div>
+</div>*@
 <div id="template" class="template">Loading...</div>
 <body>
     <div>

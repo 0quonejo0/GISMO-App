@@ -7,12 +7,141 @@
     src: url(../fonts/SimplificaTypeface.ttf) format('truetype');
 }
 @font-face {
+    font-family: 'Aileron';
+    src: url(../fonts/Aileron-SemiBold.ttf) format('truetype');
+}
+@font-face {
     font-family: 'Roboto-Bold';
     src: url(../fonts/RobotoSlab-Bold.ttf) format('truetype');
-    /* src: url(../fonts/SimplificaTypeface.ttf);
-    src: url(../fonts/RobotoSlab-Regular.ttf);
-    src: url(../fonts/Aileron-SemiBold.ttf);*/
 }
+@font-face {
+    font-family: 'RobotoCondense';
+    src: url(../fonts/RobotoCondensed-Light.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'RobotoCBold';
+    src: url(../fonts/RobotoCondensed-Bold.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'UbuntuR';
+    src: url(../fonts/Ubuntu-R.ttf) format('truetype');
+}
+/* PAGES DESIGN */
+.divTop {
+    /*top: 19px;*/
+    position: relative;
+    height: 600px;
+    background-color: #F0F0F0;
+    width: 70%;
+    transform: translateX(22%);
+    padding: 25px;
+    border-radius: 10px;
+    border: 10px;
+    
+    color: black;
+    -webkit-animation: fadeinout 0.6s;
+}
+@-webkit-keyframes fadeinout {
+    0%,100% { opacity: 0; }
+    100% { opacity: 1; }
+}
+h2 {
+    font-family: 'Roboto';
+}
+label {
+    font-family: 'BebasRegular';
+}
+button {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.7em 2em;
+    border: 1px solid black;
+    border-radius: 1px;
+    position: relative;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.16), 0 1px 0px rgba(0, 0, 0, 0.1);
+    color: black;
+    text-decoration: none;
+    transition: 0.3s ease all;
+    z-index: 1;
+}
+    button:before {
+        transition: 0.5s all ease;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        right: 50%;
+        bottom: 0;
+        opacity: 0;
+        content: '';
+        background-color: #1e1e1e;
+        z-index: -1;
+    }
+    button:hover, button:focus {
+        color: white;
+    }
+        button:hover:before, button:focus:before {
+            transition: 0.5s all ease;
+            left: 0;
+            right: 0;
+            opacity: 1;
+        }
+    button:active {
+        transform: scale(0.9);
+    }
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border:solid;
+    border-width:1px;
+    border-color: silver;
+    max-height: 400px;
+}
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: black;
+    font-size: 14px;
+    
+    font-family: 'Roboto';
+}
+th {
+    background-color: var(--clr);
+    color: white;
+    height: 40px;
+    text-align: left;
+    padding-left: 10px;
+    font-weight: lighter;
+    font-family: 'BebasRegular';
+    letter-spacing: 0.5px;
+}
+a {
+    color: #325af3;
+    text-decoration: none;
+    font-family: 'Roboto';
+}
+.btn-lnk {
+    text-decoration: underline;
+    font-family: 'Roboto';
+    font-weight:bold;
+    font-size:13px;
+    text-transform:uppercase;
+
+}
+.editinput {
+    height: 31px;
+    width: 630px;
+    padding-left: 5px;
+    font-family: 'Roboto';
+    font-size: 13px;
+}
+
+
+/* END PAGES DESIGN */
 *
 {
     margin:0;
@@ -32,24 +161,34 @@ body{
     font-family:'Roboto';
     background: var(--clr);
     color:white;
-    padding: 50px;
+    padding: 10px;
+    padding-left:20px;
 }
 .maindiv {
     display: flex;
-    justify-content: center;
     align-items: center;
+    width: auto;
     /*min-height: 20vh;*/
-    padding-top:50px;
-    height:180px;
+    justify-content: center;
+    padding-top: 70px;
+    padding-bottom: 30px;
+    /*height: 100px;*/
     background: var(--clr);
+    transform: translateY(5px);
+    transform: translateX(0%);
 }
 .divTitle {
     background-color: var(--clr);
     color: white;
     text-align: center;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
+    padding-top: 10px;
     font-size: 0.98em;
-    
+}
+.divAction {
+    padding-top: 10px;
+    transform: translateX(205px);
+    width: auto;
 }
 .fontSimplifica {
     font-family: 'Simplifica';
@@ -59,7 +198,6 @@ body{
     font-family: 'BebasRegular';
     font-size: 21px;
 }
-
 .navigation
 {
     position: relative;

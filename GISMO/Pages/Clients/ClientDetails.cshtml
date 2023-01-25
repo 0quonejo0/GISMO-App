@@ -1,57 +1,51 @@
 ﻿@page
 @model GISMO.Pages.Clients.ClientDetailsModel
 @{
-    
+    Layout = null;
 }
-<style>
-    .divTop {
-        top: 19px;
-        position: relative;
-        height: 700px;
-        background-color: #F0F0F0;
-        width: auto;
-        transform: translateX(2%);
-        padding: 30px;
-        border-radius: 10px;
-        border: 10px;
-    }
-</style>
+
+<link rel="stylesheet" href="~/css/stylemenu.css" />
+<script src="~/js/site.js"></script>
+
 <div class="divTop">
-    <html style="background-color: lightgray">
+    <html>
     <div>
-        <h2 class="display-6" style="font-weight:100">@Request.Query["selClient"]</h2>
-        <p>List of Managed Vessel</p>
+        <h2>@Request.Query["selClient"]</h2>
+        <label>List of Managed Vessel</label>
     </div>
-    @*<h2>@Request.Query["selClient"]</h2>*@
-    <br />
+    <br /><br />
+
     <table class="table">
         <thread>
             <tr>
-                @*<th style="background-color:whitesmoke">ID</th>*@
-                <th style="background-color:whitesmoke">Vessel Name</th>
-                <th style="background-color:whitesmoke">Type</th>
-                <th style="background-color:whitesmoke">Manning Agency</th>
-                <th style="background-color:whitesmoke">Flag</th>
-                <th style="background-color:whitesmoke">Route</th>
-                <th style="background-color:whitesmoke">Action</th>
+                <th>Vessel Name</th>
+                <th>Type</th>
+                <th>Manning Agency</th>
+                <th>Flag</th>
+                <th>Route</th>
+                <th>Show Onboard | Agency</th>
             </tr>
         </thread>
         <tbody>
             @foreach (var vessel in Model.SelVessels)
             {
-                <tr style="background-color:white">
-                    @*<td>@vessel.Id</td>*@
+                <tr>
                     <td>
-                        @*<a asp-page="./Clients/VesselDetails" asp-route-id="@vessel.Id">@vessel.VesselName</a>*@
-                        <a class="btn-link" href="./VesselDetails?id=@vessel.Id&selVsl=@vessel.VesselName">@vessel.VesselName</a>
+                        <a class="btn-link" href="#" onclick='loadHtml("template", "./VesselDetails?id=@vessel.Id&selVsl=@vessel.VesselName")'>@vessel.VesselName</a>
                     </td>
                     <td>@vessel.Type</td>
-                    <td>PTC</td>
+                    <td>PTC Phil Trans Carrier</td>
                     <td>Libera</td>
                     <td>Worlwide</td>
-                    <td>
-                        <a class="btn btn-info btn-sm" href="/Clients/VesselDetails?id=@vessel.Id&selVsl=@vessel.VesselName">Show Onboard</a>
-                        <a class="btn btn-info btn-sm" href="/Clients/Planner?id=@vessel.Id&selVsl=@vessel.VesselName">Agency Planner</a>
+                    <td style="width:200px">
+                        <a class="btn-lnk" href="/Clients/VesselDetails?id=@vessel.Id&selVsl=@vessel.VesselName">Onboard</a>&nbsp;&nbsp;&nbsp;
+                        @*<a href="#" onclick='loadHtml("template", "./Clients/VesselDetails?id=@vessel.Id&selVsl=@vessel.VesselName")'>
+                            <span>
+                                <img src="~/lib/Images/seafarer.png"/>
+                            </span>
+                            <span class="text">Show Onboard</span>
+                        </a>*@
+                        <a class="btn-lnk" href="/Clients/Planner?id=@vessel.Id&selVsl=@vessel.VesselName">Planner</a>
                     </td>
                 </tr>
             }

@@ -1,70 +1,52 @@
 ﻿@page
 @model GISMO.Pages.Clients.ClientsModel
-
 @{
     Layout = null;
 }
-<style>
-    .divTop {
-        top: 19px;
-        position: relative;
-        height: 700px;
-        background-color: #F0F0F0;
-        width: auto;
-        transform: translateX(2%);
-        padding: 30px;
-        border-radius: 10px;
-        border: 10px;
-    }
-</style>
+
+<link rel="stylesheet" href="~/css/stylemenu.css" />
+<script src="~/js/site.js"></script>
 
 <div class="divTop">
-    @*<form method="post">
-    <input asp-for="SearchText" />
-    <input type="submit" class="btn btn-success" asp-page-handler="Search" />
-    </form>*@
     <html>
     <div>
-        <h2 class="display-6" style="font-weight:100">List of Clients</h2>
-        <p>Who manage the vessels</p>
+        <h2>List of Clients</h2>
+        <label>Ship Management/Agencies</label>
     </div>
-    @*<h2>List of Clients</h2>*@
-    <br />
-    <a class="btn btn-dark btn-sm" href="../NewClient">New Client</a>
-    <a class="btn btn-dark btn-sm" href="../Applicants?seaservid=0">Proposed Applicants (@Model.Applicants.Count)</a>
-    <br>
-    <br />
-    <table class="table">
-        <thead>
-            <tr>
-                @*<th style="background-color:whitesmoke">ID</th>*@
-                <th style="background-color:whitesmoke">Name</th>
-                <th style="background-color:whitesmoke">Type</th>
-                <th style="background-color:whitesmoke">Address</th>
-                <th style="background-color:whitesmoke">Contacts</th>
-                <th style="background-color:whitesmoke">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var client in Model.Clients)
-            {
-                <tr style="background-color:white">
-                    @*<td>@client.Id</td>*@
-                    <td>
-                        @*<a asp-page="./ClientDetails" asp-route-id="@client.Id">@client.ClientName</a>*@
-                        <a class="btn-link" href="./ClientDetails?id=@client.Id&selClient=@client.ClientName">@client.ClientName</a>
-                    </td>
-                    <td>@client.Type</td>
-                    <td>@client.Address</td>
-                    <td>@client.Contacts</td>
-                    <td>
-                        <a class="btn btn-info btn-sm" href="/Clients/Edit?id=@client.Id">Modify</a>
-                        <a class="btn btn-info btn-sm" href="#">Deactivate</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+<br /><br />
+
+<button onclick='loadHtml("template", "./Clients/AddClient")'>New Client</button>
+<button onclick='loadHtml("template", "../Applicants?seaservid=0")'>Proposed Applicants (@Model.Applicants.Count)</button>
+
+<br /><br />
+
+<table class="table">
+<thead>
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Address</th>
+        <th>Contacts</th>
+        <th>Action</th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var client in Model.Clients)
+    {
+        <tr>
+            <td>
+                <a class="btn-link" href="#" onclick='loadHtml("template", "./Clients/ClientDetails?id=@client.Id&selClient=@client.ClientName")'>@client.ClientName</a>
+            </td>
+            <td>@client.Type</td>
+            <td>@client.Address</td>
+            <td>@client.Contacts</td>
+            <td>
+                <a class="btn-lnk" href="#" onclick='loadHtml("template", "./Clients/Edit?id=@client.Id")'>Modify</a>
+            </td>
+        </tr>
+    }
+</tbody>
+</table>
 </div>
 <br /><br />
 
