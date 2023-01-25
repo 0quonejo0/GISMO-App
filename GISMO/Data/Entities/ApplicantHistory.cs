@@ -1,18 +1,17 @@
-﻿using Microsoft.VisualBasic;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GISMO.Data.Entities
 {
-    public class Appraisal
+    public class ApplicantHistory
     {
         [Column("idnum")]
         public int Id { get; set; }
-        public string Master { get; set; }
-        public string Ceng { get; set; }
         public int CrewId { get; set; }
+        public DateTime InterviewDate { get; set; }
+        public string Result { get; set; }
         public string Remarks { get; set; }
-        public string VesselName { get; set; }
-        public DateTime AppDate { get; set; }
+
     }
 }

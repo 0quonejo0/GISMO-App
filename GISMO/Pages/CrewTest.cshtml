@@ -7,7 +7,7 @@
         <tr>
             <th>Surname</th>
             <th>Firstname</th>
-            <th>Rank</th>
+            <th>Email</th>
         </tr>
     </thead>
     <tbody id="crewtablebody">
@@ -18,7 +18,6 @@
     GetCrew();
 
     async function GetCrew() {
-
         var result;
         var apiUrl = window.location.origin + '/api/crew'
         await fetch(apiUrl)
@@ -27,20 +26,37 @@
                 rows = data;
                 let tablebody = document.getElementById('crewtablebody');
                 console.log(tablebody);
+                
                 // Populate rows
                 for (let i = 0; i < rows.length; i++) {
                     const rowElement = document.createElement("tr");
                     const row = rows[i];
-                    const cellElement = document.createElement("td");
-                    cellElement.textContent += row.fname;
-                    cellElement.textContent += row.lname;
-                    cellElement.textContent += row.rank;
+
+                    const cellElementC1 = document.createElement("td");
+                    const cellElementLink = document.createElement("a");
+                    cellElementLink.setAttribute("href", "./Interview?id=" + row.id);
+                    cellElementLink.innerHTML = cellElementC1.textContent += row.lname;
                     
-                    rowElement.appendChild(cellElement);
+                    const cellElementC2 = document.createElement("td");
+                    cellElementC2.textContent += row.fname;
+                    
+                    const cellElementC3 = document.createElement("td");
+                    cellElementC3.textContent += row.email;
+
+                    rowElement.appendChild(cellElementLink);
+                    rowElement.appendChild(cellElementC2);
+                    rowElement.appendChild(cellElementC3);
                     tablebody.appendChild(rowElement);
                 }
             })
+
+        //var link = "http://google.com";
+        //var element = document.createElement("a");
+        //element.setAttribute("href", link);
+        //element.innerHTML = "your text";
+
+        //// and append it to where you'd like it to go:
+        //document.body.appendChild(element);
     }
-    
 
 </script>

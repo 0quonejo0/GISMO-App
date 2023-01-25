@@ -32,6 +32,6 @@ namespace GISMO.Data.Entities
         public string SBKIssuance { get; set; }
         public DateTime SBKIssued { get; set; }
         public DateTime SBKExpiry { get; set; }
-
+        public int Remaining { get; set; }
     }
 }

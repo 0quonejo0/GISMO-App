@@ -35,7 +35,6 @@ namespace GISMO.Pages
         {
 
         }
-
         public async Task OnPostSearch()
         {
             string search = SearchText;

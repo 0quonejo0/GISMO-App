@@ -2,22 +2,98 @@
 @model GISMO.Pages.DashboardModel
 @{
 }
+
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1px;
+    }
+    p.ridge{
+        border-style:ridge;
+    }
+    .divParent {
+        position:relative;
+        transform:translateY(50px);
+        height: 300px;
+    }
+    .divTopLeft {
+        position: absolute;
+        border:solid;
+        border-width:thin;
+        border-color:silver;
+        height: 200px;
+        width: 250px;
+        box-shadow: 0 4px 8px rgba(0,0,0,.1);
+        border-radius:5px;
+        left:50%;
+        transform:translateX(-190%);
+        text-align:center;
+        padding:23px, 2px;
+        background-color:whitesmoke;
+    }
+    .divTopMiddle {
+        position: absolute;
+        border:solid;
+        border-width:thin;
+        border-color:silver;
+        height: 200px;
+        width: 250px;
+        box-shadow: 0 4px 8px rgba(0,0,0,.1);
+        border-radius:5px;
+        left:45%;
+        transform:translateX(-26%);
+        text-align:center;
+        padding:23px, 2px;
+        background-color:whitesmoke;
+    }
+    .divTopRight {
+        position: absolute;
+        border:solid;
+        border-width:thin;
+        border-color:silver;
+        height: 200px;
+        width: 250px;
+        box-shadow: 0 4px 8px rgba(0,0,0,.1);
+        border-radius:5px;
+        left:50%;
+        transform:translateX(90%);
+        text-align:center;
+        padding:23px, 2px;
+        background-color:whitesmoke;
+    }
+</style>
+
 <html style="background-color: lightgray">
-@*<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">*@
-<head>
-    <style>
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 1px;
-        }
-        p.ridge{
-            border-style:ridge;
-        }
-    </style>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <div class="divParent">
+        <div class="divTopLeft">
+            <label style="font-size:100px; font-family:Arial; color:darkslategray">70</label><br />
+            <label>Total Crew</label>
+        </div>
+        <div class="divTopMiddle">
+            <label style="font-size:100px; font-family:Arial; color:darkslategray">90</label><br />
+            <label>Vessels</label>
+        </div>
+        <div class="divTopRight">
+            <label style="font-size:100px; font-family:Arial; color:darkslategray">6</label><br />
+            <label>Clients</label>
+        </div>
+    </div>
+<body >
+    
+    <br />
+    <div class="grid-container">
+        <div class="grid-child ridge" id="piechart" style="width: 500px; height: 500px"></div>
+        <div class="grid-child green" id="piechartclientbyvessel" style="width:900px; height: 500px;"></div>
+    </div>
+    <div class="grid-container">
+        <div class="grid-child green" id="piechartclientbyvesselbar" style="width:500px; height: 270px;"></div>
+        <div class="grid-child green" id="piechartclientbyvesselline" style="width:500px; height: 270px;"></div>
+    </div>
+    
+</body>
+</html>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(drawChart);
@@ -109,38 +185,3 @@
          chart.draw(data, options);
         }
     </script>
-</head>
-<body>
-    <div class="grid-container">
-        <div class="grid-child ridge" id="piechart" style="width: 500px; height: 500px;"></div>
-        <div class="grid-child green" id="piechartclientbyvessel" style="width:900px; height: 500px;"></div>
-    </div>
-    <div class="grid-container">
-        <div class="grid-child green" id="piechartclientbyvesselbar" style="width:500px; height: 270px;"></div>
-        <div class="grid-child green" id="piechartclientbyvesselline" style="width:500px; height: 270px;"></div>
-    </div>
-    
-</body>
-</html>
-
-
-    
-        @*//function drawChart() {
-
-        //    var data = google.visualization.arrayToDataTable([
-        //        ['Task', 'Hours per Day'],
-        //        ['Work', 11],
-        //        ['Eat', 2],
-        //        ['Commute', 2],
-        //        ['Watch TV', 2],
-        //        ['Sleep', 7]
-        //    ]);
-
-        //    var options = {
-        //        title: 'My Daily Activities'
-        //    };
-
-        //    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        //    chart.draw(data, options);
-        //}*@

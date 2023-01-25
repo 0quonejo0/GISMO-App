@@ -3,7 +3,18 @@
 @{
 }
 
-<style type="text/css">
+<style>
+    .divTop{
+        top: 19px;
+        position: relative;
+        background-color: #F0F0F0;
+        width: auto;
+        transform: translateX(2%);
+        padding: 30px;
+        border-radius: 10px;
+        border: 10px;
+        height: 100%;
+    }
     table {
         width: 100%;
         font-size: small;
@@ -30,7 +41,6 @@
         overflow:auto;
             padding-bottom: 50px;*/
     }
-
     #footer {
         bottom: 0;
         color: #707070;
@@ -41,126 +51,123 @@
         width: 100%;
     }
 </style>
-
-<html style="background-color: lightgray">
-@*<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">*@
-<div>
-<h2 class="display-6" style="font-weight:100">Applicants</h2>
-    <p>Review information prior employment</p>
-</div>
-<body>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th style="background-color:#EBEBEB">SEAFARER</th>
-            <th style="background-color:#EBEBEB">RANK</th>
-            <th style="background-color:#EBEBEB">PROPOSED BY</th>
-            <th style="background-color:#EBEBEB">FOR VESSEL</th>
-            <th style="background-color:#EBEBEB">FOR AGENCY UPLOADING</th>
-            <th style="background-color:#EBEBEB">CONDUCTED INTERVIEW</th>
-        </tr>
-    </thead>
-    <tbody style="border-bottom:solid">
-        @foreach (var seafarer in Model.ForInterview)
-        {
-            <tr style="font-size:medium">
-                <td>
-                    <a class="btn-link" href="./Applicants?id=@seafarer.CrewId&thiscrew=@seafarer.FullName">@seafarer.FullName</a>
-                    @*<a asp-page="Applicants" asp-route-id="@seafarer.Id&thiscrew=@seafarer.FullName">@seafarer.FullName</a>*@
-                </td>
-                <td>@seafarer.Rank</td>
-                <td>@seafarer.Client</td>
-                <td>@seafarer.ToVessel</td>
-                <td>
-                    <a class="btn-link" href="../Clients/CrewDetails?id=@seafarer.CrewId" target="_blank" rel="noreferrer">@seafarer.UploadedDocs</a>
-                </td>
-                <td>
-                        <a class="btn-link" href="./Interview?id=@seafarer.CrewId">@seafarer.OwnerRemarks</a>
-                </td>
+<div class="divTop">
+    <html>
+    <div>
+        <h2 class="display-6" style="font-weight:100">Applicants</h2>
+        <p>Review information prior employment</p>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="background-color:#EBEBEB">SEAFARER</th>
+                <th style="background-color:#EBEBEB">RANK</th>
+                <th style="background-color:#EBEBEB">PROPOSED BY</th>
+                <th style="background-color:#EBEBEB">FOR VESSEL</th>
+                <th style="background-color:#EBEBEB">FOR AGENCY UPLOADING</th>
+                <th style="background-color:#EBEBEB">CONDUCTED INTERVIEW</th>
             </tr>
-        }
-    </tbody>
-</table>
-<br />
-
-<div>
-    <label style="font-weight:bold">@Request.Query["thiscrew"]</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-    <label style="font-size:medium">Latest Performance</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a class="btn-link" style="font-size:small" href="#">Print</a>
-    @*<a class="btn-link" onclick="@(thisOption); alert('@thisOption')" style="font-size:small" href="./Applicants?id=@Request.Query["id"]&thiscrew=@Request.Query["thiscrew"]">Sea Services</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*@
-    @*<a asp-page="Applicants" style="font-size:small" asp-route-id=thisCrewID>Sea Services</a>*@
+        </thead>
+        <tbody style="border-bottom:solid">
+            @foreach (var seafarer in Model.ForInterview)
+            {
+                <tr style="font-size:medium; background-color:white">
+                    <td>
+                        <a class="btn-link" href="./Applicants?id=@seafarer.CrewId&thiscrew=@seafarer.FullName">@seafarer.FullName</a>
+                        @*<a asp-page="Applicants" asp-route-id="@seafarer.Id&thiscrew=@seafarer.FullName">@seafarer.FullName</a>*@
+                    </td>
+                    <td>@seafarer.Rank</td>
+                    <td>@seafarer.Client</td>
+                    <td>@seafarer.ToVessel</td>
+                    <td>
+                        <a class="btn-link" href="../Clients/CrewDetails?id=@seafarer.CrewId" target="_blank" rel="noreferrer">@seafarer.UploadedDocs</a>
+                    </td>
+                    <td>
+                        <a class="btn-link" href="./Interview?id=@seafarer.CrewId">@seafarer.OwnerRemarks</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
     <br />
 
-    <table class="table">
-        <thread>
-            <tr>
-                <th style="background-color:whitesmoke">Master</th>
-                <th style="background-color:whitesmoke">Chief Engr</th>
-                <th style="background-color:whitesmoke">Vessel</th>
-                <th style="background-color:whitesmoke">Remarks</th>
-            </tr>
-            <tbody>
-                @foreach (var selCrew in Model.Appraisals)
-                {
-                    <tr style="background-color:antiquewhite">
-                        <td>@selCrew.Master</td>
-                        <td>@selCrew.Ceng</td>
-                        <td width="150">@selCrew.VesselName</td>
-                        <td>@selCrew.Remarks</td>
-                    </tr>
-                }
-            </tbody>
-        </thread>
-    </table>
-</div>
-<div>
+    <div>
+        <label style="font-weight:bold">@Request.Query["thiscrew"]</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        <label style="font-size:medium; color:cornflowerblue">Latest Performance</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="btn-link" style="font-size:small" href="#">Print</a>
+        @*<a class="btn-link" onclick="@(thisOption); alert('@thisOption')" style="font-size:small" href="./Applicants?id=@Request.Query["id"]&thiscrew=@Request.Query["thiscrew"]">Sea Services</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*@
+        @*<a asp-page="Applicants" style="font-size:small" asp-route-id=thisCrewID>Sea Services</a>*@
+        <br />
 
+        <table class="table">
+            <thread>
+                <tr>
+                    <th style="background-color:whitesmoke">Master</th>
+                    <th style="background-color:whitesmoke">Chief Engr</th>
+                    <th style="background-color:whitesmoke">Vessel</th>
+                    <th style="background-color:whitesmoke">Date</th>
+                    <th style="background-color:whitesmoke">Remarks</th>
+                </tr>
+                <tbody>
+                    @foreach (var selCrew in Model.Appraisals)
+                    {
+                        <tr style="background-color:antiquewhite">
+                            <td>@selCrew.Master</td>
+                            <td>@selCrew.Ceng</td>
+                            <td width="150">@selCrew.VesselName</td>
+                            <td>@selCrew.AppDate.ToString("dd.MMM.yyyy")</td>
+                            <td>@selCrew.Remarks</td>
+                        </tr>
+                    }
+                </tbody>
+            </thread>
+        </table>
+    </div>
+    <div>
+    </div>
+    @*<a class="btn-link" style="font-size:small" href="#">Sea Services</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*@
+    <label style="font-size:medium; color:cornflowerblue">Sea Services</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a class="btn-link" style="font-size:small" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="auto">
+        <table class="table">
+            <thread>
+                <tr>
+                    <th style="background-color:whitesmoke">Previous Vessel</th>
+                    <th style="background-color:whitesmoke">Rank</th>
+                    <th style="background-color:whitesmoke">Sign-On</th>
+                    <th style="background-color:whitesmoke">Sign-Off</th>
+                    <th style="background-color:whitesmoke">Reason</th>
+                    <th style="background-color:whitesmoke">GRT</th>
+                    <th style="background-color:whitesmoke">Type</th>
+                    <th style="background-color:whitesmoke">Route</th>
+                    <th style="background-color:whitesmoke">Engine</th>
+                    <th style="background-color:whitesmoke">KW</th>
+                    <th style="background-color:whitesmoke">Agency</th>
+                    <th style="background-color:whitesmoke">Management</th>
+                </tr>
+                <tbody>
+                    @foreach (var seaservices in Model.SeaServices)
+                    {
+                        <tr style="background-color:antiquewhite">
+                            <td>@seaservices.Vessel</td>
+                            <td>@seaservices.Rank</td>
+                            <td style="width:auto">@seaservices.SignOn.ToString("dd.MMM.yyyy")</td>
+                            <td style="width:auto">@seaservices.SignOff.ToString("dd.MMM.yyyy")</td>
+                            <td>@seaservices.Disembarkation</td>
+                            <td>@seaservices.GRT</td>
+                            <td style="width:auto">@seaservices.Type</td>
+                            <td>@seaservices.TradeRoute</td>
+                            <td>@seaservices.Engine</td>
+                            <td>@seaservices.KW</td>
+                            <td style="width:auto">@seaservices.Agent</td>
+                            <td>@seaservices.Principal</td>
+                        </tr>
+                    }
+                </tbody>
+            </thread>
+        </table>
+    </div>
 </div>
-@*<a class="btn-link" style="font-size:small" href="#">Sea Services</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*@
-<label style="font-size:medium">Sea Services</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a class="btn-link" style="font-size:small" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<div class="auto">
-    <table class="table">
-        <thread>
-            <tr>
-                <th style="background-color:whitesmoke">Previous Vessel</th>
-                <th style="background-color:whitesmoke">Rank</th>
-                <th style="background-color:whitesmoke">Sign-On</th>
-                <th style="background-color:whitesmoke">Sign-Off</th>
-                <th style="background-color:whitesmoke">Reason</th>
-                <th style="background-color:whitesmoke">GRT</th>
-                <th style="background-color:whitesmoke">Type</th>
-                <th style="background-color:whitesmoke">Route</th>
-                <th style="background-color:whitesmoke">Engine</th>
-                <th style="background-color:whitesmoke">KW</th>
-                <th style="background-color:whitesmoke">Agency</th>
-                <th style="background-color:whitesmoke">Management</th>
-            </tr>
-            <tbody>
-                @foreach (var seaservices in Model.SeaServices)
-                {
-                    <tr style="background-color:antiquewhite">
-                        <td>@seaservices.Vessel</td>
-                        <td>@seaservices.Rank</td>
-                        <td style="width:auto">@seaservices.SignOn.ToString("dd.MMM.yyyy")</td>
-                        <td style="width:auto">@seaservices.SignOff.ToString("dd.MMM.yyyy")</td>
-                        <td>@seaservices.Disembarkation</td>
-                        <td>@seaservices.GRT</td>
-                        <td style="width:auto">@seaservices.Type</td>
-                        <td>@seaservices.TradeRoute</td>
-                        <td>@seaservices.Engine</td>
-                        <td>@seaservices.KW</td>
-                        <td style="width:auto">@seaservices.Agent</td>
-                        <td>@seaservices.Principal</td>
-                    </tr>
-                }
-            </tbody>
-        </thread>
-    </table>
-</div>
-</body>
+<br /><br />

@@ -4,6 +4,17 @@
 }
 
 <style type="text/css">
+    .divTop {
+        top: 19px;
+        position: relative;
+        background-color: #F0F0F0;
+        width: auto;
+        transform: translateX(2%);
+        padding: 30px;
+        border-radius: 10px;
+        border: 10px;
+        height: 100%;
+    }
     table{
         width: 100%;
         font-size:smaller;
@@ -12,55 +23,55 @@
         text-align: left;
     }
 </style>
-<html style="background-color: lightgray">
-@*<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">*@
-<div>
-    <h2 class="display-6" style="font-weight:100">@Request.Query["selVsl"]</h2>
-    <p>View Agency Crew Change Planning</p>
-</div>
-@*<h2>@Request.Query["selVsl"]</h2>*@
-<p>
-    <div style="text-align:end">
-        <a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class="btn-link" style="font-size:small" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class="btn-link" style="font-size:small" href="#">Upload Crew-Change</a>
+<div class="divTop">
+    <html>
+    <div>
+        <h2 class="display-6" style="font-weight:100">@Request.Query["selVsl"]</h2>
+        <p>View Agency Crew Change Planning</p>
     </div>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            @*<th style="background-color:#EBEBEB">ID</th>*@
-            <th style="background-color:#EBEBEB">ONBOARD</th>
-            <th style="background-color:#EBEBEB">POSITION</th>
-            <th style="background-color:#EBEBEB">C.CHANGE</th>
-            <th style="background-color:#EBEBEB">PROPOSED</th>
-            <th style="background-color:#EBEBEB">POSITION</th>
-            <th style="background-color:#EBEBEB">PORT</th>
-            <th style="background-color:#EBEBEB">AGENCY</th>
-            <th style="background-color:#EBEBEB">AGENCY REMARKS</th>
-            <th style="background-color:#EBEBEB">ACTION</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var crewchange in Model.CrewChange)
-        {
+    @*<h2>@Request.Query["selVsl"]</h2>*@
+    <p>
+        <div style="text-align:end">
+            <a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn-link" style="font-size:small" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn-link" style="font-size:small" href="#">Upload Crew-Change</a>
+        </div>
+    </p>
+    <table class="table">
+        <thead>
             <tr>
-                @*<td style="background-color:whitesmoke">@crewchange.Id</td>*@
-                <td style="background-color:whitesmoke" width="150">@crewchange.CrewOnboard</td>
-                <td style="background-color:whitesmoke">@crewchange.OldPosition</td>
-                <td style="background-color:lightblue" valign="middle">@crewchange.CChange.ToString("dd.MMM.yyyy")</td>
-                <td style="background-color:whitesmoke" width="150">@crewchange.CrewReplacer</td>
-                <td style="background-color:whitesmoke">@crewchange.NewPosition</td>
-                <td style="background-color:whitesmoke">@crewchange.Port</td>
-                <td style="background-color:whitesmoke"></td>
-                <td style="background-color:antiquewhite">@crewchange.ReplacerStat</td>
-                <td style="background-color:antiquewhite" width="150">
-                    <a class="btn btn-primary btn-sm" href="#">Send Remarks</a>
-                </td>
+                @*<th style="background-color:#EBEBEB">ID</th>*@
+                <th style="background-color:#EBEBEB">ONBOARD</th>
+                <th style="background-color:#EBEBEB">POSITION</th>
+                <th style="background-color:#EBEBEB">C.CHANGE</th>
+                <th style="background-color:#EBEBEB">PROPOSED</th>
+                <th style="background-color:#EBEBEB">POSITION</th>
+                <th style="background-color:#EBEBEB">PORT</th>
+                <th style="background-color:#EBEBEB">AGENCY</th>
+                <th style="background-color:#EBEBEB">AGENCY REMARKS</th>
+                <th style="background-color:#EBEBEB">ACTION</th>
             </tr>
-        }
-    </tbody>
+        </thead>
+        <tbody>
+            @foreach (var crewchange in Model.CrewChange)
+            {
+                <tr>
+                    @*<td style="background-color:whitesmoke">@crewchange.Id</td>*@
+                    <td style="background-color:white" width="150">@crewchange.CrewOnboard</td>
+                    <td style="background-color:white">@crewchange.OldPosition</td>
+                    <td style="background-color:lightblue" valign="middle">@crewchange.CChange.ToString("dd.MMM.yyyy")</td>
+                    <td style="background-color:white" width="150">@crewchange.CrewReplacer</td>
+                    <td style="background-color:white">@crewchange.NewPosition</td>
+                    <td style="background-color:white">@crewchange.Port</td>
+                    <td style="background-color:white"></td>
+                    <td style="background-color:antiquewhite">@crewchange.ReplacerStat</td>
+                    <td style="background-color:antiquewhite" width="150">
+                        <a class="btn btn-primary btn-sm" style="vertical-align:middle" href="#">Send Remarks</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<br /><br />
 
-</table>

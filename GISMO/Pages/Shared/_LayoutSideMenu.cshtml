@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width" />
+    <title>GISMO - Global Information for Ship Management Operators</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+<body>
+    <div class="navigation">
+        <button class="hamburger" onclick="show()">
+            <div id="bar1" class="bar"></div>
+            <div id="bar2" class="bar"></div>
+            <div id="bar3" class="bar"></div>
+        </button>
+
+        <nav>
+            <ul>
+                <li><a href="../Dashboard">Dashboard</a></li>
+                <li><a href="/Clients/Clients">Clients</a></li>
+                <li><a href="/AdvanceSearch">Search</a></li>
+                <li><a href="../VesselPool">Vessels Pool</a></li>
+            </ul>
+        </nav>
+        @*<partial name="_LoginPartial" />*@
+    </div>
+    
+    <div style="min-width:1200px" class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    @*<script src="script.js"></script>*@
+    <script>
+        function show() {
+            document.querySelector('.hamburger').classList.toggle('open')
+            document.querySelector('.navigation').classList.toggle('active')
+        }
+    </script>
+</body>
+</html>

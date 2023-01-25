@@ -3,47 +3,60 @@
 @{
     
 }
-<html style="background-color: lightgray">
-@*<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">*@
-<div>
-    <h2 class="display-6" style="font-weight:100">@Request.Query["selClient"]</h2>
-    <p>List of Managed Vessel</p>
-</div>
-@*<h2>@Request.Query["selClient"]</h2>*@
-<br />
-<table class="table">
-    <thread>
-        <tr>
-            @*<th style="background-color:whitesmoke">ID</th>*@
-            <th style="background-color:whitesmoke">Vessel Name</th>
-            <th style="background-color:whitesmoke">Type</th>
-            <th style="background-color:whitesmoke">Manning Agency</th>
-            <th style="background-color:whitesmoke">Flag</th>
-            <th style="background-color:whitesmoke">Route</th>
-            <th style="background-color:whitesmoke">Action</th>
-        </tr>
-    </thread>
-    <tbody>
-        @foreach (var vessel in Model.SelVessels)
-        {
+<style>
+    .divTop {
+        top: 19px;
+        position: relative;
+        height: 700px;
+        background-color: #F0F0F0;
+        width: auto;
+        transform: translateX(2%);
+        padding: 30px;
+        border-radius: 10px;
+        border: 10px;
+    }
+</style>
+<div class="divTop">
+    <html style="background-color: lightgray">
+    <div>
+        <h2 class="display-6" style="font-weight:100">@Request.Query["selClient"]</h2>
+        <p>List of Managed Vessel</p>
+    </div>
+    @*<h2>@Request.Query["selClient"]</h2>*@
+    <br />
+    <table class="table">
+        <thread>
             <tr>
-                @*<td>@vessel.Id</td>*@
-                <td>
-                    @*<a asp-page="./Clients/VesselDetails" asp-route-id="@vessel.Id">@vessel.VesselName</a>*@
-                    <a class="btn-link" href="./VesselDetails?id=@vessel.Id&selVsl=@vessel.VesselName">@vessel.VesselName</a>
-                </td>
-                <td>@vessel.Type</td>
-                <td>PTC</td>
-                <td>Libera</td>
-                <td>Worlwide</td>
-                <td>
-                    <a class="btn btn-info btn-sm" href="/Clients/VesselDetails?id=@vessel.Id&selVsl=@vessel.VesselName">Show Onboard</a>
-                    <a class="btn btn-info btn-sm" href="/Clients/Planner?id=@vessel.Id&selVsl=@vessel.VesselName">Agency Planner</a>
-                </td>
+                @*<th style="background-color:whitesmoke">ID</th>*@
+                <th style="background-color:whitesmoke">Vessel Name</th>
+                <th style="background-color:whitesmoke">Type</th>
+                <th style="background-color:whitesmoke">Manning Agency</th>
+                <th style="background-color:whitesmoke">Flag</th>
+                <th style="background-color:whitesmoke">Route</th>
+                <th style="background-color:whitesmoke">Action</th>
             </tr>
-        }
+        </thread>
+        <tbody>
+            @foreach (var vessel in Model.SelVessels)
+            {
+                <tr style="background-color:white">
+                    @*<td>@vessel.Id</td>*@
+                    <td>
+                        @*<a asp-page="./Clients/VesselDetails" asp-route-id="@vessel.Id">@vessel.VesselName</a>*@
+                        <a class="btn-link" href="./VesselDetails?id=@vessel.Id&selVsl=@vessel.VesselName">@vessel.VesselName</a>
+                    </td>
+                    <td>@vessel.Type</td>
+                    <td>PTC</td>
+                    <td>Libera</td>
+                    <td>Worlwide</td>
+                    <td>
+                        <a class="btn btn-info btn-sm" href="/Clients/VesselDetails?id=@vessel.Id&selVsl=@vessel.VesselName">Show Onboard</a>
+                        <a class="btn btn-info btn-sm" href="/Clients/Planner?id=@vessel.Id&selVsl=@vessel.VesselName">Agency Planner</a>
+                    </td>
+                </tr>
+            }
 
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
+<br/><br />

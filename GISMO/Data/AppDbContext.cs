@@ -22,7 +22,6 @@ namespace GISMO.Data
             options.EnableSensitiveDataLogging(true);
         }
 
-        // Cloud Dbase.Tables
         public DbSet<Client> Clientele { get; set; }
         public DbSet<Applicant> Applicants { get; set; }
         public DbSet<Vessels> Vessels { get; set; }
@@ -36,6 +35,7 @@ namespace GISMO.Data
         public DbSet<Circular> Circulars { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<AnaClientEmbarked> svAnaClientEmbarked { get; set; }
+        public DbSet<ApplicantHistory> ApplicantHistory { get; set; }
     }
 
    

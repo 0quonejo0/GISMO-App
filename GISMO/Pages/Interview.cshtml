@@ -6,10 +6,34 @@
 Show Applicant details, Interview remarks provision, User can ask/engage agencies for new applicants*@
 
 <style>
-    .divParent{
-        
+    .divScroll {
+        position:relative;
+        width: 28%;
+        float:left;
+        height: 400px;
+        background-color: whitesmoke;
+        overflow: hidden;
+        overflow-y: scroll;
+        border: solid;
+        border-color: silver;
+        border-width: thin;
+        /*padding:10px;*/
+        transform: translateY(231px);
+        width:100%;
+        border-bottom-right-radius: 10px;
     }
-
+    .divExpiring {
+        position:relative;
+        width:28%;
+        float:left;
+        background-color: whitesmoke;
+        height: 112px;
+        border:solid;
+        border-width:thin;
+        border-color: silver;
+        transform: translateY(210px);
+        width:100%;
+    }
     .divTop{
         top: 19px;
         position:relative;
@@ -95,9 +119,22 @@ Show Applicant details, Interview remarks provision, User can ask/engage agencie
         overflow: hidden;
         transition: max-height 0.3s;
     }
+    #accordion .contentScroll{
+        padding: 0 5px;
+        line-height: 26px;
+        max-height:0;
+        overflow: hidden;
+        transition: max-height 0.3s;
+        overflow-y:scroll;
+    }
     #accordion label + input[type="radio"]:checked + .content{
         max-height: 400px;
     }
+
+        #accordion label + input[type="radio"]:checked + .contentScroll {
+        max-height: 400px;
+    }
+
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <body>
@@ -122,21 +159,44 @@ Show Applicant details, Interview remarks provision, User can ask/engage agencie
                 <li>
                     <label for="second" style="font-family:Calibri; font-weight:bold">Applicant History<span>&#x3e</span></label>
                     <input type="radio" name="accordion" id="second" />
-                    <div class="content">
+                    <div class="contentScroll" >
                         <p>
-                            Previous interview results
+                           <table>
+                               <thread>
+                                   <tbody>
+                                        @foreach (var intervHistory in Model.History)
+                                        {
+                                            <tr>
+                                               <td>
+                                                   <strong>Applied last </strong>@intervHistory.InterviewDate.ToString("dd.MMM.yyyy"). @intervHistory.Result during the interview with following remarks.
+                                                   @intervHistory.Remarks <br/>
+                                               </td>
+                                               
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </thread>
+                           </table>
                         </p>
                     </div>
                 </li>
             </ul>
             <ul id="accordion">
                 <li>
-                    <label for="third" style="font-family:Calibri; font-weight:bold">Position Openings<span>&#x3e</span></label>
+                    <label for="third" style="font-family:Calibri; font-weight:bold">Vacant Position<span>&#x3e</span></label>
                     <input type="radio" name="accordion" id="third" />
                     <div class="content">
                         <p>
-                            Show positions, vessel type
-                            and requirements
+                            <strong>MV ABC - Master</strong><br />
+                            <strong>5 Bosun with 3/O license</strong><br />
+                            <strong>2 OS for MV Xyz</strong><br />
+                            <strong>3 C/Cook</strong><br />
+                            <strong>2 C/M</strong><br />
+                            <strong>10 Electricians</strong><br />
+                            <strong>20 Cadets</strong><br />
+                            <strong>6 2/M</strong><br />
+                            <strong>2 3/M</strong><br />
+                            <strong>11 E/Cadet</strong><br />
                         </p>
                     </div>
                 </li>
@@ -144,11 +204,9 @@ Show Applicant details, Interview remarks provision, User can ask/engage agencie
         </div>
         <div class="divBottom">
             <div class="divleft">
-                <form>
-                    <input asp-for="Evaluation" class="form-control" /><br />
-                    <input asp-for="Evaluation" class="form-control" /><br />
-                    <input asp-for="Evaluation" class="form-control" />
-                </form>
+                    <input asp-for="Evaluation" style="font-weight:bold" class="form-control" value="@Model.Crew.Rank.Trim() @Model.Crew.Lname, @Model.Crew.Fname" readonly /><br />
+                    <input asp-for="Evaluation" class="form-control" value="ADDRESS: @Model.Crew.Address" readonly /><br />
+                    <input asp-for="Evaluation" class="form-control" value="NATIONALITY: @Model.Crew.Nationality • MOBILE: @Model.Crew.Mobile • EMAIL: @Model.Crew.Email" readonly /><br />
             </div>
             <div class="divright">
                 @if (Model.Applicant != null)
@@ -159,10 +217,69 @@ Show Applicant details, Interview remarks provision, User can ask/engage agencie
                         }
                     }
             </div>
+            <div class="divExpiring">
+                <div style="height:100px; width:120px; float:left; padding: 10px">
+                    <label>Passport Exp:</label><br />
+                    <label>SBK Exp:</label><br />
+                    <label>US Visa Exp:</label>
+                </div>
+                <div style="height:100px; width:100px; float:left; padding:10px">
+                        <label style="width:100%; text-align:right"><strong>@Model.Crew.PportExpiry.ToString("dd.MMM.yyyy")</strong></label>
+                        <label style="width:100%; text-align:right"><strong>@Model.Crew.SBKExpiry.ToString("dd.MMM.yyyy")</strong></label>
+                        <label style="width:100%; text-align:right"><strong>@Model.Crew.USVisaExp.ToString("dd.MMM.yyyy")</strong></label>
+                    @*<input asp-for="Evaluation" style="font-weight:bold; width:100%; background-color:#E9ECEF" value="Passport Exp: @Model.Crew.PportExpiry.ToString("dd.MMM.yyyy")" readonly /><br />*@
+                   @* <input asp-for="Evaluation" style="font-weight:bold; width:100%; background-color:#E9ECEF" value="SBK Exp: @Model.Crew.SBKExpiry.ToString("dd.MMM.yyyy")" readonly /><br />
+                    <input asp-for="Evaluation" style="font-weight:bold; width:100%; background-color:#E9ECEF" value="US Visa Exp: @Model.Crew.USVisaExp.ToString("dd.MMM.yyyy")" readonly /><br />*@
+                </div>
+                    <div style="height:100px; width:150px; float:left; padding: 10px"></div>
+                    <div style="height:100px; width:120px; float:left; padding: 10px">
+                        <label>Trainings:</label><br />
+                        <label>Certificates:</label><br />
+                        <label>Other Visa:</label>
+                    </div>
+                    <div style="height:100px; width:130px; float:left; padding: 10px"></div>
+                    <div style="height:100px; width:140px; float:left; padding: 10px">
+                        <label>Status:</label><br />
+                        <label>Availability:</label><br />
+                        <label>Nearest Airport:</label>
+                    </div>
+            </div>
+                <div class="divScroll">
+                    <table class="table" style="font-size:small">
+                        <thread>
+                            <tr>
+                                <th style="background-color:whitesmoke">Vessel</th>
+                                <th style="background-color:whitesmoke">Rank</th>
+                                <th style="background-color:whitesmoke">Sign-On</th>
+                                <th style="background-color:whitesmoke">Sign-Off</th>
+                                <th style="background-color:whitesmoke">Reason</th>
+                                <th style="background-color:whitesmoke">GRT</th>
+                                <th style="background-color:whitesmoke">Type</th>
+                                <th style="background-color:whitesmoke">Engine</th>
+                                <th style="background-color:whitesmoke">Agency</th>
+                            </tr>
+                            <tbody>
+                                @foreach (var seaservices in Model.SeaServices)
+                                {
+                                    <tr style="background-color:antiquewhite">
+                                        <td>@seaservices.Vessel</td>
+                                        <td>@seaservices.Rank</td>
+                                        <td style="width:auto">@seaservices.SignOn.ToString("dd.MMM.yyyy")</td>
+                                        <td style="width:auto">@seaservices.SignOff.ToString("dd.MMM.yyyy")</td>
+                                        <td>@seaservices.Disembarkation</td>
+                                        <td>@seaservices.GRT</td>
+                                        <td style="width:auto">@seaservices.Type</td>
+                                        <td>@seaservices.Engine</td>
+                                        <td style="width:auto">@seaservices.Agent</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </thread>
+                    </table>
+                </div>
         </div>
+            
     </div>
-
-
     </form>
 </body>
 
