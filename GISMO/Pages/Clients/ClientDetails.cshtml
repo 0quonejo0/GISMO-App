@@ -8,11 +8,15 @@
 <script src="~/js/site.js"></script>
 
 <div class="divTop">
-    <html>
-    <div>
+    
+    <div style="float:left">
         <h2>@Request.Query["selClient"]</h2>
         <label>List of Managed Vessel</label>
     </div>
+    <div style="text-align:end; padding-right:35px">
+        <img style="width:42px; height:42px" src="~/lib/Images/shelf.png" />
+    </div>
+
     <br /><br />
 
     <table class="table">
@@ -53,4 +57,3 @@
         </tbody>
     </table>
 </div>
-<br/><br />

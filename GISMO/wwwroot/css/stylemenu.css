@@ -30,18 +30,18 @@
 .divTop {
     /*top: 19px;*/
     position: relative;
-    height: 600px;
+    height: 670px;
     background-color: #F0F0F0;
-    width: 70%;
-    transform: translateX(22%);
+    /*width: 70%;*/
+    transform: translateX(0%);
+    /*transform: translateX(22%);*/
     padding: 25px;
     border-radius: 10px;
     border: 10px;
-    
     color: black;
-    -webkit-animation: fadeinout 0.6s;
+    -webkit-animation: fadeout 0.6s;
 }
-@-webkit-keyframes fadeinout {
+@-webkit-keyframes fadeout {
     0%,100% { opacity: 0; }
     100% { opacity: 1; }
 }
@@ -51,6 +51,17 @@ h2 {
 label {
     font-family: 'BebasRegular';
 }
+    label.a {
+        font-size:20px;
+    }
+    label.b {
+        font-size: 18px;
+        color: black;
+    }
+    label.c {
+        font-size: 18px;
+        color: dimgray;
+    }
 button {
     font-size: 11px;
     letter-spacing: 1.5px;
@@ -100,15 +111,21 @@ table {
     border-color: silver;
     max-height: 400px;
 }
+    table.a {
+        font-size: 5px;
+    }
 td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
     color: black;
     font-size: 14px;
-    
+    width:6em;
     font-family: 'Roboto';
 }
+    td.a {
+        font-size:small;
+    }
 th {
     background-color: var(--clr);
     color: white;
@@ -170,7 +187,7 @@ body{
     width: auto;
     /*min-height: 20vh;*/
     justify-content: center;
-    padding-top: 70px;
+    padding-top: 40px;
     padding-bottom: 30px;
     /*height: 100px;*/
     background: var(--clr);
@@ -187,8 +204,10 @@ body{
 }
 .divAction {
     padding-top: 10px;
-    transform: translateX(205px);
-    width: auto;
+    /*transform: translateX(292px);*/
+    /*width: auto;*/
+    /*width: 35%;*/
+    text-align: left;
 }
 .fontSimplifica {
     font-family: 'Simplifica';

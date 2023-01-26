@@ -1,80 +1,39 @@
 ﻿@page
 @model GISMO.Pages.ApplicantsModel
 @{
+    Layout = null;
 }
 
-<style>
-    .divTop{
-        top: 19px;
-        position: relative;
-        background-color: #F0F0F0;
-        width: auto;
-        transform: translateX(2%);
-        padding: 30px;
-        border-radius: 10px;
-        border: 10px;
-        height: 100%;
-    }
-    table {
-        width: 100%;
-        font-size: small;
-    }
-    td, th {
-        text-align: left;
-    }
-    #formItem label{
-        display:block;
-        text-align: center;
-    }
-    .form {
-        margin:0 auto;
-        padding-top:inherit;
-    }
-    .form label{
-        display: inline-block;
-        text-align: right;
-        float: left;
-    }
-    div.auto {
-        /*width:1500px;
-        height:400px;
-        overflow:auto;
-            padding-bottom: 50px;*/
-    }
-    #footer {
-        bottom: 0;
-        color: #707070;
-        height: 2em;
-        left: 0;
-        position: fixed; /* OldProperty */
-        position: static; /* Updated Property */
-        width: 100%;
-    }
-</style>
-<div class="divTop">
+<link rel="stylesheet" href="~/css/stylemenu.css" />
+<script src="~/js/site.js"></script>
+
+<div class="divTop" style="height:100%">
     <html>
-    <div>
-        <h2 class="display-6" style="font-weight:100">Applicants</h2>
-        <p>Review information prior employment</p>
+    <div style="float:left">
+        <h2>Applicants</h2>
+        <label>Review information prior employment</label>
     </div>
+    <div style="text-align:end; padding-right:35px">
+           <img style="width:42px; height:42px" src="~/lib/Images/applicant.png" />
+    </div>
+    <br /><br />
     <table class="table">
         <thead>
             <tr>
-                <th style="background-color:#EBEBEB">SEAFARER</th>
-                <th style="background-color:#EBEBEB">RANK</th>
-                <th style="background-color:#EBEBEB">PROPOSED BY</th>
-                <th style="background-color:#EBEBEB">FOR VESSEL</th>
-                <th style="background-color:#EBEBEB">FOR AGENCY UPLOADING</th>
-                <th style="background-color:#EBEBEB">CONDUCTED INTERVIEW</th>
+                <th>SEAFARER</th>
+                <th>RANK</th>
+                <th>PROPOSED BY</th>
+                <th>FOR VESSEL</th>
+                <th>FOR AGENCY UPLOADING</th>
+                <th>CONDUCTED INTERVIEW</th>
             </tr>
         </thead>
-        <tbody style="border-bottom:solid">
+        <tbody>
             @foreach (var seafarer in Model.ForInterview)
             {
-                <tr style="font-size:medium; background-color:white">
+                <tr>
                     <td>
-                        <a class="btn-link" href="./Applicants?id=@seafarer.CrewId&thiscrew=@seafarer.FullName">@seafarer.FullName</a>
-                        @*<a asp-page="Applicants" asp-route-id="@seafarer.Id&thiscrew=@seafarer.FullName">@seafarer.FullName</a>*@
+                        <a class="btn-link" href="#" onclick='loadHtml("template", "./Applicants?id=@seafarer.CrewId&thiscrew=@seafarer.FullName")'>@seafarer.FullName</a>
                     </td>
                     <td>@seafarer.Rank</td>
                     <td>@seafarer.Client</td>
@@ -90,79 +49,84 @@
         </tbody>
     </table>
     <br />
-
-    <div>
-        <label style="font-weight:bold">@Request.Query["thiscrew"]</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-        <label style="font-size:medium; color:cornflowerblue">Latest Performance</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class="btn-link" style="font-size:small" href="#">Print</a>
-        @*<a class="btn-link" onclick="@(thisOption); alert('@thisOption')" style="font-size:small" href="./Applicants?id=@Request.Query["id"]&thiscrew=@Request.Query["thiscrew"]">Sea Services</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*@
-        @*<a asp-page="Applicants" style="font-size:small" asp-route-id=thisCrewID>Sea Services</a>*@
-        <br />
-
-        <table class="table">
+    <hr />
+    <div style="padding-top:20px; padding-bottom:5px">
+        <div style="float:left; padding-right:50px">
+            <label style="color:#325af3">@Request.Query["thiscrew"]</label>
+        </div>
+        <div style="float:left; padding-right:50px">
+            <label>(Latest Performance - below his Sea Services)</label>
+        </div>
+        <div style="width:100%; padding-right:50px; text-align:end">
+            <a class="btn-lnk" href="#" style="padding-right:50px">Export</a>
+            <a class="btn-lnk" href="#">Print</a>
+        </div>
+        <table>
             <thread>
                 <tr>
-                    <th style="background-color:whitesmoke">Master</th>
-                    <th style="background-color:whitesmoke">Chief Engr</th>
-                    <th style="background-color:whitesmoke">Vessel</th>
-                    <th style="background-color:whitesmoke">Date</th>
-                    <th style="background-color:whitesmoke">Remarks</th>
+                    <th>Master</th>
+                    <th>Chief Engr</th>
+                    <th>Vessel</th>
+                    <th>Date</th>
+                    <th>Remarks</th>
                 </tr>
-                <tbody>
+                <tbody style="background-color:antiquewhite">
                     @foreach (var selCrew in Model.Appraisals)
                     {
-                        <tr style="background-color:antiquewhite">
-                            <td>@selCrew.Master</td>
-                            <td>@selCrew.Ceng</td>
-                            <td width="150">@selCrew.VesselName</td>
-                            <td>@selCrew.AppDate.ToString("dd.MMM.yyyy")</td>
-                            <td>@selCrew.Remarks</td>
+                        <tr>
+                            <td class="a">@selCrew.Master</td>
+                            <td class="a">@selCrew.Ceng</td>
+                            <td class="a">@selCrew.VesselName</td>
+                            <td class="a">@selCrew.AppDate.ToString("dd.MMM.yyyy")</td>
+                            <td class="a">@selCrew.Remarks</td>
                         </tr>
                     }
                 </tbody>
             </thread>
         </table>
     </div>
+    <div style="padding-top:20px">
     <div>
+        <label style="float:left">Sea Services</label>
     </div>
-    @*<a class="btn-link" style="font-size:small" href="#">Sea Services</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*@
-    <label style="font-size:medium; color:cornflowerblue">Sea Services</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a class="btn-link" style="font-size:small" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <div class="auto">
+        <div style="width:100%; padding-right:50px; text-align:end">
+        <a style="padding-right:50px" class="btn-lnk" href="#">Export</a>
+        <a class="btn-lnk" href="#">Print</a>
+    </div>
+    
+    <div>
         <table class="table">
             <thread>
                 <tr>
-                    <th style="background-color:whitesmoke">Previous Vessel</th>
-                    <th style="background-color:whitesmoke">Rank</th>
-                    <th style="background-color:whitesmoke">Sign-On</th>
-                    <th style="background-color:whitesmoke">Sign-Off</th>
-                    <th style="background-color:whitesmoke">Reason</th>
-                    <th style="background-color:whitesmoke">GRT</th>
-                    <th style="background-color:whitesmoke">Type</th>
-                    <th style="background-color:whitesmoke">Route</th>
-                    <th style="background-color:whitesmoke">Engine</th>
-                    <th style="background-color:whitesmoke">KW</th>
-                    <th style="background-color:whitesmoke">Agency</th>
-                    <th style="background-color:whitesmoke">Management</th>
+                    <th>Previous Vessel</th>
+                    <th>Rank</th>
+                    <th>Sign-On</th>
+                    <th>Sign-Off</th>
+                    <th>Reason</th>
+                    <th>GRT</th>
+                    <th>Type</th>
+                    <th>Route</th>
+                    <th>Engine</th>
+                    <th>KW</th>
+                    <th>Agency</th>
+                    <th>Management</th>
                 </tr>
-                <tbody>
+                <tbody style="background-color:antiquewhite">
                     @foreach (var seaservices in Model.SeaServices)
                     {
-                        <tr style="background-color:antiquewhite">
-                            <td>@seaservices.Vessel</td>
-                            <td>@seaservices.Rank</td>
-                            <td style="width:auto">@seaservices.SignOn.ToString("dd.MMM.yyyy")</td>
-                            <td style="width:auto">@seaservices.SignOff.ToString("dd.MMM.yyyy")</td>
-                            <td>@seaservices.Disembarkation</td>
-                            <td>@seaservices.GRT</td>
-                            <td style="width:auto">@seaservices.Type</td>
-                            <td>@seaservices.TradeRoute</td>
-                            <td>@seaservices.Engine</td>
-                            <td>@seaservices.KW</td>
-                            <td style="width:auto">@seaservices.Agent</td>
-                            <td>@seaservices.Principal</td>
+                        <tr>
+                            <td class="a">@seaservices.Vessel</td>
+                            <td class="a">@seaservices.Rank</td>
+                            <td class="a">@seaservices.SignOn.ToString("dd.MMM.yyyy")</td>
+                            <td class="a">@seaservices.SignOff.ToString("dd.MMM.yyyy")</td>
+                            <td class="a">@seaservices.Disembarkation</td>
+                            <td class="a">@seaservices.GRT</td>
+                            <td class="a">@seaservices.Type</td>
+                            <td class="a">@seaservices.TradeRoute</td>
+                            <td class="a">@seaservices.Engine</td>
+                            <td class="a">@seaservices.KW</td>
+                            <td class="a">@seaservices.Agent</td>
+                            <td class="a">@seaservices.Principal</td>
                         </tr>
                     }
                 </tbody>
@@ -170,4 +134,3 @@
         </table>
     </div>
 </div>
-<br /><br />

@@ -1,223 +1,164 @@
 ﻿@page
 @model GISMO.Pages.Clients.CrewDetailsModel
 @{
+    Layout = null;
 }
-<style type="text/css">
-    .divTop {
-        /*top: 100px;*/
-        position: relative;
-        background-color: #F0F0F0;
-        width: auto;
-        transform: translateX(2%);
-        padding: 30px;
-        border-radius: 10px;
-        border: 10px;
-        /*width: 1500pxs;*/
-    }
-    .mainDiv{
-        border: 1px outset gray;
-        padding-left:25px;
-        padding-right:15px;
-        background-color: white;
-        padding-bottom:15px;
-    }    
-    .mainDivToo {
-        border: 1px outset gray;
-        padding-bottom: 15px;
-        background-color:white;
-    }
-    .mainDivEmpty{
-        border: 1px outset gray;
-        padding-bottom: 15px;
-        background-color: whitesmoke;
-    }
-    .label {
-        font-size:small;
-        font-weight:bold;
-    }
-    .tab {
-        tab-size: 2;
-    }
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="~/css/stylemenu.css" />
+<script src="~/js/site.js"></script>
 
-</style>
-<div class="divTop">
+<br />
+
+<div class="divTop" style="height:206px">
     <!--1ST INFO BOX -->
-    <div class="mainDiv">
-        <table>
-            <thead>
-                <tr>
-                    <br />
-                    <td width="88%">
-                        <h2>@Model.Seafarer.Fname @Model.Seafarer.Lname</h2><br />
-                        <label style="font-weight:bold">ADDRESS:</label>&nbsp;<label>@Model.Seafarer.Address</label><br />
-                        <label style="font-weight:bold">MOBILE:</label>
-                        <label>@Model.Seafarer.Mobile</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label style="font-weight:bold">EMAIL:</label>
-                        <label>EMAIL: @Model.Seafarer.Email</label>
-                    </td>
-                    <td>
-                        <img src="~/lib/images/@(Model.Seafarer.Id).jpg" style="padding-right:15px" alt="Pix" width="160" height="150">
-                    </td>
-                </tr>
-            </thead>
-        </table>
+    <div style="float:left; padding-top:20px; padding-left:20px">
+        <h2>@Model.Seafarer.Rank @Model.Seafarer.Fname @Model.Seafarer.Lname</h2><br />
+        <div style="float:left; padding-left:20px; padding-right:20px">
+            <label class="a">ADDRESS:</label><br />
+            <label class="a">MOBILE</label><br />
+            <label class="a">EMAIL:</label><br />
+        </div>
+        <div style="float:left; padding:3px">
+            <label class="a">@Model.Seafarer.Address</label><br />
+            <label class="a">@Model.Seafarer.Mobile</label><br />
+            <label class="a">@Model.Seafarer.Email</label>
+        </div>
     </div>
-    <br />
-    <!--2ND INFO BOX -->
-    <div class="mainDiv">
-        <table>
-            <thead>
-                <tr">
-                    <br />
-                    <td>
-                        <label style="font-weight:bold">NATIONALITY:</label>
-                    <td />
-                    <td>
-                        <label>@Model.Seafarer.Nationality</label>
-                    </td>
-                    <td>
-                        <label style="font-weight:bold">BIRTH DATE:</label>
-                    </td>
-                    <td>
-                        <label>&nbsp;@Model.Seafarer.DOB.ToString("MMMM dd, yyyy")</label>
-                    </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label style="font-weight:bold">CIVIL STATUS:</label>
-                        <td />
-                        <td style="width:50%">
-                            <label>@Model.Seafarer.CivilStat</label>
-                        </td>
-                        <td>
-                            <label style="font-weight:bold">BIRTH PLACE:</label>
-                        </td>
-                        <td>
-                            <label>&nbsp;@Model.Seafarer.BPlace</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label style="font-weight:bold">AVAILABILITY:</label>
-                        </td>
-                    </tr>
-                    @* <tr>
-                    <td>
-                    <label style="font-weight:bold">PERMANENT ADDRESS:</label><label>@Model.Seafarer.Address</label>
-                    </td>
-                    </tr>*@
-            </thead>
-        </table>
+    <div style="text-align:end">
+        <img src="~/lib/images/@(Model.Seafarer.Id).jpg" style="padding:2px; border: 2px solid black" alt="Pix" width="160" height="150">
     </div>
-    <br />
-    <!--3RD INFO BOX -->
-    <div class="mainDiv">
-        <table>
-            <thead>
-                <br />
-                <tr>
-                    <th style="width:200px">DOCUMENT NAME</th>
-                    <th style="width:200px">NUMBER</th>
-                    <th style="width:200px">ISSUANCE</th>
-                    <th style="width:200px">ISSUED ON</th>
-                    <th style="width:200px">EXPIRY</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="font-weight:bold">Passport</td>
-                    <td>@Model.Seafarer.PportNum</td>
-                    <td>@Model.Seafarer.PportIssuance</td>
-                    <td>@Model.Seafarer.PportIssued.ToString("dd.MMM.yyyy")</td>
-                    <td>@Model.Seafarer.PportExpiry.ToString("dd.MMM.yyyy")</td>
-                </tr>
-                <tr>
-                    <td style="font-weight:bold">Seaman's Book</td>
-                    <td>@Model.Seafarer.SBKNo</td>
-                    <td>@Model.Seafarer.SBKIssuance</td>
-                    <td>@Model.Seafarer.SBKIssued.ToString("dd.MMM.yyyy")</td>
-                    <td>@Model.Seafarer.SBKExpiry.ToString("dd.MMM.yyyy")</td>
-                </tr>
-                <tr>
-                    <td style="font-weight:bold">US Visa</td>
-                    <td>@Model.Seafarer.USVisaNum</td>
-                    <td>@Model.Seafarer.USVisaIssuance</td>
-                    <td>@Model.Seafarer.USVisaIssued.ToString("dd.MMM.yyyy")</td>
-                    <td>@Model.Seafarer.USVisaExp.ToString("dd.MMM.yyyy")</td>
-                </tr>
-        </table>
-    </div>
-    <br />
-    <!-- 4th INFO BOX -->
-    <div class="mainDivToo">
-        <label class="label">&nbsp;&nbsp; SEA SERVICES EXPERIENCE</label>
-        <table class="table">
-            <thread>
-                <tr style="font-size:small">
-                    <th style="background-color:whitesmoke">Previous Vessel</th>
-                    <th style="background-color:whitesmoke">Rank</th>
-                    <th style="background-color:whitesmoke">Sign-On</th>
-                    <th style="background-color:whitesmoke">Sign-Off</th>
-                    <th style="background-color:whitesmoke">Reason</th>
-                    <th style="background-color:whitesmoke">GRT</th>
-                    <th style="background-color:whitesmoke">Type</th>
-                    <th style="background-color:whitesmoke">Route</th>
-                    <th style="background-color:whitesmoke">Engine</th>
-                    <th style="background-color:whitesmoke">KW</th>
-                    <th style="background-color:whitesmoke">Agency</th>
-                </tr>
-                <tbody>
-                    @foreach (var seaservices in Model.SServices)
-                    {
-                    <tr style="font-size:small">
-                        <td>@seaservices.Vessel</td>
-                        <td>@seaservices.Rank</td>
-                        <td>@seaservices.SignOn.ToString("dd.MMM.yyyy")</td>
-                        <td>@seaservices.SignOff.ToString("dd.MMM.yyyy")</td>
-                        <td>@seaservices.Disembarkation</td>
-                        <td>@seaservices.GRT</td>
-                        <td style="width:auto">@seaservices.Type</td>
-                        <td>@seaservices.TradeRoute</td>
-                        <td>@seaservices.Engine</td>
-                        <td>@seaservices.KW</td>
-                        <td style="width:auto">@seaservices.Agent</td>
-                    </tr>
-                    }
-                </tbody>
-            </thread>
-        </table>
-    </div>
-    <br />
-    <!-- 5th INFO BOX -->
-    <div class="mainDivEmpty">
-        <label class="label">&nbsp;&nbsp; TRAININGS/CERTIFICATES</label>
-        <table class="table">
-            <thread>
-
-            </thread>
-        </table>
-    </div>
-    <br />
-    <!-- 6th INFO BOX -->
-    <div class="mainDivEmpty">
-        <label class="label">&nbsp;&nbsp; VISA/OTHER DOCUMENTS</label>
-        <table class="table">
-            <thread>
-
-            </thread>
-        </table>
-    </div>
-    <br />
-    <!-- 7th INFO BOX -->
-    <div class="mainDivEmpty">
-        <label class="label">&nbsp;&nbsp; MEDICAL HISTORY</label>
-        <table class="table">
-            <thread>
-
-            </thread>
-        </table>
-     </div>
 </div>
-
+<br />
+<div class="divTop" style="height:180px">
+    <!--2ND INFO BOX -->
+    <div style="float:left; padding-left:45px">
+        <label class="b">NATIONALITY:</label><br />
+        <label class="b">BIRTH DATE:</label><br />
+        <label class="b">CIVIL STATUS:</label><br />
+        <label class="b">BIRTH PLACE:</label><br />
+        <label class="b">AVAILABILITY:</label>
+    </div>
+    <div style="float:left; padding-left: 15px">
+        <label class="c">@Model.Seafarer.Nationality</label><br />
+        <label class="c">@Model.Seafarer.DOB.ToString("MMMM dd, yyyy")</label><br />
+        <label class="c">@Model.Seafarer.CivilStat</label><br />
+        <label class="c">@Model.Seafarer.BPlace</label><br />
+        <label class="c">ANYTIME</label>
+    </div>
+</div>
+<br />
+<div class="divTop" style="height:180px">
+    <!--3RD INFO BOX -->
+    <div style="float:left; padding-left:45px">
+        <label class="b">DOCUMENT NAME:</label><br />
+        <label class="b">NUMBER:</label><br />
+        <label class="b">ISSUANCE:</label><br />
+        <label class="b">ISSUED ON:</label><br />
+        <label class="b">EXPIRED ON:</label>
+    </div>
+    <div style="float:left; padding-left:15px">
+        <label class="c">Passport</label><br />
+        <label class="c">@Model.Seafarer.PportNum</label><br />
+        <label class="c">@Model.Seafarer.PportIssuance</label><br />
+        <label class="c">@Model.Seafarer.PportIssued.ToString("dd.MMM.yyyy")</label><br />
+        <label class="c">@Model.Seafarer.PportExpiry.ToString("dd.MMM.yyyy")</label>
+    </div>
+    <div style="float:left; padding-left:135px">
+        <label class="b">DOCUMENT NAME:</label><br />
+        <label class="b">NUMBER:</label><br />
+        <label class="b">ISSUANCE:</label><br />
+        <label class="b">ISSUED ON:</label><br />
+        <label class="b">EXPIRED ON:</label>
+    </div>
+    <div style="float:left; padding-left:15px">
+        <label class="c">Seaman's Book</label><br />
+        <label class="c">@Model.Seafarer.SBKNo</label><br />
+        <label class="c">@Model.Seafarer.SBKIssuance</label><br />
+        <label class="c">@Model.Seafarer.SBKIssued.ToString("dd.MMM.yyyy")</label><br />
+        <label class="c">@Model.Seafarer.SBKExpiry.ToString("dd.MMM.yyyy")</label>
+    </div>
+    <div style="float:left; padding-left:180px">
+        <label class="b">DOCUMENT NAME:</label><br />
+        <label class="b">NUMBER:</label><br />
+        <label class="b">ISSUANCE:</label><br />
+        <label class="b">ISSUED ON:</label><br />
+        <label class="b">EXPIRED ON:</label>
+    </div>
+    <div style="float:left; padding-left:15px">
+        <label class="c">US Visa</label><br />
+        <label class="c">@Model.Seafarer.USVisaNum</label><br />
+        <label class="c">@Model.Seafarer.USVisaIssuance</label><br />
+        <label class="c">@Model.Seafarer.USVisaIssued.ToString("dd.MMM.yyyy")</label><br />
+        <label class="c">@Model.Seafarer.USVisaExp.ToString("dd.MMM.yyyy")</label>
+    </div>
+</div>
+<br />
+<div class="divTop" style="height:500px">
+    <!-- 4th INFO BOX -->
+    <label>SEA SERVICES EXPERIENCE</label>
+    <div>
+        <table class="table">
+            <thread>
+                <tr>
+                    <th class="b">Previous Vessel</th>
+                    <th class="b">Rank</th>
+                    <th class="b">Sign-On</th>
+                    <th class="b">Sign-Off</th>
+                    <th class="b">Reason</th>
+                    <th class="b">GRT</th>
+                    <th class="b">Type</th>
+                    <th class="b">Route</th>
+                    <th class="b">Engine</th>
+                    <th class="b">KW</th>
+                    <th class="b">Agency</th>
+                </tr>
+            <tbody>
+                @foreach (var seaservices in Model.SServices)
+                {
+                <tr style="font-size:0.87em">
+                    <td>@seaservices.Vessel</td>
+                    <td>@seaservices.Rank</td>
+                    <td>@seaservices.SignOn.ToString("dd.MMM.yyyy")</td>
+                    <td>@seaservices.SignOff.ToString("dd.MMM.yyyy")</td>
+                    <td>@seaservices.Disembarkation</td>
+                    <td>@seaservices.GRT</td>
+                    <td>@seaservices.Type</td>
+                    <td>@seaservices.TradeRoute</td>
+                    <td>@seaservices.Engine</td>
+                    <td>@seaservices.KW</td>
+                    <td>@seaservices.Agent</td>
+                </tr>
+                }
+            </tbody>
+            </thread>
+        </table>
+    </div>
+</div>
+<br />
+<div class="divTop" style="height:100px">
+    <!-- 5th INFO BOX -->
+    <label>TRAININGS/CERTIFICATES</label>
+    <div>
+        ...
+    </div>
+</div>
+<br />
+<div class="divTop" style="height:100px">
+    <!-- 6th INFO BOX -->
+    <label>VISA/OTHER DOCUMENTS</label>
+    <div>
+        ...
+    </div>
+</div>
+<br />
+<div class="divTop" style="height:100px">
+    <!-- 7th INFO BOX -->
+    <label>MEDICAL HISTORY</label>
+    <div>
+        ...
+    </div>
+</div>
+</html>
 
 

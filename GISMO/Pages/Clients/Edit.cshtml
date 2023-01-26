@@ -51,11 +51,10 @@
         <button>Reset Changes</button>
         <button>Save Changes</button>
     </div>
-    <br />
-    <hr />
+    <br /><br />
     <table class="table">
         <thead>
-            <tr style="background-color:whitesmoke">
+            <tr>
                 <th>Managed Vessels</th>
                 <th>Type</th>
                 <th>Flag</th>
@@ -66,8 +65,7 @@
         <tbody>
             @foreach (var vessel in Model.ManageVsl)
             {
-                <tr style="background-color:white">
-                    @*<td>@vessel.Id</td>*@
+                <tr>
                     <td>@vessel.VesselName</td>
                     <td>@vessel.Type</td>
                     <td>@vessel.Flag</td>
