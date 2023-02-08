@@ -26,20 +26,61 @@
     font-family: 'UbuntuR';
     src: url(../fonts/Ubuntu-R.ttf) format('truetype');
 }
+
 /* PAGES DESIGN */
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-top:0px;
+    text-decoration: none;
+}
+    .header ul {
+        list-style: none;
+    }
+        .header ul li {
+            list-style: none;
+            display: inline-block;
+            padding: 0px 10px;
+            font-family:"Roboto", sans-serif;
+            font-weight:bold;
+            font-size: 0.9em;
+        }
+.logo {
+    margin-right: 30px;
+    /*font-family: "UbuntuR", sans-serif;*/
+}
+
+/*#login_div {
+    display: inline;
+    float: right;
+}
+#login_div_cont li {
+    display: inline;
+    padding-right:20px;
+    padding-bottom:20px;
+    
+}*/
 .divTop {
-    /*top: 19px;*/
     position: relative;
     height: 670px;
     background-color: #F0F0F0;
-    /*width: 70%;*/
     transform: translateX(0%);
-    /*transform: translateX(22%);*/
     padding: 25px;
     border-radius: 10px;
     border: 10px;
     color: black;
     -webkit-animation: fadeout 0.6s;
+}
+.divTitle {
+    background-color: var(--clr);
+    color: white;
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    font-size: 0.98em;
+    width:100%;
 }
 @-webkit-keyframes fadeout {
     0%,100% { opacity: 0; }
@@ -64,7 +105,6 @@
     float: right;
     width: 1000px;
     background-color: #E6E1E1;
-    /*transform: translateX(43.5%);*/
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
@@ -79,8 +119,6 @@
 }
 .divIntRight {
     height: 32vw;
-    border: 1px solid black;
-    background-color: cadetblue;
     font-size: 1.0vw;
 }
 #accordion {
@@ -99,11 +137,11 @@ label {
         font-size:20px;
     }
     label.b {
-        font-size: 18px;
+        font-size: 1vw;
         color: black;
     }
     label.c {
-        font-size: 18px;
+        font-size: 1vw;
         color: dimgray;
     }
 button {
@@ -119,6 +157,20 @@ button {
     position: relative;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.16), 0 1px 0px rgba(0, 0, 0, 0.1);
     color: black;
+    text-decoration: none;
+    transition: 0.3s ease all;
+    z-index: 1;
+}
+button.a {
+    font-size: 0.75em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.7em 2em;
+    position: relative;
+    color: #fc7d03;
     text-decoration: none;
     transition: 0.3s ease all;
     z-index: 1;
@@ -163,7 +215,6 @@ td {
     text-align: left;
     border-bottom: 1px solid #ddd;
     color: black;
-    /*font-size: 14px;*/
     font-size: 0.8vw;
     width:6em;
     font-family: 'Roboto';
@@ -181,6 +232,17 @@ th {
     font-family: 'BebasRegular';
     letter-spacing: 0.5px;
 }
+    th.border {
+        background-color: var(--clr);
+        color: white;
+        height: 40px;
+        text-align: left;
+        padding-left: 10px;
+        font-weight: lighter;
+        font-family: 'BebasRegular';
+        letter-spacing: 0.5px;
+        border: 1px solid;
+    }
 a {
     color: #325af3;
     text-decoration: none;
@@ -190,7 +252,7 @@ a {
     text-decoration: underline;
     font-family: 'Roboto';
     font-weight:bold;
-    font-size:13px;
+    font-size:1vw;
     text-transform:uppercase;
 
 }
@@ -201,7 +263,6 @@ a {
     font-family: 'Roboto';
     font-size: 13px;
 }
-
 
 /* MENU ANIM DESIGN */
 *
@@ -216,10 +277,6 @@ a {
     --clr: #222327;
 }
 body{
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    /*min-height:30vh;*/
     font-family:'Roboto';
     background: var(--clr);
     color:white;
@@ -239,19 +296,9 @@ body{
     transform: translateY(5px);
     transform: translateX(0%);
 }
-.divTitle {
-    background-color: var(--clr);
-    color: white;
-    text-align: center;
-    padding-bottom: 20px;
-    padding-top: 10px;
-    font-size: 0.98em;
-}
+
 .divAction {
     padding-top: 10px;
-    /*transform: translateX(292px);*/
-    /*width: auto;*/
-    /*width: 35%;*/
     text-align: left;
 }
 .fontSimplifica {
@@ -332,7 +379,6 @@ body{
     top: -50%;
     width: 70px;
     height: 70px;
-    /* here */
     border-radius: 50%;
     border: 6px solid var(--clr);
     transition: 0.5s;
@@ -385,4 +431,5 @@ body{
     transform: translateX(calc(70px * 5));
     background: #9eaefb;
 }
+
 

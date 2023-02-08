@@ -4,19 +4,28 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="viewport" content="width=device-width" />
     <title>GISMO - Global Information for Ship Management Operators</title>
     <link rel="stylesheet" href="~/css/stylemenu.css" />
     <script src="~/js/site.js"></script>
 </head>
-<div class="divTitle">
-    <label style="font-size:28px" class="fontBebasRegular">GISMO - Global Information for Ship Management Operators</label>
-</div>
+
+<body>
+    <header class="header">
+       <ul>
+            <li class="logo">GISMO</li>
+          <li>
+                <partial name="_LoginPartial" />
+           </li>
+       </ul>
+    </header>
+</body>
+
+<div></div>
 <div class="maindiv">
     <div class="navigation">
         <ul>
             <li class="list active">
-                <a href="#" onclick='loadHtml("template", "./Dashboard")'>
+                <a href="#" onclick='loadHtml("template", "../Dashboard")'>
                     <span class="icon">
                         <ion-icon name="bar-chart-outline"></ion-icon>
                     </span>
@@ -24,7 +33,7 @@
                 </a>
             </li>
             <li class="list">
-                <a href="#" onclick='loadHtml("template", "./Clients/Clients")'>
+                <a href="#" onclick='loadHtml("template", "../Clients/Clients")'>
                     <span class="icon">
                         <ion-icon name="people-outline"></ion-icon>
                     </span>
@@ -32,7 +41,7 @@
                 </a>
             </li>
             <li class="list">
-                <a href="#">
+                <a href="#" onclick='loadHtml("template", "../AdvanceSearch")'>
                     <span class="icon">
                         <ion-icon name="telescope-outline"></ion-icon>
                     </span>
@@ -69,24 +78,21 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule srcS="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </div>
-@*<div class="divTitle">
-    <label class="fontBebasRegular">GISMO - Global Information for Ship Management Operators</label>
-</div>*@
+
 <div id="template" class="template"><label style="color:dimgray">Loading...</label></div>
-<body>
-    <div>
-        @RenderBody()
-    </div>
-    <script>
-        const list = document.querySelectorAll('.list');
-        function activeLink() {
-            list.forEach((item) =>
-                item.classList.remove('active'));
-            this.classList.add('active');
-        }
+
+<div>
+    @RenderBody()
+</div>
+
+<script>
+    const list = document.querySelectorAll('.list');
+    function activeLink() {
         list.forEach((item) =>
-            item.addEventListener('click', activeLink));
-          
-    </script>
-</body>
+            item.classList.remove('active'));
+        this.classList.add('active');
+    }
+    list.forEach((item) =>
+        item.addEventListener('click', activeLink));
+</script>
 </html>

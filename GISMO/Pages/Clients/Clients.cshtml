@@ -25,26 +25,26 @@
 
 <table class="table">
 <thead>
-    <tr>
+    <tr style="width:100%">
         <th>Name</th>
         <th>Type</th>
         <th>Address</th>
         <th>Contacts</th>
-        <th>Action</th>
+        <th style="text-align:end; padding-right:20px">Action</th>
     </tr>
 </thead>
 <tbody>
     @foreach (var client in Model.Clients)
     {
-        <tr>
+        <tr style="width:100%">
             <td>
                 <a class="btn-link" href="#" onclick='loadHtml("template", "./Clients/ClientDetails?id=@client.Id&selClient=@client.ClientName")'>@client.ClientName</a>
             </td>
             <td>@client.Type</td>
             <td>@client.Address</td>
             <td>@client.Contacts</td>
-            <td>
-                <a class="btn-lnk" href="#" onclick='loadHtml("template", "./Clients/Edit?id=@client.Id")'>Modify</a>
+            <td style="text-align:end; padding-right:20px">
+                <a class="btn btn-info btn-sm" href="#" onclick='loadHtml("template", "./Clients/Edit?id=@client.Id")'>Modify</a>
             </td>
         </tr>
     }

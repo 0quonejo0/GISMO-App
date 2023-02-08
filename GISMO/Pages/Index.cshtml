@@ -3,34 +3,32 @@
 @{
     ViewData["Title"] = "Home";
 }
+<html>
 <body>
-@*<div class="text-center">*@
-    @*<h1 class="display-4">Welcome</h1>*@
-    @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
-    @*<p>
-        GISMO - Global Information for Ship Management Operators
-    </p>*@
-@*</div>*@
-<div>
-    
-</div>
 
-<style>
-    .div1{
-        background-color:lightcoral;
-        width: 30%;
-        float:left;
-        margin:0;
-        padding:0;
-        max-width:none;
+<script>
+    //SET IN VESSELDETAILS PAGE INITIAL TAB ACTIVE
+    function waitForElement(id, callback){
+        var checkDiv = setInterval(function(){
+            if(document.getElementById(id)){
+                clearInterval(checkDiv);
+                callback();
+            }
+        }, 100);
     }
-    .div2{
-        background-color:gold;
-        width:70%;
-        float:right;
-        margin:0;
-    }
+    waitForElement("btnDiv", function(){
+        document.getElementById("defaultOpen").click();
+    });
+   
+    //function delElem(){
+    //    const element = document.getElementById('btnDiv');
+    //    element.remove(); // Removes the div with the 'div-02' id
+    //}
 
-</style>
+    //function hello() {
+    //    console.log("XXX");
+    //    document.getElementById("defaultOpen").click();
+    //}
+</script>
 </body>
-
+</html>

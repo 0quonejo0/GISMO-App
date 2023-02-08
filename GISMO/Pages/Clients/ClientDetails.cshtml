@@ -8,7 +8,6 @@
 <script src="~/js/site.js"></script>
 
 <div class="divTop">
-    
     <div style="float:left">
         <h2>@Request.Query["selClient"]</h2>
         <label>List of Managed Vessel</label>
@@ -33,23 +32,17 @@
         <tbody>
             @foreach (var vessel in Model.SelVessels)
             {
-                <tr>
+                <tr style="width:100%">
                     <td>
-                        <a class="btn-link" href="#" onclick='loadHtml("template", "./VesselDetails?id=@vessel.Id&selVsl=@vessel.VesselName")'>@vessel.VesselName</a>
+                        <a class="btn-link" href="#" onclick='loadHtml("template", "./Clients/VesselDetails?id=@vessel.Id&selVsl=@vessel.VesselName&tabid=fresh")'>@vessel.VesselName</a>
                     </td>
                     <td>@vessel.Type</td>
                     <td>PTC Phil Trans Carrier</td>
                     <td>Libera</td>
                     <td>Worlwide</td>
-                    <td style="width:200px">
-                        <a class="btn-lnk" href="/Clients/VesselDetails?id=@vessel.Id&selVsl=@vessel.VesselName">Onboard</a>&nbsp;&nbsp;&nbsp;
-                        @*<a href="#" onclick='loadHtml("template", "./Clients/VesselDetails?id=@vessel.Id&selVsl=@vessel.VesselName")'>
-                            <span>
-                                <img src="~/lib/Images/seafarer.png"/>
-                            </span>
-                            <span class="text">Show Onboard</span>
-                        </a>*@
-                        <a class="btn-lnk" href="/Clients/Planner?id=@vessel.Id&selVsl=@vessel.VesselName">Planner</a>
+                    <td>
+                        <a class="btn-lnk" href="#" onclick='loadHtml("template", "./Clients/VesselDetails?id=@vessel.Id&selVsl=@vessel.VesselName")'>Onboard</a>&nbsp;&nbsp;&nbsp;
+                        <a class="btn-lnk" href="#" onclick='loadHtml("template", "./Clients/Planner?id=@vessel.Id&selVsl=@vessel.VesselName")'>Planner</a>
                     </td>
                 </tr>
             }

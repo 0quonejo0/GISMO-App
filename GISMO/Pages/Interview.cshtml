@@ -5,10 +5,7 @@
 }
 
 <style>
-   /* #accordion{
-        width: 100%;
-        padding:0;
-    }*/
+   
     #accordion li{
         list-style: none;
         width:100%;
@@ -121,15 +118,15 @@
 <link rel="stylesheet" href="~/css/stylemenu.css" />
 <script src="~/js/site.js"></script>
  
-<div class="divTop">
-    <div class="divIntLeft">
+<div class="divTop" style="height: 100%">
+    <div class="divIntLeft" style="height:26.5vw">
         <form>
             <ul id="accordion">
                 <li>
                     <label for="first" style="font-size:1.2em">Interviewer's Evaluation<span style="font-size:1.2em; margin-right:10px">&#x3e</span></label>
                     <input type="radio" name="accordion" id="first" checked />
                     <div class="content">
-                        <textarea style="height:15vw; width:23.5vw; line-height:1.3; font-size:1em; padding-left:2px" asp-for="Evaluation"></textarea>
+                        <textarea style="height:15vw; width:23.5vw; line-height:1.3; font-size:1em; padding:5px" asp-for="Evaluation"></textarea>
                         <br />
                         <div style="text-align:end">
                             @*<input class="btn-lnk" type="submit" value="Save" />*@
@@ -185,7 +182,7 @@
             </ul>
         </form>
     </div>
-    <div class="divIntRight">
+    <div class="divIntRight" style="height:26.5vw">
         <br /><br />
         <h2>
             <label>@Model.Crew.Rank.Trim() @Model.Crew.Lname, @Model.Crew.Fname</label><br />
@@ -197,169 +194,77 @@
             <label>Email:</label><br />
         </div>
         <div style="float:left; padding-top:25px">
-            <label>@Model.Crew.Address</label><br />
-            <label>@Model.Crew.Nationality</label><br />
-            <label>@Model.Crew.Mobile</label><br />
-            <label>@Model.Crew.Email</label><br />
+            <label class="c">@Model.Crew.Address</label><br />
+            <label class="c">@Model.Crew.Nationality</label><br />
+            <label class="c">@Model.Crew.Mobile</label><br />
+            <label class="c">@Model.Crew.Email</label><br />
         </div>
         <div style="transform:translateY(-2.5vw); margin-left:37vw; float:left; width:10vw; height:10vw; text-align:end; border:1px solid black">
             <img src="~/lib/images/@(Model.Crew.Id).jpg" style="" alt="_NoImage" width="100%px" height="100%">
         </div>
-    </div>
-    <div style="transform:translateY(-8.5vw); border:1px solid black; height: 1vw">
-        Hellow
-    </div>
-</div>
-<br />
-
-<div class="divTop" style="height:800px">
-    <form>
-        <div class="divInterviewLeftSide">
-            <p>&nbsp;Desktop</p>
-            <ul id="accordion">
-                <li>
-                    <label for="first" style="font-family:Calibri; font-weight:bold">Interviewer's Evaluation<span>&#x3e</span></label>
-                    <input type="radio" name="accordion" id="first" checked />
-                    <div class="content">
-                        <textarea style="height:200px; width:360px; line-height:1.2; font-size:small" asp-for="Evaluation"></textarea>
-                        <br />
-                        <div style="text-align:end">
-                            <input class="btn-lnk" type="submit" value="Save" />
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <ul id="accordion">
-                <li>
-                    <label for="second" style="font-family:Calibri; font-weight:bold">Applicant History<span>&#x3e</span></label>
-                    <input type="radio" name="accordion" id="second" />
-                    <div class="contentScroll">
-                        <p>
-                            <table>
-                                <thread>
-                                    <tbody>
-                                        @foreach (var intervHistory in Model.History)
-                                        {
-                                            <tr>
-                                                <td>
-                                                    <strong>Applied last </strong>@intervHistory.InterviewDate.ToString("dd.MMM.yyyy"). @intervHistory.Result during the interview with following remarks.
-                                                    @intervHistory.Remarks <br />
-                                                </td>
-
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </thread>
-                            </table>
-                        </p>
-                    </div>
-                </li>
-            </ul>
-            <ul id="accordion">
-                <li>
-                    <label for="third" style="font-family:Calibri; font-weight:bold">Vacant Position<span>&#x3e</span></label>
-                    <input type="radio" name="accordion" id="third" />
-                    <div class="content">
-                        <p>
-                            <strong>MV ABC - Master</strong><br />
-                            <strong>5 Bosun with 3/O license</strong><br />
-                            <strong>2 OS for MV Xyz</strong><br />
-                            <strong>3 C/Cook</strong><br />
-                            <strong>2 C/M</strong><br />
-                            <strong>10 Electricians</strong><br />
-                            <strong>20 Cadets</strong><br />
-                            <strong>6 2/M</strong><br />
-                            <strong>2 3/M</strong><br />
-                            <strong>11 E/Cadet</strong><br />
-                        </p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="divInterviewRightSide">
-            <div class="divleft">
-                <input asp-for="Evaluation" style="font-weight:bold" class="form-control" value="@Model.Crew.Rank.Trim() @Model.Crew.Lname, @Model.Crew.Fname" readonly /><br />
-                <input asp-for="Evaluation" class="form-control" value="ADDRESS: @Model.Crew.Address" readonly /><br />
-                <input asp-for="Evaluation" class="form-control" value="NATIONALITY: @Model.Crew.Nationality • MOBILE: @Model.Crew.Mobile • EMAIL: @Model.Crew.Email" readonly /><br />
+        @* EXPIRING DOCS CONTAINER *@
+        <div style="padding-top:10px; padding-bottom:10px; border:1px solid black; margin-top:172px; transform: translateX(25.5vw); width:68.5vw; height:6.4vw">
+            <div style="float:left; padding-right:10px; transform:translateX(-26vw)">
+                <label>Passport Exp:</label><br>
+                <label>SBK Exp:</label><br>
+                <label>US Visa Exp:</label>
             </div>
-            <div class="divright">
-                @if (Model.Applicant != null)
-                {
-                    @if (Model.Applicant.Count > 0)
+            <div style="float:left; padding-right:6vw; transform:translateX(-25vw)">
+                <label class="c">@Model.Crew.PportExpiry.ToString("dd.MMM.yyyy")</label><br>
+                <label class="c">@Model.Crew.SBKExpiry.ToString("dd.MMM.yyyy")</label><br>
+                <label class="c">@Model.Crew.USVisaExp.ToString("dd.MMM.yyyy")</label>
+            </div>
+            <div style="float:left; transform: translateX(-20vw)">
+                <label>Trainings:</label><br>
+                <label>Certificates:</label><br>
+                <label>Other Visa:</label>
+            </div>
+            <div style="float:left; padding-right:30px">
+                <label>Status:</label><br>
+                <label>Availability:</label><br>
+                <label>Nearest Airport:</label>
+            </div>
+        </div>
+        <div style="padding-top:10px; padding-bottom:10px; border:1px solid black; margin-top:6px; transform: translateX(25.5vw); width:68.5vw; height:5vw; position:absolute; padding-left:10px">
+            <label>AGENCY REMARKS:</label><label style="padding-left:20px"> - Edgar Gelito/Crewing Manager</label><br /><br />
+            <label style="color: #ff5402">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This candidate is familiar with our company and showed interest. Passed technical examination, suggest to move on with the job offer </label>
+            
+        </div>
+    </div>
+    <label>SEA SERVICE EXPERIENCE</label>
+    <div style="border: 1px solid black; width:94vw">
+        <table class="table">
+            <thread>
+                <tr>
+                    <th>Vessel</th>
+                    <th>Rank</th>
+                    <th>Sign-On</th>
+                    <th>Sign-Off</th>
+                    <th>Reason</th>
+                    <th>GRT</th>
+                    <th>Type</th>
+                    <th>Engine</th>
+                    <th>Agency</th>
+                </tr>
+                <tbody>
+                    @foreach (var seaservices in Model.SeaServices)
                     {
-                        <img src="~/lib/images/@(Model.Crew.Id).jpg" style="" alt="_NoImage" width="100%" height="100%">
-                    }
-                }
-            </div>
-            <div class="divExpiring">
-                <div style="height:100px; width:120px; float:left; padding: 10px">
-                    <label>Passport Exp:</label><br />
-                    <label>SBK Exp:</label><br />
-                    <label>US Visa Exp:</label>
-                </div>
-                <div style="height:100px; width:100px; float:left; padding:10px">
-                    <label style="width:100%; text-align:right"><strong>@Model.Crew.PportExpiry.ToString("dd.MMM.yyyy")</strong></label>
-                    <label style="width:100%; text-align:right"><strong>@Model.Crew.SBKExpiry.ToString("dd.MMM.yyyy")</strong></label>
-                    <label style="width:100%; text-align:right"><strong>@Model.Crew.USVisaExp.ToString("dd.MMM.yyyy")</strong></label>
-                    @*<input asp-for="Evaluation" style="font-weight:bold; width:100%; background-color:#E9ECEF" value="Passport Exp: @Model.Crew.PportExpiry.ToString("dd.MMM.yyyy")" readonly /><br />*@
-                    @* <input asp-for="Evaluation" style="font-weight:bold; width:100%; background-color:#E9ECEF" value="SBK Exp: @Model.Crew.SBKExpiry.ToString("dd.MMM.yyyy")" readonly /><br />
-                    <input asp-for="Evaluation" style="font-weight:bold; width:100%; background-color:#E9ECEF" value="US Visa Exp: @Model.Crew.USVisaExp.ToString("dd.MMM.yyyy")" readonly /><br />*@
-                </div>
-                <div style="height:100px; width:150px; float:left; padding: 10px"></div>
-                <div style="height:100px; width:120px; float:left; padding: 10px">
-                    <label>Trainings:</label><br />
-                    <label>Certificates:</label><br />
-                    <label>Other Visa:</label>
-                </div>
-                <div style="height:100px; width:130px; float:left; padding: 10px"></div>
-                <div style="height:100px; width:140px; float:left; padding: 10px">
-                    <label>Status:</label><br />
-                    <label>Availability:</label><br />
-                    <label>Nearest Airport:</label>
-                </div>
-            </div>
-            <div class="divScroll">
-                <table class="table" style="font-size:small">
-                    <thread>
                         <tr>
-                            <th style="background-color:whitesmoke">Vessel</th>
-                            <th style="background-color:whitesmoke">Rank</th>
-                            <th style="background-color:whitesmoke">Sign-On</th>
-                            <th style="background-color:whitesmoke">Sign-Off</th>
-                            <th style="background-color:whitesmoke">Reason</th>
-                            <th style="background-color:whitesmoke">GRT</th>
-                            <th style="background-color:whitesmoke">Type</th>
-                            <th style="background-color:whitesmoke">Engine</th>
-                            <th style="background-color:whitesmoke">Agency</th>
+                            <td>@seaservices.Vessel</td>
+                            <td>@seaservices.Rank</td>
+                            <td>@seaservices.SignOn.ToString("dd.MMM.yyyy")</td>
+                            <td>@seaservices.SignOff.ToString("dd.MMM.yyyy")</td>
+                            <td>@seaservices.Disembarkation</td>
+                            <td>@seaservices.GRT</td>
+                            <td>@seaservices.Type</td>
+                            <td>@seaservices.Engine</td>
+                            <td>@seaservices.Agent</td>
                         </tr>
-                        <tbody>
-                            @foreach (var seaservices in Model.SeaServices)
-                            {
-                                <tr style="background-color:antiquewhite">
-                                    <td>@seaservices.Vessel</td>
-                                    <td>@seaservices.Rank</td>
-                                    <td style="width:auto">@seaservices.SignOn.ToString("dd.MMM.yyyy")</td>
-                                    <td style="width:auto">@seaservices.SignOff.ToString("dd.MMM.yyyy")</td>
-                                    <td>@seaservices.Disembarkation</td>
-                                    <td>@seaservices.GRT</td>
-                                    <td style="width:auto">@seaservices.Type</td>
-                                    <td>@seaservices.Engine</td>
-                                    <td style="width:auto">@seaservices.Agent</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </thread>
-                </table>
-            </div>
-        </div>
-
-    </form>
-
+                    }
+                </tbody>
+            </thread>
+        </table>
+    </div>
 </div>
-
-<body>
-    
-</body>
-
 
 

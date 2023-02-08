@@ -1,9 +1,15 @@
 ﻿@page
 @model GISMO.Pages.Clients.VesselDetailsModel
 @{
+    Layout = null;
+
 }
+<link rel="stylesheet" href="~/css/stylemenu.css" />
+<script src="~/js/site.js"></script>
+
+
 <style>
-    .divTop {
+    /*.divTop {
         top: 100px;
         position: absolute;
         background-color: #F0F0F0;
@@ -12,8 +18,8 @@
         padding: 30px;
         border-radius: 10px;
         border: 10px;
-        /*width: 1500pxs;*/
-    }
+        /*width: 1500pxs;
+    }*/
     /* Style the tab */
     .tab {
         overflow: hidden;
@@ -39,70 +45,74 @@
                 background-color: #ccc;
             }
     /* Style the tab content */
-    .tabcontent {
+/*    .tabcontent {
         display: none;
         padding: 6px 12px;
         border: 1px solid #ccc;
         border-top: none;
         background-color:whitesmoke;
+    }*/
+    .tabContentFormat {
+        display: none;
+        border-top: none;
+        
     }
-    table {
-        border: 1px solid silver;
+    /*table {
         border-collapse: collapse;
-    }
+    }*/
 </style>
+<label id="tabinit">@Request.Query["tabid"]</label>
 <div class="divTop">
-    <html style="height:1000px">
-    <div>
-        <h2 class="display-6" style="font-weight:100">@Request.Query["selVsl"]</h2>
-        <p>Details & Information</p>
+    <div style="float:left; width:15vw">
+        <h2>@Request.Query["selVsl"]</h2>
+        <label>Details & Information</label>
     </div>
-    <br />
-    <!-- Tab links -->
-    <div class="tab" style="width:1200px">
-        <button class="tablinks" onclick="openVslDet(event, 'Onboard')" id="defaultOpen"><img src="~/lib/Images/vslwheel.png">&nbsp;Crew Onboard</button>
-        <button class="tablinks" onclick="openVslDet(event, 'VslParti')"><img src="~/lib/Images/vessel.png">&nbsp;Particulars</button>
-        <button class="tablinks" onclick="openVslDet(event, 'VslCirculars')"><img src="~/lib/Images/document.png">&nbsp;Circulars</button>
-        <button class="tablinks" onclick="openVslDet(event, 'VslEvents')"><img src="~/lib/Images/event.png">&nbsp;Events</button>
-        <button class="tablinks" onclick="openVslDet(event, '')"><img src="~/lib/Images/report.png">&nbsp;Reports</button>
-        <button class="tablinks" onclick="openVslDet(event, '')"><img src="~/lib/Images/maritimehistory.png">&nbsp;Martime History</button>
-        <button class="tablinks" onclick="openVslDet(event, '')"><img src="~/lib/Images/technical.png">&nbsp;Technical</button>
-        <button class="tablinks" onclick="openVslDet(event, '')"><img src="~/lib/Images/shipping.png">&nbsp;Shipping</button>
-    </div>
+    <div id="btnDiv" class="tab">
+        <button class="tablinks" onclick='openThis(event, "Onboard")' id="defaultOpen">Crew Onboard</button>
+        <button class="tablinks" onclick='openThis(event, "VslParticulars")'>Particulars</button>
+        <button class="tablinks" onclick="openThis(event, 'VslCirculars')">Circulars</button>
+        <button class="tablinks" onclick="openThis(event, 'VslEvents')">Events</button>
+        <button class="tablinks" onclick="openThis(event, '')">Reports</button>
+        <button class="tablinks" onclick="openThis(event, '')">Martime History</button>
+        <button class="tablinks" onclick="openThis(event, '')">Technical</button>
+        <button class="tablinks" onclick="openThis(event, '')">Shipping</button>
 
-    <!-- ONBOARD -->
-    <div id="Onboard" class="tabcontent" style="width:1200px">
-        <p>
-            <div style="text-align:end">
-                <a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a class="btn-link" style="font-size:small" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-        </p>
-        <table class="table" style="background-color:whitesmoke">
+    </div>
+    <!-- CREW ONBOARD -->
+    <div id="Onboard" class="tabContentFormat">
+        <div style="text-align:end; padding-top:0.5vw; padding-bottom:0.5vw">
+            <a class="btn-lnk" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn-lnk" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <table class="table">
             <thread>
-                <tr style="background-color:antiquewhite">
-                    <th>POS</th>
+                <tr>
+                    <th>POSITION</th>
                     <th>NAME</th>
                     <th>NATIONALITY</th>
                     <th>MOBILE</th>
                     <th>EMAIL</th>
-                    <th>REMAINING</th>
+                    <th>AGENCY</th>
+                    <th>REMAINING MONTHS</th>
+                    <th>NEXT ASSIGNMENT</th>
                     <th>IMAGE</th>
                 </tr>
             </thread>
             <tbody>
                 @foreach (var onboardlist in Model.OnboardCrew)
                 {
-                    <tr style="font-size:small; background-color:white">
-                        <td width="50" style="vertical-align:middle">@onboardlist.Rank</td>
-                        <td style="vertical-align:middle">
+                    <tr>
+                        <td>@onboardlist.Rank</td>
+                        <td>
                             <a class="btn-link" href="/Clients/CrewDetails?id=@onboardlist.Id" target="_blank" rel="noreferrer">@onboardlist.Fname @onboardlist.Lname</a>
                         </td>
-                        <td style="vertical-align:middle">@onboardlist.Nationality</td>
-                        <td style="vertical-align:middle">@onboardlist.Mobile</td>
-                        <td style="vertical-align:middle">@onboardlist.Email</td>
-                        <td style="vertical-align:middle; font-size:medium"><strong>@onboardlist.Remaining</strong> month(s)</td>
-                        <td style="vertical-align:middle">
+                        <td>@onboardlist.Nationality</td>
+                        <td>@onboardlist.Mobile</td>
+                        <td>@onboardlist.Email</td>
+                        <td>PTC Phil Trans Carrier</td>
+                        <td stystyle="font-size:0.9vw"><strong>@onboardlist.Remaining</strong> month(s)</td>
+                        <td style="font-style:italic">-- for planning --</td>
+                        <td>
                             <img src="~/lib/images/@(onboardlist.Id).jpg" style="" alt="Pix" width="65" height="60">
                         </td>
                     </tr>
@@ -111,75 +121,129 @@
         </table>
     </div>
     <!-- VESSEL PARTICULARS -->
-    <div id="VslParti" class="tabcontent" style="width:1200px">
-        <p>
-            <div style="text-align:end">
-                <a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a class="btn-link" style="font-size:small" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-        </p>
-        <table border="1" class="table" style="background-color:whitesmoke">
-            <thread>
-
-            </thread>
+    <div id="VslParticulars" class="tabContentFormat">
+        <div style="text-align:end; padding-top:0.5vw; padding-bottom:0.5vw">
+            <a class="btn-lnk" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn-lnk" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <table class="table" style="width:100%">
+            <thread></thread>
             <tbody>
                 @foreach (var vpool in Model.VesselPool)
                 {
-                    <tr style="background-color:antiquewhite">
-                        <th style="width:250px">CURRENT NAME:
-                        <td style="background-color:whitesmoke">@vpool.VesselName</td>
-                        </th>
+                    <tr>
+                        <th style="width:20vw" class="border">CURRENT NAME</th>
+                        <td style="background-color:whitesmoke; width:172vw">@vpool.VesselName</td>
                     </tr>
-                    <tr style="background-color:antiquewhite">
-                        <th>IMO NUMBER:
+                    <tr>
+                        <th class="border">IMO NUMBER</th>
                         <td style="background-color:white">@vpool.IMO</td>
-                        </th>
                     </tr>
-                    <tr style="background-color:antiquewhite">
-                        <th>SHIP TYPE:
+                    <tr>
+                        <th class="border">SHIP TYPE</th>
                         <td style="background-color:whitesmoke">@vpool.Type</td>
-                        </th>
                     </tr>
-                    <tr style="background-color:antiquewhite">
-                        <th>FLAG:
+                    <tr>
+                        <th class="border">FLAG:</th>
                         <td style="background-color:white">@vpool.Flag</td>
-                        </th>
                     </tr>
-                    <tr style="background-color:antiquewhite">
-                        <th>YEAR OF BUILT:
+                    <tr>
+                        <th class="border">YEAR OF BUILT</th>
                         <td style="background-color:whitesmoke">@vpool.YearBuilt</td>
-                        </th>
                     </tr>
-                    <tr style="background-color:antiquewhite">
-                        <th>GRT:
+                    <tr>
+                        <th class="border">GRT</th>
                         <td style="background-color:white">@vpool.Grt</td>
-                        </th>
                     </tr>
-                    <tr style="background-color:antiquewhite">
-                        <th>ENGINE:
+                    <tr>
+                        <th class="border">ENGINE </th>
                         <td style="background-color:whitesmoke">@vpool.Engine</td>
-                        </th>
                     </tr>
-                    <tr style="background-color:antiquewhite">
-                        <th>BUILDER COMPANY:
+                    <tr>
+                        <th class="border">BUILDER COMPANY</th>
                         <td style="background-color:white">@vpool.Builder</td>
-                        </th>
                     </tr>
-                    <tr style="background-color:antiquewhite">
-                        <th>TRADE ROUTE:
+                    <tr>
+                        <th class="border">TRADE ROUTE</th>
                         <td style="background-color:whitesmoke">@vpool.Route</td>
-                        </th>
                     </tr>
-                    <tr style="background-color:antiquewhite">
-                        <th>MANAGED BY:
+                    <tr>
+                        <th class="border">MANAGED BY </th>
                         <td style="background-color:white">@vpool.ClientId</td>
-                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+       </div>
+    <!-- CIRCULARS -->
+    <div id="VslCirculars" class="tabContentFormat">
+        <div style="text-align:end; padding-top:0.5vw; padding-bottom:0.5vw">
+            <a class="btn-lnk" href="#">Add</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn-lnk" href="#">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <table class="table">
+            <thread>
+                <tr>
+                    <th style="text-align:center">DOCUMENT GUIDELINES</th>
+                    <th style="text-align:center">ISSUED</th>
+                </tr>
+            </thread>
+            <tbody>
+                @foreach (var vslcirculars in Model.Circulars)
+                {
+                    <tr>
+                        <td style="text-align:center; font-size:1vw">@vslcirculars.MemoNo <br/> <br/>
+                            <a style="text-align:center" href="#">@vslcirculars.MemoName</a><br/><br/>
+                        </td>
+                        <td style="text-align:center; font-size:1vw">@vslcirculars.YearIssued</td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
-    <!-- CIRCULARS -->
+    <!-- EVENTS -->
+    <div id="VslEvents" class="tabContentFormat">
+        <div style="text-align:end; padding-top:0.5vw; padding-bottom:0.5vw">
+            <a class="btn-lnk" href="#">Add Event</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn-lnk" href="#">Edit Event</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <table class="table">
+            <thread>
+                <tr>
+                    <th>DATE</th>
+                    <th style="padding-right:30vw">REPORT</th>
+                    <th>EVENT</th>
+                    <th>SNAPSHOT</th>
+                    <th>THUMB</th>
+                </tr>
+            </thread>
+            <tbody>
+                @foreach (var vslevent in Model.EventsOB)
+                {
+                    <tr>
+                        <td>@vslevent.ReportDate.ToString("dd.MMM.yyyy")</td>
+                        <td>@vslevent.Report</td>
+                        <td>@vslevent.EventOB</td>
+                        <td>
+                            <div id="rightImage">
+                                <a href="../ImageViewer?imagefile=@vslevent.Image" target="_blank"><img src="~/lib/images/@vslevent.Image" alt="image" width="200px" height="90px" /></a>
+                            </div>
+                        </td>
+                        <td>
+                            <img src="~/lib/Images/@vslevent.Thumbnails" style="" alt="Thumbnails" width="200" height="90">
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+
+
+    @*<!-- CIRCULARS -->
     <div id="VslCirculars" class="tabcontent" style="width:1200px">
         <p>
             <div style="text-align:end">
@@ -245,44 +309,4 @@
                 }
             </tbody>
         </table>
-    </div>
-</div>
-
-<script>
-    // Get the img object using its Id
-    img = document.getElementById("eventimage");
-    // Function to increase image size
-    function enlargeImg() {
-        // Set image size to 1.5 times original
-        img.style.transform = "scale(1.5)";
-        // Animation effect
-        img.style.transition = "transform 0.25s ease";
-    }
-    // Function to reset image size
-    function resetImg() {
-        // Set image size to original
-        img.style.transform = "scale(1)";
-        img.style.transition = "transform 0.25s ease";
-    }
-    function openVslDet(evt, cityName) {
-        // Declare all variables
-        var i, tabcontent, tablinks;
-
-        // Get all elements with class="tabcontent" and hide them
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-
-        // Get all elements with class="tablinks" and remove the class "active"
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-
-        // Show the current tab, and add an "active" class to the button that opened the tab
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-    document.getElementById("defaultOpen").click();
-</script>
+    </div>*@

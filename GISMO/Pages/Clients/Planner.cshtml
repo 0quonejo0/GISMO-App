@@ -1,72 +1,54 @@
 ﻿@page
 @model GISMO.Pages.Clients.PlannerModel
 @{
+    Layout = null;
 }
 
-<style type="text/css">
-    .divTop {
-        top: 19px;
-        position: relative;
-        background-color: #F0F0F0;
-        width: auto;
-        transform: translateX(2%);
-        padding: 30px;
-        border-radius: 10px;
-        border: 10px;
-        height: 100%;
-    }
-    table{
-        width: 100%;
-        font-size:smaller;
-    }
-    td, th{
-        text-align: left;
-    }
-</style>
+<link rel="stylesheet" href="~/css/stylemenu.css" />
+<script src="~/js/site.js"></script>
+
 <div class="divTop">
     <html>
     <div>
-        <h2 class="display-6" style="font-weight:100">@Request.Query["selVsl"]</h2>
-        <p>View Agency Crew Change Planning</p>
+        <h2>@Request.Query["selVsl"]</h2>
+        <label>View Agency Crew Change Planning</label>
     </div>
-    @*<h2>@Request.Query["selVsl"]</h2>*@
     <p>
-        <div style="text-align:end">
-            <a class="btn-link" style="font-size:small" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a class="btn-link" style="font-size:small" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a class="btn-link" style="font-size:small" href="#">Upload Crew-Change</a>
+        <div style="text-align:end; padding-top:0.5vw; padding-bottom:0.5vw">
+            <a class="btn-lnk" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn-lnk" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn-lnk" href="#">Upload Crew-Change</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
     </p>
-    <table class="table">
-        <thead>
+    <table class="table" style="width:100%">
+        <thread>
             <tr>
-                @*<th style="background-color:#EBEBEB">ID</th>*@
-                <th style="background-color:#EBEBEB">ONBOARD</th>
-                <th style="background-color:#EBEBEB">POSITION</th>
-                <th style="background-color:#EBEBEB">C.CHANGE</th>
-                <th style="background-color:#EBEBEB">PROPOSED</th>
-                <th style="background-color:#EBEBEB">POSITION</th>
-                <th style="background-color:#EBEBEB">PORT</th>
-                <th style="background-color:#EBEBEB">AGENCY</th>
-                <th style="background-color:#EBEBEB">AGENCY REMARKS</th>
-                <th style="background-color:#EBEBEB">ACTION</th>
+                <th>POSITION</th>
+                <th>ONBOARD</th>
+                <th style="text-align:center">CREW CHANGE</th>
+                <th>PROPOSED</th>
+                <th>RANK</th>
+                <th>PORT</th>
+                <th>AGENCY</th>
+                <th>AGENCY REMARKS</th>
+                <th style="text-align:end; padding-right: 4vw">ACTION</th>
             </tr>
-        </thead>
+        </thread>
         <tbody>
             @foreach (var crewchange in Model.CrewChange)
             {
                 <tr>
-                    @*<td style="background-color:whitesmoke">@crewchange.Id</td>*@
-                    <td style="background-color:white" width="150">@crewchange.CrewOnboard</td>
-                    <td style="background-color:white">@crewchange.OldPosition</td>
-                    <td style="background-color:lightblue" valign="middle">@crewchange.CChange.ToString("dd.MMM.yyyy")</td>
-                    <td style="background-color:white" width="150">@crewchange.CrewReplacer</td>
-                    <td style="background-color:white">@crewchange.NewPosition</td>
-                    <td style="background-color:white">@crewchange.Port</td>
-                    <td style="background-color:white"></td>
-                    <td style="background-color:antiquewhite">@crewchange.ReplacerStat</td>
-                    <td style="background-color:antiquewhite" width="150">
-                        <a class="btn btn-primary btn-sm" style="vertical-align:middle" href="#">Send Remarks</a>
+                    <td style="background-color:gainsboro">@crewchange.OldPosition</td>
+                    <td style="background-color:gainsboro">@crewchange.CrewOnboard</td>
+                    <td style="background-color:lightblue; text-align:center">@crewchange.CChange.ToString("dd.MMM.yyyy")</td>
+                    <td style="background-color:gainsboro">@crewchange.CrewReplacer</td>
+                    <td style="background-color:gainsboro">@crewchange.NewPosition</td>
+                    <td style="background-color:gainsboro">@crewchange.Port</td>
+                    <td style="background-color:gainsboro">PTC</td>
+                    <td style="color:#ff5402; width:10vw; text-align:justify">@crewchange.ReplacerStat</td>
+                    <td style="background-color:gainsboro; text-align:end; padding-right:2vw">
+                        <button>Send Remarks</button>
+                        @*<a class="button" href="#">Send Remarks</a>*@
                     </td>
                 </tr>
             }
