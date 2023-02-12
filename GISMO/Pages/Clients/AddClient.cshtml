@@ -10,21 +10,22 @@
 <div class="divTop">
     <div style="float:left">
         <h2>Add New Client</h2>
+        <label>Required to fill all information</label>
     </div>
-    <div style="text-align:end; padding-right:35px">
+    <div class="pagerlogo">
         <img style="width:42px; height:42px" src="~/lib/Images/newclient.png" />
     </div>
-    <br /><br /><p><label>Required to fill all information</label></p>
+    <br /><br />
 
     <form method="post">
         <table class="table">
             <tr>
-                <td><label asp-for="@Model.ClientName" class="col-form-label">Client Name</label></td>
+                <td><label asp-for="@Model.ClientName">Client Name</label></td>
                 <td><input asp-for="@Model.ClientName" class="editinput" /></td>
                 <span asp-validation-for="@Model.ClientName" class="text-danger"></span>
             </tr>
             <tr>
-                <td><label asp-for="@Model.ClientType" class="col-form-label">Type of Client</label></td>
+                <td><label asp-for="@Model.ClientType">Client Type</label></td>
                 <td><select asp-for="@Model.ClientType" class="editinput">
                 <option value=""></option>
                 <option value="Ship Management">Ship Management</option>
@@ -32,27 +33,28 @@
                 </td>
             </tr>
             <tr>
-                <td><label asp-for="@Model.ClientAddress" class="col-form-label">Corporate Address</label></td>
+                <td><label asp-for="@Model.ClientAddress">Address</label></td>
                 <td><input asp-for="@Model.ClientAddress" class="editinput" /></td>
                 <span asp-validation-for="@Model.ClientAddress" class="text-danger"></span>
             </tr>
             <tr>
-                <td><label asp-for="@Model.ClientContacts" class="col-form-label">Office Contacts</label></td>
+                <td><label asp-for="@Model.ClientContacts">Contacts</label></td>
                 <td><input asp-for="@Model.ClientContacts" class="editinput" /></td>
                 <span asp-validation-for="@Model.ClientContacts" class="text-danger"></span>
             </tr>
             <tr>
-                <td><label asp-for="@Model.ClientAppLic" class="col-form-label">Assigned Application License</label></td>
+                <td><label asp-for="@Model.ClientAppLic">Apps License</label></td>
                 <td><input asp-for="@Model.ClientAppLic" class="editinput" /></td>
                 <span asp-validation-for="@Model.ClientAppLic" class="text-danger"></span>
             </tr>
         </table>
     </form>
     <br />
-    <div style="width:70.1%; padding-top:10px; text-align:left; position:relative">
-        <button type="submit" onclick=''>Save / Add New</button>
-        <button class="list" onclick='loadHtml("template", "./Clients/Clients")'>Cancel</button>
-        <button type="submit" onclick='loadHtml("template", "../NewClient")'>Available License</button>
+    <div style="padding-left:20px">
+        <button onclick='loadHtml("template", "./Clients/Clients")'>Save/Add New</button>
+        <button onclick='loadHtml("template", "./Clients/Clients")'>License</button>
+        <button onclick='loadHtml("template", "./Clients/Clients")'>Cancel</button>
+        <br /><br />
     </div>
 </div>
 

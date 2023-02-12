@@ -12,16 +12,15 @@
         <h2>List of Clients</h2>
         <label>Ship Management/Agencies</label>
     </div>
-    <div style="text-align:end; padding-right:35px">
+    <div class="pagerlogo">
         <img style="width:42px; height:42px" src="~/lib/Images/client-pc.png" />
     </div>
-
 <br /><br />
-
-<button onclick='loadHtml("template", "./Clients/AddClient")'>New Client</button>
-<button onclick='loadHtml("template", "../Applicants?seaservid=0")'>Proposed Applicants (@Model.Applicants.Count)</button>
-
-<br /><br />
+<div style="padding-left:20px">
+    <button onclick='loadHtml("template", "./Clients/AddClient")'>New Client</button>
+    <button onclick='loadHtml("template", "../Applicants?seaservid=0")'>Proposed Applicants (@Model.Applicants.Count)</button>
+</div>
+<br />
 
 <table class="table">
 <thead>
@@ -44,7 +43,7 @@
             <td>@client.Address</td>
             <td>@client.Contacts</td>
             <td style="text-align:end; padding-right:20px">
-                <a class="btn btn-info btn-sm" href="#" onclick='loadHtml("template", "./Clients/Edit?id=@client.Id")'>Modify</a>
+                <a class="btn-lnk" href="#" onclick='loadHtml("template", "./Clients/Edit?id=@client.Id")'>Modify</a>
             </td>
         </tr>
     }

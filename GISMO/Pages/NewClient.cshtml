@@ -1,31 +1,16 @@
 ﻿@page
 @model GISMO.Pages.NewClientModel
 @{
+    Layout = null;
 }
-
-<style>
-    .inputtexbox {
-        font-size: 70px;
-    }
-
-    .divTop {
-        top: 19px;
-        position: relative;
-        background-color: #F0F0F0;
-        width: auto;
-        transform: translateX(2%);
-        padding: 30px;
-        border-radius: 10px;
-        border: 10px;
-        height: 100%;
-    }
-</style>
+<link rel="stylesheet" href="~/css/stylemenu.css" />
+<script src="~/js/site.js"></script>
 
 <div class="divTop">
-    <html style="background-color: lightgray">
+    <html>
     <div>
-        <h2 class="display-6" style="font-weight:100">Add New Client</h2>
-        <p>Required to fill all information</p>
+        <h2>Add New Client</h2>
+        <label>Required to fill all information</label>
     </div>
     <br />
     <form method="post">
@@ -34,7 +19,7 @@
             <input asp-for="@Model.ClientName" class="form-control" />
             <span asp-validation-for="@Model.ClientName" class="text-danger"></span><br />
 
-            <label asp-for="@Model.ClientType" class="col-form-label">Type of Client</label>
+            <label asp-for="@Model.ClientType" class="col-form-label">Client Type</label>
             <select asp-for="@Model.ClientType" class="form-control">
                 <option value=""></option>
                 <option value="Ship Management">Ship Management</option>
@@ -50,7 +35,7 @@
             <span asp-validation-for="@Model.ClientContacts" class="text-danger"></span><br />
         </div>
         <div class="form-group">
-            <label asp-for="@Model.ClientAppLic" class="col-form-label">Assigned Application License</label>
+            <label asp-for="@Model.ClientAppLic" class="col-form-label">Application License</label>
             <input asp-for="@Model.ClientAppLic" class="form-control" />
             <span asp-validation-for="@Model.ClientAppLic" class="text-danger"></span><br />
         </div>

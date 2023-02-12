@@ -14,32 +14,33 @@
     <!--1ST INFO BOX -->
     <div style="float:left; padding-top:20px; padding-left:20px">
         <h2>@Model.Seafarer.Rank @Model.Seafarer.Fname @Model.Seafarer.Lname</h2><br />
-        <div style="float:left; padding-left:20px; padding-right:20px">
+        <div style="float:left; padding-right:10px">
             <label class="a">ADDRESS:</label><br />
-            <label class="a">MOBILE</label><br />
+            <label class="a">MOBILE:</label><br />
             <label class="a">EMAIL:</label><br />
         </div>
-        <div style="float:left; padding:3px">
+        <div style="float:left; padding:1px">
             <label class="a">@Model.Seafarer.Address</label><br />
             <label class="a">@Model.Seafarer.Mobile</label><br />
             <label class="a">@Model.Seafarer.Email</label>
         </div>
     </div>
-    <div style="text-align:end; padding-top:1vw">
-        <img src="~/lib/images/@(Model.Seafarer.Id).jpg" style="padding:2px; border: 2px solid black" alt="Pix" width="120.6vw" height="130.5vw">
+    <div class="pagerlogo" style="padding:20px">
+        @*<img src="~/lib/images/@(Model.Seafarer.Id).jpg" style="padding:2px; border: 2px solid black" alt="Pix" width="60.6vw" height="65.5vw">*@
+        <img src="~/lib/images/@(Model.Seafarer.Id).jpg" class="applicantPix">
     </div>
 </div>
 <br />
-<div class="divTop" style="height:180px">
+<div class="divTop" style="height: 120px; padding-top:15px">
     <!--2ND INFO BOX -->
-    <div style="float:left; padding-left:45px">
+    <div style="float:left; padding-right: 20px">
         <label class="b">NATIONALITY:</label><br />
         <label class="b">BIRTH DATE:</label><br />
         <label class="b">CIVIL STATUS:</label><br />
         <label class="b">BIRTH PLACE:</label><br />
         <label class="b">AVAILABILITY:</label>
     </div>
-    <div style="float:left; padding-left: 15px">
+    <div style="float:left">
         <label class="c">@Model.Seafarer.Nationality</label><br />
         <label class="c">@Model.Seafarer.DOB.ToString("MMMM dd, yyyy")</label><br />
         <label class="c">@Model.Seafarer.CivilStat</label><br />
@@ -48,44 +49,44 @@
     </div>
 </div>
 <br />
-<div class="divTop" style="height:180px">
+<div class="divTop" style="height:150px; padding-top:15px; overflow-x:scroll">
     <!--3RD INFO BOX -->
-    <div style="float:left; padding-left:45px">
-        <label class="b">DOCUMENT NAME:</label><br />
+    <div style="float:left">
+        <label class="b">DOCUMENT:</label><br />
         <label class="b">NUMBER:</label><br />
         <label class="b">ISSUANCE:</label><br />
-        <label class="b">ISSUED ON:</label><br />
-        <label class="b">EXPIRED ON:</label>
+        <label class="b">ISSUED:</label><br />
+        <label class="b">EXPIRATION:</label>
     </div>
-    <div style="float:left; padding-left:15px">
+    <div style="float:left; padding-left:7px">
         <label class="c">Passport</label><br />
         <label class="c">@Model.Seafarer.PportNum</label><br />
         <label class="c">@Model.Seafarer.PportIssuance</label><br />
         <label class="c">@Model.Seafarer.PportIssued.ToString("dd.MMM.yyyy")</label><br />
         <label class="c">@Model.Seafarer.PportExpiry.ToString("dd.MMM.yyyy")</label>
     </div>
-    <div style="float:left; padding-left:135px">
-        <label class="b">DOCUMENT NAME:</label><br />
+    <div style="float:left; padding-left:40px">
+        <label class="b">DOCUMENT:</label><br />
         <label class="b">NUMBER:</label><br />
         <label class="b">ISSUANCE:</label><br />
-        <label class="b">ISSUED ON:</label><br />
-        <label class="b">EXPIRED ON:</label>
+        <label class="b">ISSUED:</label><br />
+        <label class="b">EXPIRATION:</label>
     </div>
-    <div style="float:left; padding-left:15px">
+    <div style="float:left; padding-left:7px">
         <label class="c">Seaman's Book</label><br />
         <label class="c">@Model.Seafarer.SBKNo</label><br />
         <label class="c">@Model.Seafarer.SBKIssuance</label><br />
         <label class="c">@Model.Seafarer.SBKIssued.ToString("dd.MMM.yyyy")</label><br />
         <label class="c">@Model.Seafarer.SBKExpiry.ToString("dd.MMM.yyyy")</label>
     </div>
-    <div style="float:left; padding-left:180px">
-        <label class="b">DOCUMENT NAME:</label><br />
+    <div style="float:left; padding-left:40px">
+        <label class="b">DOCUMENT:</label><br />
         <label class="b">NUMBER:</label><br />
         <label class="b">ISSUANCE:</label><br />
-        <label class="b">ISSUED ON:</label><br />
-        <label class="b">EXPIRED ON:</label>
+        <label class="b">ISSUED:</label><br />
+        <label class="b">EXPIRATION:</label>
     </div>
-    <div style="float:left; padding-left:15px">
+    <div style="float:left; padding-left:7px">
         <label class="c">US Visa</label><br />
         <label class="c">@Model.Seafarer.USVisaNum</label><br />
         <label class="c">@Model.Seafarer.USVisaIssuance</label><br />
@@ -94,7 +95,7 @@
     </div>
 </div>
 <br />
-<div class="divTop" style="height:28vw">
+<div class="divTop" style="text-align:center; overflow:scroll">
     <!-- 4th INFO BOX -->
     <label>SEA SERVICES EXPERIENCE</label>
     <div>
@@ -136,7 +137,7 @@
     </div>
 </div>
 <br />
-<div class="divTop" style="height:100px">
+<div class="divTop" style="height:100px; text-align:center">
     <!-- 5th INFO BOX -->
     <label>TRAININGS/CERTIFICATES</label>
     <div>
@@ -144,7 +145,7 @@
     </div>
 </div>
 <br />
-<div class="divTop" style="height:100px">
+<div class="divTop" style="height:100px; text-align:center">
     <!-- 6th INFO BOX -->
     <label>VISA/OTHER DOCUMENTS</label>
     <div>
@@ -152,7 +153,7 @@
     </div>
 </div>
 <br />
-<div class="divTop" style="height:100px">
+<div class="divTop" style="height:100px; text-align:center">
     <!-- 7th INFO BOX -->
     <label>MEDICAL HISTORY</label>
     <div>

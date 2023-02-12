@@ -20,7 +20,7 @@ function loadHtml(id, filename) {
         }
         xhttp.open("GET", `${file}`, true);
         xhttp.send();
-        console.log(file);
+        //console.log(file);
         return;
     }
 }

@@ -1,0 +1,62 @@
+﻿@page
+@model GISMO.Pages.Clients.VslDetailsModel
+@{
+    Layout = null;
+}
+<style>
+    *{
+        margin:0;
+        padding:0;
+        outline:0;
+        list-style:none;
+        text-decoration:none;
+        font-family: 'Roboto', sans-serif;
+    }
+    nav{
+        display:flex;
+        justify-content: space-between;
+        padding: 0 15%;
+        height:75px;
+        line-height:75px;
+        background: #040404;
+    }
+    nav .navbar-brand{
+        color: #ffff;
+        font-size:28px;
+        font-weight:500;
+        letter-spacing: .5px;
+    }
+    nav .nav-list {
+        display:flex;
+    }
+    nav .nav-list .nav-item{
+        cursor:pointer;
+        height:100%;
+        transition:.4s;
+    }
+    nav .nav-list .nav-item:hover{
+        background:#b69955;
+    }
+        nav .nav-list .nav-link{
+            color:#f1f1f1;
+            font-size:18px;
+            font-weight:500;
+        }
+   
+</style>
+
+
+<nav>
+    <a class="navbar-brand" href="#">Menu Brand</a>
+    
+    <ul class="nav-list">
+        <li class="nav-item">
+            <a class="nav-link">Onboard</a>
+            <a class="nav-link">Vessel Details</a>
+            <a class="nav-link">Circulars</a>
+            <a class="nav-link">Events</a>
+        </li>
+    </ul>
+
+
+</nav>

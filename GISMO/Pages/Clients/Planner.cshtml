@@ -8,7 +8,6 @@
 <script src="~/js/site.js"></script>
 
 <div class="divTop">
-    <html>
     <div>
         <h2>@Request.Query["selVsl"]</h2>
         <label>View Agency Crew Change Planning</label>
@@ -20,40 +19,40 @@
             <a class="btn-lnk" href="#">Upload Crew-Change</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
     </p>
-    <table class="table" style="width:100%">
-        <thread>
-            <tr>
-                <th>POSITION</th>
-                <th>ONBOARD</th>
-                <th style="text-align:center">CREW CHANGE</th>
-                <th>PROPOSED</th>
-                <th>RANK</th>
-                <th>PORT</th>
-                <th>AGENCY</th>
-                <th>AGENCY REMARKS</th>
-                <th style="text-align:end; padding-right: 4vw">ACTION</th>
-            </tr>
-        </thread>
-        <tbody>
-            @foreach (var crewchange in Model.CrewChange)
-            {
+    <div style="overflow:scroll">
+        <table class="table" style="width:100%">
+            <thread>
                 <tr>
-                    <td style="background-color:gainsboro">@crewchange.OldPosition</td>
-                    <td style="background-color:gainsboro">@crewchange.CrewOnboard</td>
-                    <td style="background-color:lightblue; text-align:center">@crewchange.CChange.ToString("dd.MMM.yyyy")</td>
-                    <td style="background-color:gainsboro">@crewchange.CrewReplacer</td>
-                    <td style="background-color:gainsboro">@crewchange.NewPosition</td>
-                    <td style="background-color:gainsboro">@crewchange.Port</td>
-                    <td style="background-color:gainsboro">PTC</td>
-                    <td style="color:#ff5402; width:10vw; text-align:justify">@crewchange.ReplacerStat</td>
-                    <td style="background-color:gainsboro; text-align:end; padding-right:2vw">
-                        <button>Send Remarks</button>
-                        @*<a class="button" href="#">Send Remarks</a>*@
-                    </td>
+                    <th>POSITION</th>
+                    <th>ONBOARD</th>
+                    <th style="text-align:center">CREW CHANGE</th>
+                    <th>PROPOSED</th>
+                    <th>RANK</th>
+                    <th>PORT</th>
+                    <th>AGENCY</th>
+                    <th>AGENCY REMARKS</th>
+                    <th style="text-align:end; padding-right: 4vw">ACTION</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thread>
+            <tbody>
+                @foreach (var crewchange in Model.CrewChange)
+                {
+                    <tr>
+                        <td style="background-color:gainsboro">@crewchange.OldPosition</td>
+                        <td style="background-color:gainsboro">@crewchange.CrewOnboard</td>
+                        <td style="background-color:lightblue; text-align:center">@crewchange.CChange.ToString("dd.MMM.yyyy")</td>
+                        <td style="background-color:gainsboro">@crewchange.CrewReplacer</td>
+                        <td style="background-color:gainsboro">@crewchange.NewPosition</td>
+                        <td style="background-color:gainsboro">@crewchange.Port</td>
+                        <td style="background-color:gainsboro">PTC</td>
+                        <td style="color:#ff5402; width:10vw; text-align:justify">@crewchange.ReplacerStat</td>
+                        <td style="background-color:gainsboro; text-align:end; padding-right:2vw">
+                            <button>Send Remarks</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
-<br /><br />
 

@@ -9,18 +9,7 @@
 
 
 <style>
-    /*.divTop {
-        top: 100px;
-        position: absolute;
-        background-color: #F0F0F0;
-        width: auto;
-        transform: translateX(2%);
-        padding: 30px;
-        border-radius: 10px;
-        border: 10px;
-        /*width: 1500pxs;
-    }*/
-    /* Style the tab */
+    
     .tab {
         overflow: hidden;
         border: 1px solid #ccc;
@@ -57,33 +46,30 @@
         border-top: none;
         
     }
-    /*table {
-        border-collapse: collapse;
-    }*/
 </style>
 <label id="tabinit">@Request.Query["tabid"]</label>
 <div class="divTop">
-    <div style="float:left; width:15vw">
+    <div>
         <h2>@Request.Query["selVsl"]</h2>
         <label>Details & Information</label>
     </div>
-    <div id="btnDiv" class="tab">
-        <button class="tablinks" onclick='openThis(event, "Onboard")' id="defaultOpen">Crew Onboard</button>
-        <button class="tablinks" onclick='openThis(event, "VslParticulars")'>Particulars</button>
-        <button class="tablinks" onclick="openThis(event, 'VslCirculars')">Circulars</button>
-        <button class="tablinks" onclick="openThis(event, 'VslEvents')">Events</button>
-        <button class="tablinks" onclick="openThis(event, '')">Reports</button>
-        <button class="tablinks" onclick="openThis(event, '')">Martime History</button>
-        <button class="tablinks" onclick="openThis(event, '')">Technical</button>
-        <button class="tablinks" onclick="openThis(event, '')">Shipping</button>
-
+    <br />
+    <div id="btnDiv" class="tab" style="border:0">
+        <buttonTab class="tablinks" onclick='openThis(event, "Onboard")' id="defaultOpen">Crew Onboard</buttonTab>
+        <buttonTab class="tablinks" onclick='openThis(event, "VslParticulars")'>Particulars</buttonTab>
+        <buttonTab class="tablinks" onclick="openThis(event, 'VslCirculars')">Circulars</buttonTab>
+        <buttonTab class="tablinks" onclick="openThis(event, 'VslEvents')">Events</buttonTab>
+        <buttonTab class="tablinks" onclick="openThis(event, '')">Reports</buttonTab>
+        <buttonTab class="tablinks" onclick="openThis(event, '')">Martime History</buttonTab>
+        <buttonTab class="tablinks" onclick="openThis(event, '')">Technical</buttonTab>
+        <buttonTab class="tablinks" onclick="openThis(event, '')">Shipping</buttonTab>
     </div>
     <!-- CREW ONBOARD -->
-    <div id="Onboard" class="tabContentFormat">
-        <div style="text-align:end; padding-top:0.5vw; padding-bottom:0.5vw">
+    <div id="Onboard" class="tabContentFormat" style="overflow-X:scroll">
+        @*<div style="text-align:end; padding-top:0.5vw; padding-bottom:0.5vw">
             <a class="btn-lnk" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a class="btn-lnk" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </div>
+        </div>*@
         <table class="table">
             <thread>
                 <tr>
@@ -121,18 +107,18 @@
         </table>
     </div>
     <!-- VESSEL PARTICULARS -->
-    <div id="VslParticulars" class="tabContentFormat">
-        <div style="text-align:end; padding-top:0.5vw; padding-bottom:0.5vw">
+    <div id="VslParticulars" class="tabContentFormat" style="overflow-X:scroll">
+        @*<div style="text-align:end; padding-top:0.5vw; padding-bottom:0.5vw">
             <a class="btn-lnk" href="#">Export</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a class="btn-lnk" href="#">Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </div>
+        </div>*@
         <table class="table" style="width:100%">
             <thread></thread>
             <tbody>
                 @foreach (var vpool in Model.VesselPool)
                 {
                     <tr>
-                        <th style="width:20vw" class="border">CURRENT NAME</th>
+                        <th style="width:65vw" class="border">CURRENT NAME</th>
                         <td style="background-color:whitesmoke; width:172vw">@vpool.VesselName</td>
                     </tr>
                     <tr>
@@ -176,7 +162,7 @@
         </table>
        </div>
     <!-- CIRCULARS -->
-    <div id="VslCirculars" class="tabContentFormat">
+    <div id="VslCirculars" class="tabContentFormat" style="overflow-X:scroll">
         <div style="text-align:end; padding-top:0.5vw; padding-bottom:0.5vw">
             <a class="btn-lnk" href="#">Add</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a class="btn-lnk" href="#">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -192,17 +178,17 @@
                 @foreach (var vslcirculars in Model.Circulars)
                 {
                     <tr>
-                        <td style="text-align:center; font-size:1vw">@vslcirculars.MemoNo <br/> <br/>
+                        <td style="text-align:center; font-size:0.9em">@vslcirculars.MemoNo <br/> <br/>
                             <a style="text-align:center" href="#">@vslcirculars.MemoName</a><br/><br/>
                         </td>
-                        <td style="text-align:center; font-size:1vw">@vslcirculars.YearIssued</td>
+                        <td style="text-align:center; font-size:0.9em">@vslcirculars.YearIssued</td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
     <!-- EVENTS -->
-    <div id="VslEvents" class="tabContentFormat">
+    <div id="VslEvents" class="tabContentFormat" style="overflow-X:scroll">
         <div style="text-align:end; padding-top:0.5vw; padding-bottom:0.5vw">
             <a class="btn-lnk" href="#">Add Event</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a class="btn-lnk" href="#">Edit Event</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
