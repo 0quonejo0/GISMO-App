@@ -1,0 +1,39 @@
+﻿@{
+    Layout = null;
+}
+
+<link rel="stylesheet" href="~/css/stylemenu.css" />
+<script src="~/js/site.js"></script>
+
+<div class="divTop" style="padding:13px; margin-bottom:10px">
+    <button class="button" style="border-radius:5px; padding-right:10px" href="#" onclick='loadHtml("template", searchCrew())'>Find Seafarer</button>
+    <a style="padding-left:10px; font-family:'BebasRegular'; font-size: 1.0em" class="btn-lnk" href="#" onclick='loadHtml("template", "../Clients/FindClient")'>Client</a>
+    <a style="padding-left:10px; font-family:'BebasRegular'; font-size: 1.0em" class="btn-lnk" href="#" onclick='loadHtml("template", "../Clients/FindExpe")'>Experience</a>
+    <a style="padding-left:10px; font-family:'BebasRegular'; font-size: 1.0em" class="btn-lnk" href="#" onclick='loadHtml("template", "../Clients/FindVessel")'>Vessel</a>
+</div>
+
+<div class="divTop" style="border-radius:0; overflow-X:scroll">
+<table>
+    <tr>
+        <th>Rank</th>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>Mobile</th>
+        <th>Email</th>
+
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Rank</td>
+                <td>@item.Lname </td>
+                <td>@item.Fname </td>
+                <td>@item.Mobile </td>
+                <td>@item.Email </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+

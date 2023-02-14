@@ -1,0 +1,34 @@
+﻿@{
+}
+
+<link rel="stylesheet" href="~/css/stylemenu.css" />
+<script src="~/js/site.js"></script>
+
+<div class="divTop" style="padding:13px; margin-bottom:10px">
+    <button class="button" style="border-radius:5px; padding-right:10px" href="#" onclick='loadHtml("template", searchClient())'>Find Client</button>
+    <a style="padding-left:10px; font-family:'BebasRegular'; font-size: 1.0em" class="btn-lnk" href="#" onclick='loadHtml("template", "../Clients/FindSeafarer")'>Seafarer</a>
+    <a style="padding-left:10px; font-family:'BebasRegular'; font-size: 1.0em" class="btn-lnk" href="#" onclick='loadHtml("template", "../Clients/FindExpe")'>Experience</a>
+    <a style="padding-left:10px; font-family:'BebasRegular'; font-size: 1.0em" class="btn-lnk" href="#" onclick='loadHtml("template", "../Clients/FindVessel")'>Vessel</a>
+</div>
+<div class="divTop" style="border-radius:0; overflow-X:scroll">
+    <table>
+        <tr>
+            <th>Client Name</th>
+            <th>Type</th>
+            <th>Address</th>
+
+        </tr>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ClientName</td>
+                    <td>@item.Type</td>
+                    <td>@item.Address</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+

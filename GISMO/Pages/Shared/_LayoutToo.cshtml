@@ -9,13 +9,15 @@
     <script src="~/js/site.js"></script>
 </head>
 
-<body>
+<body style="padding-top:0px">
     <header class="header" style="margin-top:2px">
        <ul>
-            <li class="logo">GISMO</li>
-          <li>
-                <partial name="_LoginPartial" />
-           </li>
+        <li class="logo">
+                <img src="~/lib/images/gismo_logo_bw2.png" style="height:25px; background:transparent; width:90px; border:none; transform: translateY(8px)" class="applicantPix">
+        </li>
+        <li>
+            <partial name="_LoginPartial" />
+        </li>
        </ul>
     </header>
 </body>
@@ -42,7 +44,8 @@
                 </a>
             </li>
             <li class="list">
-                <a href="#" onclick='loadHtml("template", "../AdvanceSearch")'>
+                @*<a href="#" onclick='loadHtml("template", myFunction())'>*@
+                <a href="#" onclick='loadHtml("template", "../Clients/FindSeafarer")'>
                     <span class="icon">
                         <ion-icon name="telescope-outline"></ion-icon>
                     </span>
@@ -95,5 +98,50 @@
     }
     list.forEach((item) =>
         item.addEventListener('click', activeLink));
+
+    function searchCrew() {
+        let textParam;
+        let userInput = prompt("Seafarer's Lastname:");
+        if (userInput == null || userInput == "") {
+            textParam = "User cancelled the prompt";
+        } else {
+            textParam = "../Clients/FindSeafarer?thisParam=" + userInput;
+            return textParam;
+        }
+        console.log(textParam);
+    }
+    function searchClient() {
+        let textParam;
+        let userInput = prompt("Client name:");
+        if (userInput == null || userInput == "") {
+            textParam = "User cancelled the prompt";
+        } else {
+            textParam = "../Clients/FindClient?thisParam=" + userInput;
+            return textParam;
+        }
+        console.log(textParam);
+    }
+    function searchExpe() {
+        let textParam;
+        let userInput = prompt("Search by experience (Ex: Container):");
+        if (userInput == null || userInput == "") {
+            textParam = "User cancelled the prompt";
+        } else {
+            textParam = "../Clients/FindExpe?thisParam=" + userInput;
+            return textParam;
+        }
+        console.log(textParam);
+    }
+    function searchVessel() {
+        let textParam;
+        let userInput = prompt("Search Vessel:");
+        if (userInput == null || userInput == "") {
+            textParam = "User cancelled the prompt";
+        } else {
+            textParam = "../Clients/FindVessel?thisParam=" + userInput;
+            return textParam;
+        }
+        console.log(textParam);
+    }
 </script>
 </html>

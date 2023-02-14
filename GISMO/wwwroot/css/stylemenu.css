@@ -31,9 +31,13 @@
     src: url(../fonts/Abel-Regular.ttf) format('truetype');
 }
 
+
+
+
 /* PAGES DESIGN */
 .header {
     display: flex;
+    top:0;
     justify-content: flex-end;
     align-items: center;
     padding-bottom: 20px;
@@ -317,6 +321,7 @@ buttonTab {
     /*text-decoration: none;*/
     transition: 0.3s ease all;
     z-index: 1;
+    cursor: pointer;
 }
 button.a {
     font-size: 0.75em;
@@ -346,6 +351,7 @@ button.a {
     }
     buttonTab:hover, buttonTab:focus, button:hover, button:focus {
         color: white;
+        cursor:pointer;
     }
         buttonTab:hover:before, buttonTab:focus:before, button:hover:before, button:focus:before {
             transition: 0.5s all ease;
