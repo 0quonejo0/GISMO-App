@@ -22,7 +22,9 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.ClientName</td>
+                    <td>
+                        <a class="btn-link" href="#" onclick='loadHtml("template", "../Clients/ClientDetails?id=@item.Id&selClient=@item.ClientName")'>@item.ClientName</a>
+                    </td>
                     <td>@item.Type</td>
                     <td>@item.Address</td>
                 </tr>

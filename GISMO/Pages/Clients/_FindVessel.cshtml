@@ -27,7 +27,9 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.VesselName</td>
+                    <td>
+                        <a class="btn-link" href="#" onclick='loadHtml("template", "../Clients/VesselDetails?id=@item.Id&selVsl=@item.VesselName&tabid=fresh")'>@item.VesselName</a>
+                    </td>
                     <td>@item.Type</td>
                     <td>@item.IMO</td>
                     <td>@item.Flag</td>

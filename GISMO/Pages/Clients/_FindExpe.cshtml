@@ -7,7 +7,6 @@
 
 <div class="divTop" style="padding:13px; margin-bottom:10px">
     <button class="button" style="border-radius:5px; padding-right:10px" href="#" onclick='loadHtml("template", searchExpe())'>Find Experience</button>
-    @*<a class="btn-lnk" style="text-decoration:none; padding-right:10px; color:#FC7910" href="#" onclick='loadHtml("template", searchExpe())'>Search Experience</a>*@
     <a style="padding-left:10px; font-family:'BebasRegular'; font-size: 1.0em" class="btn-lnk" href="#" onclick='loadHtml("template", "../Clients/FindSeafarer")'>Seafarer</a>
     <a style="padding-left:10px; font-family:'BebasRegular'; font-size: 1.0em" class="btn-lnk" href="#" onclick='loadHtml("template", "../Clients/FindClient")'>Client</a>
     <a style="padding-left:10px; font-family:'BebasRegular'; font-size: 1.0em" class="btn-lnk" href="#" onclick='loadHtml("template", "../Clients/FindVessel")'>Vessel</a>
@@ -17,8 +16,7 @@
     <table>
         <tr>
             @*<th>Rank</th>*@
-            <th>Firstname</th>
-            <th>Lastname</th>
+            <th>Name</th>
             <th>Vessel Type</th>
         </tr>
         <tbody>
@@ -26,8 +24,9 @@
             {
                 <tr>
                     @*<td>@item.Rank</td> NOTE: ADD THIS FIELD IN SQL VIEW*@
-                    <td>@item.Fname</td>
-                    <td>@item.Lname</td>
+                    <td>
+                        <a class="btn-link" href="/Clients/CrewDetails?id=@item.Id" target="_blank" rel="noreferrer">@item.Fname @item.Lname</a>
+                    </td>
                     <td>@item.Type</td>
                 </tr>
             }

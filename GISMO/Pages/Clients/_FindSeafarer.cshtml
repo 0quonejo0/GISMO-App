@@ -16,8 +16,7 @@
 <table>
     <tr>
         <th>Rank</th>
-        <th>Last Name</th>
-        <th>First Name</th>
+        <th>Name</th>
         <th>Mobile</th>
         <th>Email</th>
 
@@ -27,8 +26,9 @@
         {
             <tr>
                 <td>@item.Rank</td>
-                <td>@item.Lname </td>
-                <td>@item.Fname </td>
+                <td>
+                    <a class="btn-link" href="/Clients/CrewDetails?id=@item.Id" target="_blank" rel="noreferrer">@item.Fname @item.Lname</a>
+                </td>
                 <td>@item.Mobile </td>
                 <td>@item.Email </td>
             </tr>
