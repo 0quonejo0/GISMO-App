@@ -32,8 +32,6 @@
 }
 
 
-
-
 /* PAGES DESIGN */
 .header {
     display: flex;
@@ -49,14 +47,15 @@
     }
         .header ul li {
             list-style: none;
-            display: inline-block;
+            display: inline-flex;
             padding: 0px 10px;
             font-family:"Roboto", sans-serif;
             font-weight:bold;
             font-size: 1.0em;
+            padding-top:5px;
         }
 .logo {
-    margin-right: 30px;
+    margin-right: 20px;
 }
 
 /*#login_div {
@@ -414,6 +413,7 @@ a {
     font-family: 'AbelRegular';
     font-size: 0.9em;
     word-wrap: break-word;
+    font-weight:bold;
 }
 .btn-lnk {
     text-decoration: underline;

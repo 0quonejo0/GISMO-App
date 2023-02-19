@@ -7,6 +7,7 @@
     <title>GISMO - Global Information for Ship Management Operators</title>
     <link rel="stylesheet" href="~/css/stylemenu.css" />
     <script src="~/js/site.js"></script>
+    
 </head>
 
 <body style="padding-top:0px">
@@ -44,7 +45,6 @@
                 </a>
             </li>
             <li class="list">
-                @*<a href="#" onclick='loadHtml("template", myFunction())'>*@
                 <a href="#" onclick='loadHtml("template", "../Clients/FindSeafarer")'>
                     <span class="icon">
                         <ion-icon name="telescope-outline"></ion-icon>
@@ -53,7 +53,7 @@
                 </a>
             </li>
             <li class="list">
-                <a href="#">
+                <a href="#" onclick='loadHtml("template", "../VesselPool")'>
                     <span class="icon">
                         <ion-icon name="boat-outline"></ion-icon>
                     </span>
@@ -63,7 +63,7 @@
             <li class="list">
                 <a href="#">
                     <span class="icon">
-                        <ion-icon name="settings-outline"></ion-icon>
+                        <ion-icon name="navigate-circle-outline"></ion-icon>
                     </span>
                     <span class="text">Navigation</span>
                 </a>
@@ -71,7 +71,7 @@
             <li class="list">
                 <a href="#">
                     <span class="icon">
-                        <ion-icon name="navigate-circle-outline"></ion-icon>
+                        <ion-icon name="settings-outline"></ion-icon>
                     </span>
                     <span class="text">Settings</span>
                 </a>

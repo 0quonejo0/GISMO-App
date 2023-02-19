@@ -1,23 +1,22 @@
 ﻿@page
 @model GISMO.Pages.VesselPoolModel
 @{
+    Layout = null;
 }
 
 <style>
-    .divTop {
+   /* .divTop {
         top:19px;
         position: relative;
         background-color: #F0F0F0;
-        /*float:left;*/
         width:auto;
-        /*transform: translateX(2%);*/
         padding-left: 30px;
         padding-right: 10px;
         padding-top: 30px;
         padding-bottom: 6px;
         border-radius: 10px;
         height:155px;
-    }
+    }*/
     .divtopleft{
         border:solid;
         border-width:thin;
@@ -82,18 +81,56 @@
 </style>
 <link rel="stylesheet" href="background_styles.css" />
 <link rel="stylesheet" href="styles.css" />
-<html>
 
-@*<a id="testbtn" class="btn btn-primary">Test</a>
-<div id="divtest" class="container d-none">
-    New content...
-</div>*@
+<div class="divTop" style="overflow-X:scroll">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Vessel Name</th>
+                <th>Type</th>
+                <th>IMO</th>
+                <th>Flag</th>
+                <th>GRT</th>
+                <th>Engine</th>
+                <th>Year Built</th>
+                <th>Route</th>
+                <th>Builder</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var vpool in Model.VesselPool)
+            {
+                <tr>
+                    @*<td><a id="btnVsl" class="btn-link" style="font-size:medium" href="./VesselPool?id=@vpool.Id">@vpool.VesselName</a></td>*@
+                    <td><a class="btn-link" href="#" onclick='loadHtml("template", "./Clients/VesselDetails?id=@vpool.Id&selVsl=@vpool.VesselName&tabid=fresh")'>@vpool.VesselName</a>
+                </td>
+                <td>@vpool.Type</td>
+                <td>@vpool.IMO</td>
+                <td>@vpool.Flag</td>
+                <td>@vpool.Grt</td>
+                <td>@vpool.Engine</td>
+                <td>@vpool.YearBuilt</td>
+                <td>@vpool.Route</td>
+                <td>@vpool.Builder</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
+
+
+@*
+<html>
 
 <form method="post">
 
-<div class="divTop">
-    <h2 class="display-6" style="font-weight:100">Vessel Management</h2>
-    <p>Details & Information</p>
+<div>
+    <h2>Vessel Management</h2>
+    <label>Details & Information</label>
     <div style="width:20%; float:left">
         <span asp-validation-for="@Model.SearchThisVessel" class="text-danger"></span>
     </div>
@@ -103,25 +140,15 @@
     </div>
 </div>
 <br />
-@*<div></div>*@
 <div class="divleft">
     <table class="table">
         <thread>
-                <th style="position:absolute; background-color:silver"; width="310px"; height="50"; valign="middle">
-                    <input type="text" asp-for="SearchThisVessel" required/>
-                    <input type="submit" style="width:75px" asp-page-handler="Search" value="Search" />
-                    @*<span asp-validation-for="@Model.SearchThisVessel" class="text-danger"></span>*@
-                </th>
-            @*<tr background-color:silver">
-                <th><input type="text" asp-for="SearchThisVessel" />
-                    <input type="submit" asp-page-handler="Search" value="Search" /></th>
-                    <span asp-validation-for="@Model.SearchThisVessel" class="text-danger"></span>
-                <br />
-            </tr>*@
+            <th style="position:absolute; background-color:silver"; width="310px"; height="50"; valign="middle">
+                <input type="text" asp-for="SearchThisVessel" required/>
+                <input type="submit" style="width:75px" asp-page-handler="Search" value="Search" />
         </thread>
         <tbody>
             <td height="40px"></td>
-            
             @if (Model.SearchThisVessel != null)
             {
                 @foreach (var vpool in Model.SearchAllVsl)
@@ -136,8 +163,7 @@
                 @foreach (var vpool in Model.VesselPool)
                 {
                     <tr>
-                        @*<td>@vpool.VesselName</td>*@
-                            <td><a id="btnVsl" class="btn-link" style="font-size:medium" href="./VesselPool?id=@vpool.Id">@vpool.VesselName</a></td>
+                        <td><a id="btnVsl" class="btn-link" style="font-size:medium" href="./VesselPool?id=@vpool.Id">@vpool.VesselName</a></td>
                     </tr>
                 }
             }
@@ -177,7 +203,6 @@
            </tr>
        </tbody>
    </table>
-   @*<hr />*@
    <div id="vslimg">
         @if (Model.Vessels != null)
         {
@@ -189,9 +214,7 @@
         }
    </div>
     
-</div>
-</div>
-<body>
+</div>*@
     <script>
         const button = document.getElementById('btnVsl');
         document.getElementById("btnVsl").addEventListener("click", function () {
@@ -205,11 +228,3 @@
             }
         });
     </script>
-</body>
-
-@*@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}*@
-</html>
